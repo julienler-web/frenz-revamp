@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frenz – French-English Bilingual Education in New Zealand</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#028090;--teal-dark:#01565F;--teal-xdark:#013b42;--teal-light:#03a8bf;--coral:#E76F51;--coral-dark:#c95c3e;--mint:#E4F6F8;--mint2:#c8eef3;--sand:#fdf6ee;--white:#FFFFFF;--ink:#0e1c20;--body:#4F5359;--muted:#7a8490;--border:#d4eef1;--shadow-sm:0 2px 12px rgba(1,86,95,.08);--shadow-md:0 8px 40px rgba(1,86,95,.12);--shadow-lg:0 20px 70px rgba(1,86,95,.18);--radius:18px;--tr:.35s cubic-bezier(.4,0,.2,1);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--body);background:var(--white);overflow-x:hidden;cursor:none;}
+.cursor{position:fixed;pointer-events:none;z-index:9999;top:0;left:0;}
+.cursor-dot{width:8px;height:8px;border-radius:50%;background:#fff;position:absolute;transform:translate(-50%,-50%);transition:transform .1s;mix-blend-mode:difference;}
+.cursor-ring{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);position:absolute;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:difference;}
+.cursor-ring.hover{width:56px;height:56px;border-color:var(--coral);}
+h1,h2,h3{font-family:"DM Serif Display",serif;font-weight:400;line-height:1.15;color:var(--ink);}
+h4,h5,h6{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;color:var(--ink);}
+a{color:inherit;text-decoration:none;}img{max-width:100%;display:block;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2.5rem;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background var(--tr),box-shadow var(--tr);}
+nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(16px);box-shadow:var(--shadow-sm);}
+nav.dark{background:transparent;}
+nav.dark.scrolled{background:rgba(10,28,33,.96);}
+.nav-logo{display:flex;align-items:center;gap:12px;cursor:pointer;}
+.logo-mark{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));display:flex;align-items:center;justify-content:center;font-family:"DM Serif Display",serif;color:#fff;font-size:1.25rem;box-shadow:0 4px 14px rgba(2,128,144,.35);transition:transform var(--tr);}
+.nav-logo:hover .logo-mark{transform:rotate(-6deg) scale(1.08);}
+.logo-text{font-family:"DM Serif Display",serif;font-size:1.5rem;color:var(--ink);transition:color .2s;}
+nav.dark .logo-text{color:#fff;}
+.logo-sub{font-size:.65rem;color:var(--muted);font-weight:500;letter-spacing:.06em;}
+nav.dark .logo-sub{color:rgba(255,255,255,.5);}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-item{position:relative;}
+.nav-link{display:block;padding:.5rem .9rem;border-radius:10px;font-size:.85rem;font-weight:600;color:var(--ink);transition:background var(--tr),color var(--tr);cursor:pointer;white-space:nowrap;}
+nav.dark .nav-link{color:rgba(255,255,255,.9);}
+.nav-link:hover{background:var(--mint);color:var(--teal);}
+nav.dark .nav-link:hover{background:rgba(255,255,255,.12);color:#fff;}
+.nav-dd{position:absolute;top:calc(100% + 10px);left:0;background:#fff;border:1px solid var(--border);border-radius:16px;min-width:255px;padding:.6rem;box-shadow:var(--shadow-md);opacity:0;visibility:hidden;transform:translateY(-8px) scale(.97);transition:all .22s cubic-bezier(.4,0,.2,1);pointer-events:none;}
+.nav-item:hover .nav-dd{opacity:1;visibility:visible;transform:none;pointer-events:all;}
+.nav-dd a{display:flex;align-items:center;gap:10px;padding:.55rem .9rem;border-radius:10px;font-size:.84rem;color:var(--body);font-weight:500;transition:background .12s;cursor:pointer;}
+.nav-dd a:hover{background:var(--mint);color:var(--teal);}
+.nav-cta{background:var(--coral);color:#fff!important;padding:.6rem 1.4rem;border-radius:50px;font-weight:700;font-size:.84rem;transition:all var(--tr);cursor:pointer;margin-left:.5rem;box-shadow:0 4px 18px rgba(231,111,81,.32);}
+.nav-cta:hover{background:var(--coral-dark);transform:translateY(-2px);}
+.page{display:none;}
+.page.active{display:block;}
+@keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.page-enter{animation:pageIn .45s ease both;}
+/* SCROLL REVEAL */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease;}
+.rv.in{opacity:1;transform:none;}
+.rv-l{opacity:0;transform:translateX(-36px);transition:opacity .7s ease,transform .7s ease;}
+.rv-l.in{opacity:1;transform:none;}
+.rv-r{opacity:0;transform:translateX(36px);transition:opacity .7s ease,transform .7s ease;}
+.rv-r.in{opacity:1;transform:none;}
+.rv-s{opacity:0;transform:scale(.92);transition:opacity .65s ease,transform .65s ease;}
+.rv-s.in{opacity:1;transform:scale(1);}
+[data-d="1"]{transition-delay:.1s!important;}[data-d="2"]{transition-delay:.2s!important;}
+[data-d="3"]{transition-delay:.3s!important;}[data-d="4"]{transition-delay:.4s!important;}
+[data-d="5"]{transition-delay:.5s!important;}[data-d="6"]{transition-delay:.6s!important;}
+/* HERO */
+.hero{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;background:var(--teal-xdark);}
+.hero-bg{position:absolute;inset:0;background-image:url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1800&q=75&fit=crop&crop=top");background-size:cover;background-position:center top;opacity:.28;animation:hzoom 18s ease-in-out infinite alternate;}
+@keyframes hzoom{from{transform:scale(1.06)}to{transform:scale(1.15)}}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(1,59,66,.95) 0%,rgba(2,128,144,.62) 55%,rgba(1,86,95,.88) 100%);}
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.particle{position:absolute;border-radius:50%;background:rgba(255,255,255,.05);animation:float linear infinite;}
+@keyframes float{0%{transform:translateY(110vh) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-120px) rotate(360deg);opacity:0}}
+.hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:130px 2.5rem 90px;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.9);padding:.45rem 1.2rem;border-radius:50px;font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.8rem;backdrop-filter:blur(8px);}
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--coral);animation:pdot 2s ease infinite;}
+@keyframes pdot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
+.hero h1{font-size:clamp(2.8rem,5.5vw,4.8rem);color:#fff;line-height:1.08;margin-bottom:1.5rem;}
+.hero h1 em{color:var(--mint2);font-style:italic;}
+.hero-sub{color:rgba(255,255,255,.74);font-size:1.07rem;line-height:1.72;margin-bottom:2.5rem;max-width:520px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-coral{background:var(--coral);color:#fff;padding:.9rem 2.2rem;border-radius:50px;font-weight:700;font-size:.94rem;box-shadow:0 6px 24px rgba(231,111,81,.4);transition:all var(--tr);cursor:pointer;display:inline-flex;align-items:center;gap:8px;}
+.btn-coral:hover{background:var(--coral-dark);transform:translateY(-3px);box-shadow:0 12px 32px rgba(231,111,81,.5);}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.35);padding:.88rem 2.2rem;border-radius:50px;font-weight:600;font-size:.94rem;transition:all var(--tr);cursor:pointer;display:inline-block;backdrop-filter:blur(6px);}
+.btn-ghost:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.65);transform:translateY(-2px);}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;border-top:1px solid rgba(255,255,255,.14);padding-top:2rem;}
+.hs-num{font-family:"DM Serif Display",serif;font-size:2.5rem;color:#fff;display:block;line-height:1;}
+.hs-lbl{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.07em;margin-top:.25rem;}
+.hero-visual{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.hphoto{border-radius:16px;overflow:hidden;position:relative;}
+.hphoto img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease;}
+.hphoto:hover img{transform:scale(1.07);}
+.hphoto-tall{grid-row:span 2;}
+.hphoto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(1,59,66,.45));border-radius:16px;}
+.hphoto-badge{position:absolute;bottom:12px;left:12px;z-index:1;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);padding:.3rem .75rem;border-radius:20px;font-size:.7rem;font-weight:700;color:var(--teal-dark);}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.42);font-size:.71rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:2;}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:scrollh 2s ease infinite;}
+@keyframes scrollh{0%,100%{opacity:.5}50%{opacity:1}}
+/* MARQUEE */
+.marquee-wrap{overflow:hidden;background:var(--sand);padding:2rem 0;}
+.mq-track{display:flex;gap:14px;width:max-content;animation:mq 38s linear infinite;}
+.mq-track:hover{animation-play-state:paused;}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-img{width:250px;height:170px;border-radius:14px;overflow:hidden;flex-shrink:0;}
+.mq-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.mq-img:hover img{transform:scale(1.07);}
+section{padding:7rem 2.5rem;}
+.si{max-width:1280px;margin:0 auto;}
+.slbl{display:inline-flex;align-items:center;gap:8px;color:var(--teal);font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;}
+.slbl::before{content:"";width:20px;height:2px;background:var(--coral);border-radius:2px;}
+.stitle{font-size:clamp(1.9rem,4vw,3.2rem);margin-bottom:1rem;color:var(--ink);}
+.ssub{color:var(--muted);max-width:640px;font-size:1.04rem;line-height:1.75;margin-bottom:3.5rem;}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.aph-wrap{position:relative;}
+.aph-main{border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/5;}
+.aph-main img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;}
+.aph-main:hover img{transform:scale(1.04);}
+.aph-float{position:absolute;bottom:-28px;right:-28px;width:190px;border-radius:18px;overflow:hidden;border:5px solid #fff;box-shadow:var(--shadow-md);aspect-ratio:4/3;}
+.aph-float img{width:100%;height:100%;object-fit:cover;}
+.aph-badge{position:absolute;top:24px;left:-24px;background:var(--coral);color:#fff;padding:1rem 1.2rem;border-radius:16px;box-shadow:0 8px 24px rgba(231,111,81,.3);font-family:"DM Serif Display",serif;text-align:center;}
+.aph-badge span{display:block;font-size:2rem;line-height:1;}
+.aph-badge small{font-family:"Plus Jakarta Sans",sans-serif;font-size:.67rem;font-weight:600;opacity:.9;}
+.chk-list{display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
+.chk-item{display:flex;align-items:flex-start;gap:1rem;}
+.chk-icon{width:30px;height:30px;border-radius:50%;background:var(--mint);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-size:.85rem;font-weight:700;transition:all var(--tr);}
+.chk-item:hover .chk-icon{background:var(--teal);color:#fff;border-color:var(--teal);}
+.chk-item h5{margin-bottom:.2rem;font-size:.92rem;}
+.chk-item p{font-size:.83rem;color:var(--muted);}
+/* STATS */
+.stats-bg{background:linear-gradient(135deg,var(--teal-xdark),var(--teal-dark));padding:6rem 2.5rem;position:relative;overflow:hidden;}
+.stats-bg::before{content:"";position:absolute;inset:0;opacity:.4;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative;}
+.stat-item{text-align:center;padding:2.5rem 1.5rem;}
+.stat-num{font-family:"DM Serif Display",serif;font-size:3.5rem;color:#fff;display:block;line-height:1;margin-bottom:.5rem;}
+.stat-lbl{color:rgba(255,255,255,.52);font-size:.79rem;text-transform:uppercase;letter-spacing:.1em;}
+.stat-div{width:36px;height:2px;background:var(--coral);border-radius:2px;margin:.8rem auto 0;}
+/* SERVICES */
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.srv-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:2.2rem;position:relative;overflow:hidden;transition:transform var(--tr),box-shadow var(--tr),border-color var(--tr);}
+.srv-card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--teal),var(--teal-dark));transform:translateY(100%);transition:transform .45s cubic-bezier(.4,0,.2,1);border-radius:var(--radius);}
+.srv-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--teal);}
+.srv-card:hover::before{transform:translateY(0);}
+.srv-ic,.srv-card h3,.srv-card p{position:relative;z-index:1;transition:color .3s;}
+.srv-ic{font-size:2.2rem;margin-bottom:1.2rem;display:block;}
+.srv-card h3{font-size:1.04rem;margin-bottom:.7rem;}
+.srv-card p{font-size:.87rem;color:var(--muted);line-height:1.65;}
+.srv-card:hover .srv-ic,.srv-card:hover h3{color:#fff;}
+.srv-card:hover p{color:rgba(255,255,255,.8);}
+/* SCHOOL CARDS */
+.sch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.sch-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-sm);transition:transform var(--tr),box-shadow var(--tr);cursor:pointer;}
+.sch-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg);}
+.sch-photo{height:200px;position:relative;overflow:hidden;}
+.sch-photo img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease;}
+.sch-card:hover .sch-photo img{transform:scale(1.1);}
+.sch-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(1,59,66,.75));}
+.sch-tag{position:absolute;bottom:14px;left:14px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);padding:.3rem .8rem;border-radius:20px;font-size:.72rem;font-weight:700;color:var(--teal-dark);}
+.sch-city{position:absolute;top:14px;right:14px;background:var(--coral);color:#fff;padding:.25rem .7rem;border-radius:20px;font-size:.68rem;font-weight:700;}
+.sch-body{padding:1.6rem;}
+.sch-unit{font-size:.76rem;color:var(--teal);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;}
+.sch-body h3{font-size:1.15rem;margin-bottom:.6rem;}
+.sch-body p{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:1.2rem;}
+.sch-foot{padding:1rem 1.6rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.sch-lang{display:flex;align-items:center;gap:6px;font-size:.73rem;font-weight:700;}
+.lb{height:5px;border-radius:3px;overflow:hidden;background:var(--border);width:70px;}
+.lf{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-light));border-radius:3px;transform-origin:left;transform:scaleX(0);transition:transform 1.2s ease;}
+.lf.an{transform:scaleX(1);}
+.sch-arrow{color:var(--teal);font-size:1.1rem;transition:transform var(--tr);}
+.sch-card:hover .sch-arrow{transform:translateX(6px);}
+/* TESTIMONIALS */
+.testi-section{background:var(--sand);}
+.testi-wrap{position:relative;overflow:hidden;}
+.testi-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);}
+.testi-slide{min-width:100%;padding:0 1rem;}
+.testi-card{background:#fff;border-radius:24px;padding:3rem;box-shadow:var(--shadow-md);max-width:820px;margin:0 auto;position:relative;}
+.testi-card::before{content:"\201C";position:absolute;top:-10px;left:30px;font-family:"DM Serif Display",serif;font-size:8rem;color:var(--mint);line-height:1;}
+.testi-text{font-size:1.1rem;line-height:1.8;color:var(--ink);font-style:italic;margin-bottom:2rem;position:relative;}
+.testi-auth{display:flex;align-items:center;gap:1rem;}
+.testi-av{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));display:flex;align-items:center;justify-content:center;font-family:"DM Serif Display",serif;color:#fff;font-size:1.2rem;flex-shrink:0;}
+.testi-name{font-weight:700;font-size:.94rem;}
+.testi-role{font-size:.78rem;color:var(--muted);}
+.testi-stars{color:#f59e0b;font-size:.88rem;margin-bottom:.3rem;}
+.testi-nav{display:flex;justify-content:center;gap:.8rem;margin-top:2rem;}
+.testi-dot{width:10px;height:10px;border-radius:50%;background:var(--border);cursor:pointer;transition:all var(--tr);}
+.testi-dot.on{background:var(--teal);transform:scale(1.3);}
+.testi-arrows{display:flex;gap:1rem;justify-content:center;margin-top:1.2rem;}
+.t-arr{width:48px;height:48px;border-radius:50%;background:#fff;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;transition:all var(--tr);color:var(--teal);}
+.t-arr:hover{background:var(--teal);color:#fff;border-color:var(--teal);transform:scale(1.08);}
+/* CTA */
+.cta-wrap{padding:0 2.5rem 7rem;}
+.cta-box{max-width:1280px;margin:0 auto;background:linear-gradient(135deg,var(--coral) 0%,var(--coral-dark) 100%);border-radius:32px;padding:5rem;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;position:relative;overflow:hidden;}
+.cta-box::before{content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.07);}
+.cta-box h2{font-size:2.5rem;color:#fff;margin-bottom:1rem;}
+.cta-box p{color:rgba(255,255,255,.85);font-size:1.04rem;line-height:1.7;}
+.cta-btns{display:flex;flex-direction:column;gap:1rem;position:relative;z-index:1;flex-shrink:0;}
+.btn-white{background:#fff;color:var(--coral);padding:.9rem 2rem;border-radius:50px;font-weight:700;font-size:.9rem;box-shadow:0 4px 18px rgba(0,0,0,.12);transition:all var(--tr);cursor:pointer;text-align:center;display:block;}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.2);}
+.btn-wo{color:#fff;border:2px solid rgba(255,255,255,.5);padding:.88rem 2rem;border-radius:50px;font-weight:600;font-size:.9rem;transition:all var(--tr);cursor:pointer;text-align:center;display:block;}
+.btn-wo:hover{background:rgba(255,255,255,.15);border-color:#fff;}
+/* MINI HERO */
+.mh{min-height:420px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding-top:72px;}
+.mh-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.06);transition:transform 8s ease;}
+.page.active .mh-bg{transform:scale(1);}
+.mh-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(1,59,66,.92),rgba(2,128,144,.68));}
+.mh-cnt{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:4rem 2.5rem;width:100%;}
+.mh-bc{color:rgba(255,255,255,.5);font-size:.8rem;cursor:pointer;margin-bottom:1rem;display:inline-flex;align-items:center;gap:6px;transition:color .2s;}
+.mh-bc:hover{color:rgba(255,255,255,.85);}
+.mh-bc span{color:rgba(255,255,255,.9);font-weight:600;}
+.mh h1{font-size:clamp(2rem,4.5vw,3.5rem);color:#fff;margin-bottom:1rem;}
+.mh .sub{color:rgba(255,255,255,.76);max-width:620px;font-size:1rem;line-height:1.7;}
+.mh-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;}
+.mh-tag{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.88);padding:.33rem .95rem;border-radius:20px;font-size:.76rem;font-weight:600;backdrop-filter:blur(6px);}
+/* SCHOOL PAGE */
+.school-cnt{max-width:1280px;margin:0 auto;padding:5rem 2.5rem;}
+.sch-pg-grid{display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:start;}
+.sidebar{position:sticky;top:88px;display:flex;flex-direction:column;gap:1.5rem;}
+.prose h2{font-family:"DM Serif Display",serif;font-size:2rem;margin-bottom:1rem;margin-top:2.5rem;color:var(--ink);}
+.prose h2:first-child{margin-top:0;}
+.prose p{margin-bottom:1rem;line-height:1.75;color:var(--body);}
+.prose a{color:var(--teal);font-weight:600;}
+.prose a:hover{text-decoration:underline;}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:2rem 0;border-radius:18px;overflow:hidden;}
+.g-item{aspect-ratio:4/3;overflow:hidden;cursor:pointer;position:relative;}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.g-item:hover img{transform:scale(1.08);}
+.g-item::after{content:"+";position:absolute;inset:0;background:rgba(1,59,66,.5);color:#fff;font-size:2rem;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;}
+.g-item:hover::after{opacity:1;}
+.lb-wrap{position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s;}
+.lb-wrap.open{opacity:1;visibility:visible;}
+.lb-wrap img{max-width:90vw;max-height:90vh;border-radius:12px;object-fit:contain;}
+.lb-close{position:absolute;top:1.5rem;right:1.5rem;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:1.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;}
+.lb-close:hover{background:rgba(255,255,255,.2);}
+.ibox{background:var(--mint);border-radius:14px;padding:1.5rem;border-left:4px solid var(--teal);margin:1.5rem 0;}
+.ibox h5{margin-bottom:.45rem;font-size:.88rem;color:var(--teal-dark);}
+.ibox p{font-size:.85rem;color:var(--body);margin:0;line-height:1.65;}
+.ibox.warn{background:#fff7ed;border-left-color:var(--coral);}
+.ibox.warn h5{color:var(--coral-dark);}
+.esteps{display:flex;flex-direction:column;gap:.9rem;margin:2rem 0;}
+.estep{display:flex;gap:1.2rem;background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.3rem;align-items:flex-start;transition:all var(--tr);}
+.estep:hover{border-color:var(--teal);box-shadow:var(--shadow-sm);transform:translateX(5px);}
+.enum{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(2,128,144,.3);}
+.estep h5{margin-bottom:.25rem;font-size:.88rem;}
+.estep p{font-size:.83rem;color:var(--muted);}
+.scard{background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.8rem;box-shadow:var(--shadow-sm);}
+.scard h4{margin-bottom:1.2rem;font-size:.98rem;color:var(--ink);}
+.crow{display:flex;align-items:flex-start;gap:.85rem;margin-bottom:.95rem;}
+.crow .ci{font-size:1.05rem;flex-shrink:0;margin-top:2px;}
+.crow strong{display:block;font-size:.75rem;color:var(--muted);font-weight:600;margin-bottom:1px;}
+.crow p,.crow a{font-size:.84rem;}
+.crow a{color:var(--teal);font-weight:600;}
+.lp-row{display:flex;align-items:center;gap:1rem;margin-bottom:.8rem;}
+.lp-lbl{font-size:.81rem;font-weight:700;width:58px;flex-shrink:0;}
+.lp-bar{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden;}
+.lp-f{height:100%;border-radius:4px;transform-origin:left;transform:scaleX(0);transition:transform 1.2s cubic-bezier(.4,0,.2,1);}
+.lp-f.an{transform:scaleX(1);}
+.lp-f.fr{background:linear-gradient(90deg,#0052cc,var(--teal));}
+.lp-f.en{background:linear-gradient(90deg,#cc0000,#ff6b6b);}
+.lp-pct{font-size:.79rem;font-weight:700;color:var(--muted);width:33px;}
+.btn-teal{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;padding:.85rem 2rem;border-radius:50px;font-weight:700;font-size:.9rem;box-shadow:0 4px 18px rgba(2,128,144,.3);transition:all var(--tr);cursor:pointer;display:inline-block;}
+.btn-teal:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,128,144,.4);}
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{padding:1.3rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;font-size:.91rem;color:var(--ink);transition:color var(--tr);}
+.faq-q:hover{color:var(--teal);}
+.faq-plus{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--teal);flex-shrink:0;transition:all var(--tr);}
+.faq-item.open .faq-plus{background:var(--teal);color:#fff;border-color:var(--teal);transform:rotate(45deg);}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease;}
+.faq-item.open .faq-a{grid-template-rows:1fr;}
+.faq-ai{overflow:hidden;padding-bottom:1.3rem;font-size:.89rem;color:var(--muted);line-height:1.72;}
+/* ACCORDION */
+.acc{border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.acc-item{border-bottom:1px solid var(--border);}
+.acc-item:last-child{border-bottom:none;}
+.acc-h{padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:#fff;font-weight:700;font-size:.87rem;transition:background var(--tr);}
+.acc-h:hover,.acc-item.open .acc-h{background:var(--mint);color:var(--teal-dark);}
+.acc-i{transition:transform .3s;color:var(--teal);font-size:1.1rem;}
+.acc-item.open .acc-i{transform:rotate(45deg);}
+.acc-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease;background:#fff;}
+.acc-item.open .acc-b{grid-template-rows:1fr;}
+.acc-bi{overflow:hidden;padding:1rem 1.2rem;font-size:.85rem;color:var(--muted);line-height:1.7;}
+/* PROGRAM PAGE */
+.prog-split{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.prog-img{border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3;}
+.prog-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s;}
+.prog-img:hover img{transform:scale(1.04);}
+.ben-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;}
+.ben-tile{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:all var(--tr);}
+.ben-tile:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:var(--shadow-sm);}
+.ben-ic{font-size:1.7rem;flex-shrink:0;line-height:1;}
+.ben-tile h5{margin-bottom:.3rem;font-size:.9rem;}
+.ben-tile p{font-size:.81rem;color:var(--muted);}
+/* ENROLMENT */
+.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;}
+.steps-row::before{content:"";position:absolute;top:34px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--teal),var(--teal-light));z-index:0;}
+.step-c{text-align:center;position:relative;z-index:1;}
+.step-ic{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;box-shadow:0 6px 22px rgba(2,128,144,.3);font-family:"DM Serif Display",serif;color:#fff;font-size:1.5rem;transition:all var(--tr);}
+.step-c:hover .step-ic{transform:scale(1.1) rotate(-6deg);}
+.step-c h5{font-size:.91rem;margin-bottom:.4rem;}
+.step-c p{font-size:.81rem;color:var(--muted);}
+.cost-tbl{width:100%;border-collapse:separate;border-spacing:0;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.cost-tbl th{background:var(--teal-dark);color:#fff;padding:1rem 1.3rem;font-size:.83rem;text-align:left;}
+.cost-tbl td{padding:.9rem 1.3rem;font-size:.87rem;border-bottom:1px solid var(--border);}
+.cost-tbl tr:last-child td{border-bottom:none;}
+.cost-tbl tr:nth-child(even) td{background:var(--mint);}
+.free-tag{color:var(--teal);font-weight:700;}
+.cal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.cal-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);transition:all var(--tr);}
+.cal-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);}
+.cal-top{padding:1.2rem 1.4rem;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;}
+.cal-top h5{font-family:"DM Serif Display",serif;font-size:1.1rem;color:#fff;}
+.cal-bot{padding:1.2rem 1.4rem;background:#fff;}
+.cal-bot p{font-size:.83rem;color:var(--muted);}
+/* INVOLVE */
+.inv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
+.inv-card{border-radius:22px;overflow:hidden;border:1px solid var(--border);background:#fff;transition:all var(--tr);}
+.inv-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+.inv-photo{height:180px;overflow:hidden;}
+.inv-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.inv-card:hover .inv-photo img{transform:scale(1.07);}
+.inv-body{padding:2rem;}
+.inv-ic{font-size:2rem;margin-bottom:1rem;display:block;}
+.inv-body h3{margin-bottom:.7rem;}
+.inv-body p{font-size:.87rem;color:var(--muted);line-height:1.65;}
+.inv-foot{padding:1.2rem 2rem;border-top:1px solid var(--border);background:var(--sand);}
+.inv-link{color:var(--teal);font-size:.84rem;font-weight:700;display:flex;align-items:center;gap:6px;transition:gap var(--tr);}
+.inv-card:hover .inv-link{gap:12px;}
+/* TIMELINE */
+.tl{position:relative;padding-left:3rem;}
+.tl::before{content:"";position:absolute;left:16px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal),var(--teal-light),transparent);}
+.tl-item{position:relative;margin-bottom:2.5rem;}
+.tl-dot{position:absolute;left:-3rem;top:4px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border:4px solid var(--white);box-shadow:0 0 0 3px var(--mint);transition:all var(--tr);}
+.tl-item:hover .tl-dot{transform:scale(1.2);box-shadow:0 0 0 4px var(--mint2);}
+.tl-yr{font-size:.76rem;color:var(--teal);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem;}
+.tl-item h4{font-size:.94rem;margin-bottom:.4rem;}
+.tl-item p{font-size:.85rem;color:var(--muted);}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.tm-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:2rem;text-align:center;transition:all var(--tr);}
+.tm-card:hover{border-color:var(--teal);transform:translateY(-6px);box-shadow:var(--shadow-md);}
+.tm-av{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));display:flex;align-items:center;justify-content:center;font-family:"DM Serif Display",serif;color:#fff;font-size:1.6rem;margin:0 auto 1rem;box-shadow:0 6px 18px rgba(2,128,144,.25);}
+.tm-card h5{margin-bottom:.2rem;}
+.tm-role{font-size:.77rem;color:var(--muted);}
+.tm-sch{font-size:.73rem;color:var(--teal);font-weight:600;margin-top:.2rem;}
+/* CONTACT */
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.cf-full{grid-column:1/-1;}
+.cf-lbl{display:block;font-size:.81rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;}
+.cf-inp{width:100%;padding:.8rem 1rem;border:1.5px solid var(--border);border-radius:11px;font-family:"Plus Jakarta Sans",sans-serif;font-size:.87rem;color:var(--ink);transition:all var(--tr);background:#fff;}
+.cf-inp:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(2,128,144,.1);}
+textarea.cf-inp{min-height:140px;resize:vertical;}
+/* FOOTER */
+footer{background:var(--teal-xdark);color:rgba(255,255,255,.7);padding:5rem 2.5rem 2rem;}
+.ft-inner{max-width:1280px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem;}
+.ft-brand p{font-size:.85rem;color:rgba(255,255,255,.44);line-height:1.7;margin-top:1.2rem;}
+.ft-col h5{color:#fff;font-size:.98rem;margin-bottom:1.3rem;font-family:"DM Serif Display",serif;}
+.ft-col ul{list-style:none;}
+.ft-col li{margin-bottom:.65rem;}
+.ft-col a{font-size:.83rem;color:rgba(255,255,255,.45);transition:color var(--tr),padding-left var(--tr);cursor:pointer;display:block;}
+.ft-col a:hover{color:#fff;padding-left:4px;}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.ft-bottom p{font-size:.77rem;color:rgba(255,255,255,.3);}
+.pt-tags{display:flex;gap:.8rem;flex-wrap:wrap;}
+.pt{font-size:.71rem;background:rgba(255,255,255,.07);color:rgba(255,255,255,.44);padding:.23rem .78rem;border-radius:20px;border:1px solid rgba(255,255,255,.1);}
+.bg-sand{background:var(--sand);}
+.tc{text-align:center;}
+@media(max-width:1100px){
+.hero-inner{grid-template-columns:1fr;}.hero-visual{display:none;}
+.about-grid,.prog-split{grid-template-columns:1fr;}.aph-wrap{max-width:480px;}
+.srv-grid,.sch-grid,.stats-grid{grid-template-columns:repeat(2,1fr);}
+.sch-pg-grid{grid-template-columns:1fr;}.sidebar{position:static;}
+.ft-top{grid-template-columns:1fr 1fr;}.team-grid{grid-template-columns:repeat(2,1fr);}
+.inv-grid,.ben-grid{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+.nav-links{display:none;}.hero-inner{padding:100px 1.5rem 60px;}
+section{padding:4.5rem 1.5rem;}.srv-grid,.sch-grid,.steps-row,.cal-grid,.cf-grid{grid-template-columns:1fr;}
+.steps-row::before{display:none;}.cta-box{grid-template-columns:1fr;padding:3rem 2rem;}
+footer{padding:4rem 1.5rem 2rem;}.ft-top{grid-template-columns:1fr;}
+.school-cnt{padding:3rem 1.5rem;}.team-grid{grid-template-columns:1fr 1fr;}
+.gallery{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor">
+  <div class="cursor-dot" id="cDot"></div>
+  <div class="cursor-ring" id="cRing"></div>
+</div>
+
+<div class="lb-wrap" id="lightbox">
+  <div class="lb-close" onclick="closeLB()">&#x2715;</div>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<nav id="nav" class="dark">
+  <div class="nav-logo" onclick="go('home')">
+    <div class="logo-mark">Fr</div>
+    <div><div class="logo-text">Frenz</div><div class="logo-sub">Bilingual Education NZ</div></div>
+  </div>
+  <div class="nav-links">
+    <div class="nav-item">
+      <div class="nav-link">Bilingual Program &#x25BE;</div>
+      <div class="nav-dd">
+        <a onclick="go('bilingual')">&#x1F393; Program Overview</a>
+        <a onclick="go('bilingual')">&#x2728; Benefits &amp; Research</a>
+        <a onclick="go('bilingual')">&#x2753; FAQ</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <div class="nav-link">Schools &#x25BE;</div>
+      <div class="nav-dd">
+        <a onclick="go('schools')">&#x1F4CD; All Partner Schools</a>
+        <a onclick="go('etoile')">&#x1F31F; L&#x2019;&#xC9;toile du Nord</a>
+        <a onclick="go('archipel')">&#x1F3DD; L&#x2019;Archipel</a>
+        <a onclick="go('kowhai')">&#x1F33F; La Grande Envol&#xE9;e</a>
+        <a onclick="go('ruru')">&#x1F989; Ruru La Chouette</a>
+        <a onclick="go('decouverte')">&#x1F52D; La D&#xE9;couverte</a>
+        <a onclick="go('aurore')">&#x1F305; L&#x2019;Aurore</a>
+      </div>
+    </div>
+    <div class="nav-link" onclick="go('enrolment')">Enrolment</div>
+    <div class="nav-link" onclick="go('involve')">Get Involved</div>
+    <div class="nav-link" onclick="go('about')">About</div>
+    <div class="nav-link" onclick="go('contact')">Contact</div>
+    <div class="nav-cta" onclick="go('enrolment')">Enrol Now &#x2192;</div>
+  </div>
+</nav>
+
+<!-- HOME PAGE -->
+<div id="pg-home" class="page active">
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="pulse-dot"></span> Supporting bilingual education since 1994</div>
+      <h1>Raise Bilingual<br>Children in <em>New Zealand</em></h1>
+      <p class="hero-sub">Frenz connects families with French-English bilingual classes in New Zealand&#x2019;s public schools &#x2014; guiding you in French or English, every step of the way.</p>
+      <div class="hero-btns">
+        <div class="btn-coral" onclick="go('schools')">&#x1F3EB; Find a School Near You</div>
+        <div class="btn-ghost" onclick="go('bilingual')">How It Works</div>
+      </div>
+      <div class="hero-stats">
+        <div><span class="hs-num" data-count="6">6</span><div class="hs-lbl">Partner Schools</div></div>
+        <div><span class="hs-num" data-count="30">30</span><div class="hs-lbl">Years Experience</div></div>
+        <div><span class="hs-num" data-count="3">3</span><div class="hs-lbl">NZ Cities</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hphoto hphoto-tall rv-r" data-d="1">
+        <img src="https://images.unsplash.com/photo-1576267423048-15c0040fec78?w=600&q=80&fit=crop&crop=top" alt="Kids in class" style="height:100%">
+        <div class="hphoto-badge">&#x1F1EB;&#x1F1F7; NZ&#x2019;s Bilingual Schools</div>
+      </div>
+      <div class="hphoto rv-r" data-d="2">
+        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=500&q=80&fit=crop" alt="Happy students" style="height:180px">
+      </div>
+      <div class="hphoto rv-r" data-d="3">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&q=80&fit=crop" alt="Classroom" style="height:180px">
+        <div class="hphoto-badge">New Zealand &#x1F33F;</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll to explore</span><div class="scroll-line"></div></div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="mq-track" id="mqTrack">
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=500&q=70&fit=crop" alt=""></div>
+    <div class="mq-img"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500&q=70&fit=crop" alt=""></div>
+  </div>
+</div>
+
+<section>
+  <div class="si">
+    <div class="about-grid">
+      <div class="aph-wrap rv-l">
+        <div class="aph-main"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=900&q=80&fit=crop" alt="Teacher and students"></div>
+        <div class="aph-float"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&q=80&fit=crop" alt="Happy kids"></div>
+        <div class="aph-badge"><span>30+</span><small>Years in NZ</small></div>
+      </div>
+      <div class="rv-r" data-d="2">
+        <div class="slbl">About Frenz</div>
+        <h2 class="stitle">Promoting French Bilingual Education Across New Zealand</h2>
+        <p style="color:var(--muted);margin-bottom:1.5rem;line-height:1.75;">Frenz (French-English New Zealand) is a non-profit association that has been advocating for French-English bilingual education in New Zealand&#x2019;s public schools since 1994. We help families find, understand, and access bilingual classes &#x2014; in both French and English.</p>
+        <div class="chk-list">
+          <div class="chk-item"><div class="chk-icon">&#x2713;</div><div><h5>Guidance Through the NZ School System</h5><p>We explain how the New Zealand curriculum works for newly arrived families.</p></div></div>
+          <div class="chk-item"><div class="chk-icon">&#x2713;</div><div><h5>Enrolment Assistance</h5><p>Step-by-step support for enrolling your child in the bilingual class of your choice.</p></div></div>
+          <div class="chk-item"><div class="chk-icon">&#x2713;</div><div><h5>Language Evaluations Organised</h5><p>Frenz representatives guide and schedule assessments for children.</p></div></div>
+          <div class="chk-item"><div class="chk-icon">&#x2713;</div><div><h5>Vibrant Community Network</h5><p>Connect with parents, teachers, and volunteers across all three cities.</p></div></div>
+        </div>
+        <div class="btn-teal" onclick="go('about')">Our Full Story &#x2192;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bg">
+  <div class="si">
+    <div class="stats-grid">
+      <div class="stat-item rv" data-d="1"><span class="stat-num" data-count="6">6</span><div class="stat-lbl">Partner Schools</div><div class="stat-div"></div></div>
+      <div class="stat-item rv" data-d="2"><span class="stat-num" data-count="3">3</span><div class="stat-lbl">NZ Cities Covered</div><div class="stat-div"></div></div>
+      <div class="stat-item rv" data-d="3"><span class="stat-num" data-count="30">30</span><div class="stat-lbl">Years of Experience</div><div class="stat-div"></div></div>
+      <div class="stat-item rv" data-d="4"><span class="stat-num" data-count="1994">1994</span><div class="stat-lbl">Year Frenz Founded</div><div class="stat-div"></div></div>
+    </div>
+  </div>
+</div>
+
+<section class="bg-sand">
+  <div class="si">
+    <div class="tc rv" style="margin-bottom:3.5rem;">
+      <div class="slbl" style="justify-content:center;">Our Services</div>
+      <h2 class="stitle">How We Support Your Family</h2>
+      <p class="ssub" style="margin:0 auto;">From first question to first day of school, Frenz is with you every step &#x2014; in French or English.</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card rv" data-d="1"><span class="srv-ic">&#x1F5FA;&#xFE0F;</span><h3>Educational Guidance</h3><p>Understand the New Zealand school system and how bilingual classes are structured at each stage.</p></div>
+      <div class="srv-card rv" data-d="2"><span class="srv-ic">&#x1F4DD;</span><h3>Enrolment Support</h3><p>Walk through every form, deadline, and step of the enrolment process with a dedicated Frenz rep.</p></div>
+      <div class="srv-card rv" data-d="3"><span class="srv-ic">&#x1F91D;</span><h3>Volunteer Opportunities</h3><p>Contribute your time and skills. Volunteers are the heart of Frenz&#x2019;s mission across NZ.</p></div>
+      <div class="srv-card rv" data-d="4"><span class="srv-ic">&#x1F393;</span><h3>Internships</h3><p>Frenz offers placements for education students wanting hands-on experience in NZ bilingual settings.</p></div>
+      <div class="srv-card rv" data-d="5"><span class="srv-ic">&#x1F91D;</span><h3>Partnerships</h3><p>We welcome partnerships with organisations sharing our passion for French culture in Aotearoa.</p></div>
+      <div class="srv-card rv" data-d="6"><span class="srv-ic">&#x1F4DA;</span><h3>School Libraries</h3><p>Access French-language books and resources through our partner school libraries for home learning.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="si">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;">
+      <div><div class="slbl rv">Partner Schools</div><h2 class="stitle rv" data-d="1">Find a School Near You</h2></div>
+      <div class="btn-teal rv" onclick="go('schools')">View All Schools</div>
+    </div>
+    <div class="sch-grid">
+      <div class="sch-card rv" data-d="1" onclick="go('etoile')">
+        <div class="sch-photo"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Primary &#x2022; Est. 2012</div><div class="sch-city">Auckland North</div></div>
+        <div class="sch-body"><div class="sch-unit">&#x1F31F; L&#x2019;&#xC9;toile du Nord</div><h3>Birkdale North School</h3><p>~200 students on Auckland&#x2019;s North Shore. 60% French curriculum. No school zone &#x2014; open enrolment all year.</p></div>
+        <div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:60%"></div></div> 60%</div><div class="sch-arrow">&#x2192;</div></div>
+      </div>
+      <div class="sch-card rv" data-d="2" onclick="go('archipel')">
+        <div class="sch-photo"><img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Primary &#x2022; Est. 1994</div><div class="sch-city">Auckland Central</div></div>
+        <div class="sch-body"><div class="sch-unit">&#x1F3DD; L&#x2019;Archipel</div><h3>Richmond Road School</h3><p>NZ&#x2019;s oldest French bilingual unit with ~400 students near downtown Auckland. School zone applies.</p></div>
+        <div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:60%"></div></div> 60%</div><div class="sch-arrow">&#x2192;</div></div>
+      </div>
+      <div class="sch-card rv" data-d="3" onclick="go('kowhai')">
+        <div class="sch-photo"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Intermediate &#x2022; Est. 2021</div><div class="sch-city">Auckland Kingsland</div></div>
+        <div class="sch-body"><div class="sch-unit">&#x1F33F; La Grande Envol&#xE9;e</div><h3>Kowhai Intermediate</h3><p>Years 7&#x2013;8 bilingual programme near Auckland CBD. 3 days French, 2 days English. LabelFranc&#xC9;ducation certified.</p></div>
+        <div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:60%"></div></div> 60%</div><div class="sch-arrow">&#x2192;</div></div>
+      </div>
+      <div class="sch-card rv" data-d="1" onclick="go('ruru')">
+        <div class="sch-photo"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Primary &#x2022; Est. 2019</div><div class="sch-city">Wellington</div></div>
+        <div class="sch-body"><div class="sch-unit">&#x1F989; Ruru La Chouette</div><h3>Tawatawa Ridgway School</h3><p>~240 students in Southern Brooklyn, Wellington. 400m bike track, gardens. Most curriculum in French.</p></div>
+        <div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:65%"></div></div> 65%</div><div class="sch-arrow">&#x2192;</div></div>
+      </div>
+      <div class="sch-card rv" data-d="2" onclick="go('decouverte')">
+        <div class="sch-photo"><img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Primary &#x2022; Est. 2017</div><div class="sch-city">Christchurch</div></div>
+        <div class="sch-body"><div class="sch-unit">&#x1F52D; La D&#xE9;couverte</div><h3>Tuia Burnside School</h3><p>Near the University of Canterbury. ~300 students. 2/3 French / 1/3 English. International students welcome.</p></div>
+        <div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:67%"></div></div> 67%</div><div class="sch-arrow">&#x2192;</div></div>
+      </div>
+      <div class="sch-card rv" data-d="3" onclick="go('aurore')">
+        <div class="sch-photo"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Area School &#x2022; Opened 2025</div><div class="sch-city">Christchurch</div></div>
+        <div class="sch-body"><div class="sch-unit">&#x1F305; L&#x2019;Aurore</div><h3>Haeata Community Campus</h3><p>Brand-new state-of-the-art facilities. NE&#x2013;Y8. Free school lunches, art studios, no zone.</p></div>
+        <div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:55%"></div></div> 55%</div><div class="sch-arrow">&#x2192;</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testi-section">
+  <div class="si">
+    <div class="tc rv" style="margin-bottom:3rem;">
+      <div class="slbl" style="justify-content:center;">Community Voices</div>
+      <h2 class="stitle">What Our Families Say</h2>
+    </div>
+    <div class="testi-wrap rv">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-slide"><div class="testi-card"><div class="testi-text">&#x201C;Thanks to Frenz, navigating the New Zealand school system as a newly arrived French family was so much less daunting. Our son is thriving in his bilingual class &#x2014; he now dreams in both languages!&#x201D;</div><div class="testi-auth"><div class="testi-av">S</div><div><div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><div class="testi-name">Sophie M.</div><div class="testi-role">Parent &#x2013; L&#x2019;Archipel, Auckland Central</div></div></div></div></div>
+        <div class="testi-slide"><div class="testi-card"><div class="testi-text">&#x201C;Frenz connected us with our local school representative and helped us understand every step of enrolment. Our daughter is now confidently bilingual &#x2014; it&#x2019;s the best gift we&#x2019;ve given her.&#x201D;</div><div class="testi-auth"><div class="testi-av">J</div><div><div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><div class="testi-name">James &amp; Claire T.</div><div class="testi-role">Parents &#x2013; Ruru La Chouette, Wellington</div></div></div></div></div>
+        <div class="testi-slide"><div class="testi-card"><div class="testi-text">&#x201C;As a volunteer, it&#x2019;s incredibly rewarding to support French bilingual education in NZ. The Frenz community is warm and passionate. I&#x2019;m proud to be part of it.&#x201D;</div><div class="testi-auth"><div class="testi-av">M</div><div><div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><div class="testi-name">Marie-Laure B.</div><div class="testi-role">Volunteer &#x2013; La D&#xE9;couverte, Christchurch</div></div></div></div></div>
+        <div class="testi-slide"><div class="testi-card"><div class="testi-text">&#x201C;Our children attend La Grande Envol&#xE9;e and it has been remarkable. They are performing above expectations in all subjects while being fully bilingual. The LabelFranc&#xC9;ducation quality is evident every day.&#x201D;</div><div class="testi-auth"><div class="testi-av">A</div><div><div class="testi-stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div><div class="testi-name">Antoine &amp; Yuki V.</div><div class="testi-role">Parents &#x2013; La Grande Envol&#xE9;e, Kowhai</div></div></div></div></div>
+      </div>
+      <div class="testi-nav" id="testiDots"></div>
+      <div class="testi-arrows">
+        <div class="t-arr" onclick="slideTesti(-1)">&#x2190;</div>
+        <div class="t-arr" onclick="slideTesti(1)">&#x2192;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-wrap">
+  <div class="cta-box rv-s">
+    <div><h2>Ready to Get Started?</h2><p>Find the right bilingual school for your child and join the Frenz family. We&#x2019;ll guide you every step of the way &#x2014; in French or English.</p></div>
+    <div class="cta-btns">
+      <div class="btn-white" onclick="go('schools')">&#x1F3EB; Find a School</div>
+      <div class="btn-wo" onclick="go('contact')">Contact Frenz &#x2192;</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /home -->
+<div id="pg-etoile" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov" style="background:linear-gradient(135deg,rgba(1,59,66,.92),rgba(2,128,144,.7))"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('schools')">&#x2190; All Schools <span>/ Birkdale North School</span></div>
+    <div style="font-size:1.8rem;margin-bottom:.5rem;">&#x1F31F;</div>
+    <h1>Birkdale North School</h1>
+    <p class="sub">L&#x2019;&#xC9;toile du Nord &#x2014; <em>The Northern Star</em> &#x2022; Established 2012</p>
+    <div class="mh-tags"><span class="mh-tag">&#x1F4CD; North Shore, Auckland</span><span class="mh-tag">&#x1F3EB; Primary (NE&#x2013;Y6)</span><span class="mh-tag">&#x1F468;&#x200D;&#x1F393; ~200 Students</span><span class="mh-tag">&#x1F1EB;&#x1F1F7; 60% French</span><span class="mh-tag">&#x2705; Open Enrolment</span></div>
+  </div>
+</div>
+<div class="school-cnt">
+<div class="sch-pg-grid">
+<div class="prose">
+<h2>School Overview</h2>
+<p>The French-English unit at Birkdale North School is called <strong>L&#x2019;&#xC9;toile du Nord</strong> (The Northern Star) and was established with the help of Frenz in 2012. It is one of Auckland&#x2019;s most established French bilingual units on the scenic North Shore.</p>
+<p>Birkdale North is a publicly funded primary school just minutes from the Harbour Bridge and 20 minutes from downtown Auckland. The school is committed to bilingualism and diversity, also featuring a bilingual Te Reo M&#x101;ori class, mainstream English classes, and a special needs unit.</p>
+<p>The school has about 200 students set in a quiet neighbourhood close to the sea. <strong>There is currently no school zone</strong>, meaning families from anywhere can enrol year-round. The grounds include large green playing fields, playgrounds, and a swimming pool for Terms 1 and 4.</p>
+<div class="gallery" style="margin:2rem 0;">
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1576267423048-15c0040fec78')"><img src="https://images.unsplash.com/photo-1576267423048-15c0040fec78&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1509062522246-3755977927d7')"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1503676260728-1c00da094a0b')"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b&w=400&q=75&fit=crop" alt=""></div>
+</div>
+<div class="ibox"><h5>&#x1F1EB;&#x1F1F7; Bilingual Class Structure</h5><p>The NZ curriculum is taught <strong>60% in French and 40% in English</strong>. This immersive ratio in the early years builds a strong French foundation while fully achieving all NZ curriculum goals.</p></div>
+<div style="margin:1.5rem 0;">
+<div class="lp-row"><span class="lp-lbl">French</span><div class="lp-bar"><div class="lp-f fr" style="width:60%"></div></div><span class="lp-pct">60%</span></div>
+<div class="lp-row"><span class="lp-lbl">English</span><div class="lp-bar"><div class="lp-f en" style="width:40%"></div></div><span class="lp-pct">40%</span></div>
+</div>
+<h2>Enrolment Process</h2>
+<div class="esteps">
+<div class="estep rv"><div class="enum">1</div><div><h5>Enrol at Birkdale North School</h5><p>Complete the school's <a href="https://birkdalenorth.school.nz/online-enrolment/" target="_blank">online enrolment form</a>. If the class is not full, you can enrol at any time. Check <a href="https://www.birkdalenorth.school.nz" target="_blank">birkdalenorth.school.nz</a> for current availability.</p></div></div>
+<div class="estep rv"><div class="enum">2</div><div><h5>Become a Frenz Member</h5><p>Fill the <a href="https://www.frenzschool.org.nz/membership" target="_blank">Frenz online membership form</a> or contact <a href="mailto:contact@frenzschool.org">contact@frenzschool.org</a>.</p></div></div>
+<div class="estep rv"><div class="enum">3</div><div><h5>Language Evaluation</h5><p>A Frenz representative will contact you to schedule a language evaluation if applicable &#x2014; an informal, friendly assessment.</p></div></div>
+</div>
+</div>
+<div class="sidebar">
+  <div class="scard rv">
+    <h4>&#x1F4DE; School Contact</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Principal</strong><p>Jan McDonald</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><strong>Email</strong><a href="mailto:office@birkdalenorth.school.nz">office@birkdalenorth.school.nz</a></div></div>
+    <div class="crow"><span class="ci">&#x1F4DE;</span><div><strong>Phone</strong><a href="tel:094838674">09 483 8674</a></div></div>
+    <div class="crow"><span class="ci">&#x1F310;</span><div><strong>Website</strong><a href="https://www.birkdalenorth.school.nz" target="_blank">www.birkdalenorth.school.nz</a></div></div>
+  </div>
+  <div class="scard rv" data-d="1">
+    <h4>&#x1F91D; Frenz Representative</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Representative</strong><p>Emilie Diop</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><a href="mailto:contact@frenzschool.org">contact@frenzschool.org</a></div></div>
+    <p style="font-size:.77rem;color:var(--muted);margin:.8rem 0 1.2rem;">Available in French or English</p>
+    <div class="btn-coral" style="display:block;text-align:center;" onclick="go('contact')">Get in Touch &#x2192;</div>
+  </div>
+  <div class="scard rv" data-d="2">
+    <h4>&#x1F4CD; Location</h4>
+    <div style="border-radius:12px;overflow:hidden;height:170px;background:var(--mint);display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center;color:var(--teal);"><div style="font-size:2.5rem;">&#x1F4CD;</div><p style="font-size:.85rem;margin-top:.5rem;font-weight:600;">North Shore, Auckland</p></div>
+    </div>
+  </div>
+</div>
+</div></div></div>
+<div id="pg-archipel" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov" style="background:linear-gradient(135deg,rgba(5,60,80,.92),rgba(3,100,120,.7))"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('schools')">&#x2190; All Schools <span>/ Richmond Road School</span></div>
+    <div style="font-size:1.8rem;margin-bottom:.5rem;">&#x1F3DD;</div>
+    <h1>Richmond Road School</h1>
+    <p class="sub">L&#x2019;Archipel &#x2014; <em>The Archipelago</em> &#x2022; NZ&#x2019;s oldest French bilingual unit, est. 1994</p>
+    <div class="mh-tags"><span class="mh-tag">&#x1F4CD; Ponsonby, Auckland</span><span class="mh-tag">&#x1F3EB; Primary (NE&#x2013;Y6)</span><span class="mh-tag">&#x1F468;&#x200D;&#x1F393; ~400 Students</span><span class="mh-tag">&#x26A0;&#xFE0F; School Zone Applies</span></div>
+  </div>
+</div>
+<div class="school-cnt">
+<div class="sch-pg-grid">
+<div class="prose">
+<h2>School Overview</h2>
+<p>L&#x2019;Archipel at Richmond Road School is <strong>New Zealand&#x2019;s oldest French-English bilingual unit</strong>, established with Frenz in 1994. It was the first, and remains one of the most celebrated French bilingual programmes in the country.</p>
+<p>Richmond Road is a publicly funded primary school just minutes from downtown Auckland. The school also features bilingual Te Reo M&#x101;ori and Samoan classes alongside mainstream English classes &#x2014; a truly vibrant, multicultural community.</p>
+<p>With around 400 students, Richmond Road has a <strong>school zone and special enrolment scheme</strong>. Applications are scored against priority points. The school features junior and senior playgrounds and a large green field.</p>
+<div class="ibox warn"><h5>&#x26A0;&#xFE0F; School Zone &amp; Enrolment Scheme</h5><p>Richmond Road has a school zone. Applications are scored by priority points and must be submitted <strong>by September</strong> for the following school year. The school does not accept international fee-paying students.</p></div>
+<div class="gallery" style="margin:2rem 0;">
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1503676260728-1c00da094a0b')"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45')"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1588072432836-e10032774350')"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350&w=400&q=75&fit=crop" alt=""></div>
+</div>
+<div class="ibox"><h5>&#x1F1EB;&#x1F1F7; Bilingual Class Structure</h5><p>Taught 5 days/week in French for Years 0&#x2013;2, then alternating: 6 school days in French / 4 days in English for Years 2&#x2013;6. This structure builds true academic bilingualism across all subjects.</p></div>
+<div style="margin:1.5rem 0;">
+<div class="lp-row"><span class="lp-lbl">French</span><div class="lp-bar"><div class="lp-f fr" style="width:60%"></div></div><span class="lp-pct">60%</span></div>
+<div class="lp-row"><span class="lp-lbl">English</span><div class="lp-bar"><div class="lp-f en" style="width:40%"></div></div><span class="lp-pct">40%</span></div>
+</div>
+<h2>Enrolment Process</h2>
+<div class="esteps">
+<div class="estep rv"><div class="enum">1</div><div><h5>Apply at Richmond Road School</h5><p>Submit via <a href="https://www.richmondroad.school.nz/enrolment.html" target="_blank">richmondroad.school.nz</a> by <strong>September</strong> for the following school year.</p></div></div>
+<div class="estep rv"><div class="enum">2</div><div><h5>Language Evaluation</h5><p>The school contacts you in <strong>October</strong> to schedule a language evaluation for your children.</p></div></div>
+<div class="estep rv"><div class="enum">3</div><div><h5>Priority Points Assessment</h5><p>Applications are scored against <a href="https://www.richmondroad.school.nz/enrolment.html" target="_blank">priority criteria</a>. Successful applicants notified by <strong>November</strong>; others placed on waiting list.</p></div></div>
+<div class="estep rv"><div class="enum">4</div><div><h5>Become a Frenz Member</h5><p>Once accepted, complete the <a href="https://www.frenzschool.org.nz/membership" target="_blank">Frenz membership form</a>.</p></div></div>
+</div>
+</div>
+<div class="sidebar">
+  <div class="scard rv">
+    <h4>&#x1F4DE; School Contact</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Principal</strong><p>Jacqui Tutavake</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><strong>Email</strong><a href="mailto:office@richmondroad.school.nz">office@richmondroad.school.nz</a></div></div>
+    <div class="crow"><span class="ci">&#x1F4DE;</span><div><strong>Phone</strong><a href="tel:093761091">09 376 1091</a></div></div>
+    <div class="crow"><span class="ci">&#x1F310;</span><div><strong>Website</strong><a href="https://www.richmondroad.school.nz" target="_blank">www.richmondroad.school.nz</a></div></div>
+  </div>
+  <div class="scard rv" data-d="1">
+    <h4>&#x1F91D; Frenz Representative</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Representative</strong><p>Florence Hine</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><a href="mailto:contact@frenzschool.org">contact@frenzschool.org</a></div></div>
+    <p style="font-size:.77rem;color:var(--muted);margin:.8rem 0 1.2rem;">Available in French or English</p>
+    <div class="btn-coral" style="display:block;text-align:center;" onclick="go('contact')">Get in Touch &#x2192;</div>
+  </div>
+  <div class="scard rv" data-d="2">
+    <h4>&#x1F4CD; Location</h4>
+    <div style="border-radius:12px;overflow:hidden;height:170px;background:var(--mint);display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center;color:var(--teal);"><div style="font-size:2.5rem;">&#x1F4CD;</div><p style="font-size:.85rem;margin-top:.5rem;font-weight:600;">Ponsonby, Auckland</p></div>
+    </div>
+  </div>
+</div>
+</div></div></div>
+<div id="pg-kowhai" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov" style="background:linear-gradient(135deg,rgba(2,60,50,.92),rgba(3,100,80,.7))"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('schools')">&#x2190; All Schools <span>/ Kowhai Intermediate</span></div>
+    <div style="font-size:1.8rem;margin-bottom:.5rem;">&#x1F33F;</div>
+    <h1>Kowhai Intermediate</h1>
+    <p class="sub">La Grande Envol&#xE9;e &#x2014; <em>The Great Flight</em> &#x2022; Established 2021 &#x2022; LabelFranc&#xC9;ducation Certified</p>
+    <div class="mh-tags"><span class="mh-tag">&#x1F4CD; Kingsland, Auckland</span><span class="mh-tag">&#x1F3EB; Intermediate (Y7&#x2013;Y8)</span><span class="mh-tag">&#x1F468;&#x200D;&#x1F393; 500+ Students</span><span class="mh-tag">&#x1F3C5; LabelFranc&#xC9;ducation</span></div>
+  </div>
+</div>
+<div class="school-cnt">
+<div class="sch-pg-grid">
+<div class="prose">
+<h2>School Overview</h2>
+<p>La Grande Envol&#xE9;e (The Great Flight) at Kowhai Intermediate was established with Frenz in 2021. It supports an important need for children in Years 7&#x2013;8 to continue their bilingual journey while preparing academically and socially for high school.</p>
+<p>K&#x14D;whai Intermediate boasts both a rich history and modern facilities. With 500+ students, it also has bilingual M&#x101;ori and Samoan units alongside the French programme. Ideally situated in Kingsland near Auckland&#x2019;s CBD with excellent train and bus connections.</p>
+<p>The programme is proudly certified <strong>LabelFranc&#xC9;ducation</strong> &#x2014; the international mark of quality for bilingual French teaching outside France. Many students <strong>exceed year-level expectations</strong> across all subjects.</p>
+<div class="gallery" style="margin:2rem 0;">
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1509062522246-3755977927d7')"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1497633762265-9d179a990aa6')"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1576267423048-15c0040fec78')"><img src="https://images.unsplash.com/photo-1576267423048-15c0040fec78&w=400&q=75&fit=crop" alt=""></div>
+</div>
+<div class="ibox"><h5>&#x1F1EB;&#x1F1F7; Bilingual Class Structure</h5><p>NZ curriculum in French <strong>3 days/week</strong>, in English <strong>2 days/week</strong>. Small class sizes and focused academic development prepare students excellently for secondary school.</p></div>
+<div style="margin:1.5rem 0;">
+<div class="lp-row"><span class="lp-lbl">French</span><div class="lp-bar"><div class="lp-f fr" style="width:60%"></div></div><span class="lp-pct">60%</span></div>
+<div class="lp-row"><span class="lp-lbl">English</span><div class="lp-bar"><div class="lp-f en" style="width:40%"></div></div><span class="lp-pct">40%</span></div>
+</div>
+<h2>Enrolment Process</h2>
+<div class="esteps">
+<div class="estep rv"><div class="enum">1</div><div><h5>Express Interest Early</h5><p>Out-of-zone enrolments close <strong>Friday 22 August</strong> for the following year. Contact Barbara Cloonan at <a href="mailto:ap@kowhai.school.nz">ap@kowhai.school.nz</a> for mid-year enquiries.</p></div></div>
+<div class="estep rv"><div class="enum">2</div><div><h5>Language Evaluation</h5><p>School contacts you in October for a language evaluation for the following year.</p></div></div>
+<div class="estep rv"><div class="enum">3</div><div><h5>Confirmation by Priority</h5><p>Applications scored against priority points; successful applicants notified by November.</p></div></div>
+<div class="estep rv"><div class="enum">4</div><div><h5>Frenz Membership</h5><p>Complete the <a href="https://www.frenzschool.org.nz/membership" target="_blank">Frenz membership form</a> once accepted.</p></div></div>
+</div>
+</div>
+<div class="sidebar">
+  <div class="scard rv">
+    <h4>&#x1F4DE; School Contact</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Principal</strong><p>Johanna Wrack (Acting Principal)</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><strong>Email</strong><a href="mailto:info@kowhai.school.nz">info@kowhai.school.nz</a></div></div>
+    <div class="crow"><span class="ci">&#x1F4DE;</span><div><strong>Phone</strong><a href="tel:098467534">09 846 7534</a></div></div>
+    <div class="crow"><span class="ci">&#x1F310;</span><div><strong>Website</strong><a href="https://www.kowhai.school.nz" target="_blank">www.kowhai.school.nz</a></div></div>
+  </div>
+  <div class="scard rv" data-d="1">
+    <h4>&#x1F91D; Frenz Representative</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Representative</strong><p>Mathieu Ramoger</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><a href="mailto:contact@frenzschool.org">contact@frenzschool.org</a></div></div>
+    <p style="font-size:.77rem;color:var(--muted);margin:.8rem 0 1.2rem;">Available in French or English</p>
+    <div class="btn-coral" style="display:block;text-align:center;" onclick="go('contact')">Get in Touch &#x2192;</div>
+  </div>
+  <div class="scard rv" data-d="2">
+    <h4>&#x1F4CD; Location</h4>
+    <div style="border-radius:12px;overflow:hidden;height:170px;background:var(--mint);display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center;color:var(--teal);"><div style="font-size:2.5rem;">&#x1F4CD;</div><p style="font-size:.85rem;margin-top:.5rem;font-weight:600;">Kingsland, Auckland</p></div>
+    </div>
+  </div>
+</div>
+</div></div></div>
+<div id="pg-ruru" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov" style="background:linear-gradient(135deg,rgba(20,30,100,.92),rgba(50,60,160,.7))"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('schools')">&#x2190; All Schools <span>/ Tawatawa Ridgway School</span></div>
+    <div style="font-size:1.8rem;margin-bottom:.5rem;">&#x1F989;</div>
+    <h1>Tawatawa Ridgway School</h1>
+    <p class="sub">Ruru La Chouette &#x2014; <em>Ruru the Owl</em> &#x2022; Wellington&#x2019;s French bilingual school, est. 2019</p>
+    <div class="mh-tags"><span class="mh-tag">&#x1F4CD; Brooklyn, Wellington</span><span class="mh-tag">&#x1F3EB; Primary (NE&#x2013;Y6)</span><span class="mh-tag">&#x1F468;&#x200D;&#x1F393; ~240 Students</span><span class="mh-tag">&#x1F6B4; 400m Bike Track</span></div>
+  </div>
+</div>
+<div class="school-cnt">
+<div class="sch-pg-grid">
+<div class="prose">
+<h2>School Overview</h2>
+<p>Ruru La Chouette at Tawatawa Ridgway School was established with Frenz in 2019. It is Wellington&#x2019;s dedicated French-English bilingual school class, located in the leafy suburb of Southern Brooklyn, just minutes from the CBD.</p>
+<p>With about 240 students, Tawatawa-Ridgway sits on expansive grounds including a <strong>400m sealed bike track</strong>, a skills track with cycle challenges, adventure areas among trees, a sandpit, and a garden. Ridgway is currently in the process of becoming zoned.</p>
+<div class="ibox warn"><h5>&#x26A0;&#xFE0F; Note</h5><p>Tawatawa-Ridgway does not currently accept international fee-paying students.</p></div>
+<div class="gallery" style="margin:2rem 0;">
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1509062522246-3755977927d7')"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4')"><img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1503676260728-1c00da094a0b')"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b&w=400&q=75&fit=crop" alt=""></div>
+</div>
+<div class="ibox"><h5>&#x1F1EB;&#x1F1F7; Bilingual Class Structure</h5><p>Maths and English taught in English in the mainstream. <strong>All other curriculum subjects</strong> taught in French in Ruru La Chouette. Goal: full proficiency in both languages.</p></div>
+<div style="margin:1.5rem 0;">
+<div class="lp-row"><span class="lp-lbl">French</span><div class="lp-bar"><div class="lp-f fr" style="width:65%"></div></div><span class="lp-pct">65%</span></div>
+<div class="lp-row"><span class="lp-lbl">English</span><div class="lp-bar"><div class="lp-f en" style="width:35%"></div></div><span class="lp-pct">35%</span></div>
+</div>
+<h2>Enrolment Process</h2>
+<div class="esteps">
+<div class="estep rv"><div class="enum">1</div><div><h5>Enrol at Ridgway School</h5><p><a href="http://www.ridgway.school.nz/Site/Our_School/Enrolment.aspx" target="_blank">Complete the Ridgway enrolment form</a> by September for the following school year.</p></div></div>
+<div class="estep rv"><div class="enum">2</div><div><h5>Language Evaluation</h5><p>School contacts you in October for a language evaluation.</p></div></div>
+<div class="estep rv"><div class="enum">3</div><div><h5>Confirmation by Priority Points</h5><p>Applications scored against <a href="https://docs.google.com/document/d/1A_i2K83TYroJwMV4qHI4_XaG5FNUFe3_aWMbPyhPvq8/edit" target="_blank">priority criteria</a>. Notified if accepted.</p></div></div>
+<div class="estep rv"><div class="enum">4</div><div><h5>Frenz Membership</h5><p>Complete the <a href="https://www.frenzschool.org.nz/membership" target="_blank">Frenz membership form</a> once accepted.</p></div></div>
+</div>
+</div>
+<div class="sidebar">
+  <div class="scard rv">
+    <h4>&#x1F4DE; School Contact</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Principal</strong><p>Sarah Patterson</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><strong>Email</strong><a href="mailto:office@ridgway.school.nz">office@ridgway.school.nz</a></div></div>
+    <div class="crow"><span class="ci">&#x1F4DE;</span><div><strong>Phone</strong><a href="tel:049398771">04 939 8771</a></div></div>
+    <div class="crow"><span class="ci">&#x1F310;</span><div><strong>Website</strong><a href="https://www.ridgway.school.nz" target="_blank">www.ridgway.school.nz</a></div></div>
+  </div>
+  <div class="scard rv" data-d="1">
+    <h4>&#x1F91D; Frenz Representative</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Representative</strong><p>Estelle Valent</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><a href="mailto:contact@frenzschool.org">contact@frenzschool.org</a></div></div>
+    <p style="font-size:.77rem;color:var(--muted);margin:.8rem 0 1.2rem;">Available in French or English</p>
+    <div class="btn-coral" style="display:block;text-align:center;" onclick="go('contact')">Get in Touch &#x2192;</div>
+  </div>
+  <div class="scard rv" data-d="2">
+    <h4>&#x1F4CD; Location</h4>
+    <div style="border-radius:12px;overflow:hidden;height:170px;background:var(--mint);display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center;color:var(--teal);"><div style="font-size:2.5rem;">&#x1F4CD;</div><p style="font-size:.85rem;margin-top:.5rem;font-weight:600;">Brooklyn, Wellington</p></div>
+    </div>
+  </div>
+</div>
+</div></div></div>
+<div id="pg-decouverte" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov" style="background:linear-gradient(135deg,rgba(80,30,5,.92),rgba(180,80,20,.7))"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('schools')">&#x2190; All Schools <span>/ Tuia Burnside Primary School</span></div>
+    <div style="font-size:1.8rem;margin-bottom:.5rem;">&#x1F52D;</div>
+    <h1>Tuia Burnside Primary School</h1>
+    <p class="sub">La D&#xE9;couverte &#x2014; <em>The Discovery</em> &#x2022; Established 2017 with Frenz in Christchurch</p>
+    <div class="mh-tags"><span class="mh-tag">&#x1F4CD; Ilam, Christchurch</span><span class="mh-tag">&#x1F3EB; Primary (NE&#x2013;Y6)</span><span class="mh-tag">&#x1F468;&#x200D;&#x1F393; ~300 Students</span><span class="mh-tag">&#x1F1EB;&#x1F1F7; 67% French</span><span class="mh-tag">&#x1F30D; Int&#x2019;l Students Welcome</span></div>
+  </div>
+</div>
+<div class="school-cnt">
+<div class="sch-pg-grid">
+<div class="prose">
+<h2>School Overview</h2>
+<p>La D&#xE9;couverte (The Discovery) at Tuia Burnside Primary School was established with Frenz in 2017. Situated in Ilam, just minutes from the University of Canterbury and 10 minutes from Christchurch&#x2019;s CBD, the school draws children from all over Christchurch &#x2014; <strong>not zoned</strong>.</p>
+<p>The school has expansive tree-enclosed grass playing fields and hard-court spaces. Musical activities &#x2014; including instruments and choir &#x2014; and cultural programmes are at the heart of the school community.</p>
+<div class="ibox"><h5>&#x1F30D; International Students</h5><p>Tuia Burnside welcomes international fee-paying students. See the <a href="https://www.burnsideprimary.school.nz/international-students/" target="_blank">school website</a> for the international process. Applicable for visitor or student visa holders.</p></div>
+<div class="gallery" style="margin:2rem 0;">
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1524178232363-1fb2b075b655')"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1576267423048-15c0040fec78')"><img src="https://images.unsplash.com/photo-1576267423048-15c0040fec78&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1580582932707-520aed937b7b')"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b&w=400&q=75&fit=crop" alt=""></div>
+</div>
+<div class="ibox"><h5>&#x1F1EB;&#x1F1F7; Bilingual Class Structure</h5><p>NZ curriculum taught in <strong>French 2/3 of teaching time</strong> and English 1/3. Goal: students fluently speak, write, and read in both languages by end of Year 6.</p></div>
+<div style="margin:1.5rem 0;">
+<div class="lp-row"><span class="lp-lbl">French</span><div class="lp-bar"><div class="lp-f fr" style="width:67%"></div></div><span class="lp-pct">67%</span></div>
+<div class="lp-row"><span class="lp-lbl">English</span><div class="lp-bar"><div class="lp-f en" style="width:33%"></div></div><span class="lp-pct">33%</span></div>
+</div>
+<h2>Enrolment Process</h2>
+<div class="esteps">
+<div class="estep rv"><div class="enum">1</div><div><h5>Apply at Tuia Burnside School</h5><p>Follow the process on the <a href="https://www.burnsideprimary.school.nz/french-special-programme-la-decouverte/" target="_blank">Burnside website</a>. Selection generally takes place around August/September.</p></div></div>
+<div class="estep rv"><div class="enum">2</div><div><h5>Become a Frenz Member</h5><p>Fill the <a href="https://www.frenzschool.org.nz/membership" target="_blank">Frenz membership form</a> or email <a href="mailto:contact@frenzschool.org">contact@frenzschool.org</a>.</p></div></div>
+<div class="estep rv"><div class="enum">3</div><div><h5>Language Evaluation</h5><p>A Frenz representative will contact you to schedule an evaluation if applicable.</p></div></div>
+</div>
+</div>
+<div class="sidebar">
+  <div class="scard rv">
+    <h4>&#x1F4DE; School Contact</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Principal</strong><p>Justin Perriam</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><strong>Email</strong><a href="mailto:office@burnsideprimary.school.nz">office@burnsideprimary.school.nz</a></div></div>
+    <div class="crow"><span class="ci">&#x1F4DE;</span><div><strong>Phone</strong><a href="tel:033519407">03 351 9407</a></div></div>
+    <div class="crow"><span class="ci">&#x1F310;</span><div><strong>Website</strong><a href="https://www.burnsideprimary.school.nz" target="_blank">www.burnsideprimary.school.nz</a></div></div>
+  </div>
+  <div class="scard rv" data-d="1">
+    <h4>&#x1F91D; Frenz Representative</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Representative</strong><p>Stephanie Bouhala</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><a href="mailto:contact@frenzschool.org">contact@frenzschool.org</a></div></div>
+    <p style="font-size:.77rem;color:var(--muted);margin:.8rem 0 1.2rem;">Available in French or English</p>
+    <div class="btn-coral" style="display:block;text-align:center;" onclick="go('contact')">Get in Touch &#x2192;</div>
+  </div>
+  <div class="scard rv" data-d="2">
+    <h4>&#x1F4CD; Location</h4>
+    <div style="border-radius:12px;overflow:hidden;height:170px;background:var(--mint);display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center;color:var(--teal);"><div style="font-size:2.5rem;">&#x1F4CD;</div><p style="font-size:.85rem;margin-top:.5rem;font-weight:600;">Ilam, Christchurch</p></div>
+    </div>
+  </div>
+</div>
+</div></div></div>
+<div id="pg-aurore" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov" style="background:linear-gradient(135deg,rgba(80,5,60,.92),rgba(160,40,120,.7))"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('schools')">&#x2190; All Schools <span>/ Haeata Community Campus</span></div>
+    <div style="font-size:1.8rem;margin-bottom:.5rem;">&#x1F305;</div>
+    <h1>Haeata Community Campus</h1>
+    <p class="sub">L&#x2019;Aurore &#x2014; <em>The Dawn</em> &#x2022; Brand new bilingual unit, opened 2025</p>
+    <div class="mh-tags"><span class="mh-tag">&#x1F4CD; Aranui, Christchurch</span><span class="mh-tag">&#x1F3EB; Area School (NE&#x2013;Y8)</span><span class="mh-tag">&#x1F1EB;&#x1F1F7; 50&#x2013;60% French</span><span class="mh-tag">&#x1F37D;&#xFE0F; Free School Lunches</span><span class="mh-tag">&#x2705; Open Enrolment</span></div>
+  </div>
+</div>
+<div class="school-cnt">
+<div class="sch-pg-grid">
+<div class="prose">
+<h2>School Overview</h2>
+<p>L&#x2019;Aurore (The Dawn) is Frenz&#x2019;s newest and most exciting bilingual unit, opening in 2025 at Haeata Community Campus &#x2014; developed by Frenz volunteer parents from Burnside Primary, benefiting from 30 years of Frenz experience.</p>
+<p>Haeata is a publicly funded school in Aranui, 10 minutes from Christchurch CBD. As an area school, it caters from New Entrant to Year 12. The bilingual programme welcomes students from NE to Year 8, from all over Christchurch &#x2014; <strong>no zone applies</strong>.</p>
+<p>Haeata was built for 1,200 students but currently has ~650, giving ample space in state-of-the-art buildings. Uniquely, Haeata offers <strong>free hot school lunches</strong> to all students &#x2014; closer to the French &#x201C;cantine&#x201D; model than any other NZ school.</p>
+<div class="ibox"><h5>&#x1F31F; Unique Features</h5><p>Free school lunches &#x2022; Performing arts funded by school &#x2022; Large auditorium &#x2022; Art Studio &amp; Makers Studio &#x2022; Weekly Kapa Haka &#x2022; Alliance Fran&#xE7;aise Christchurch partnership &#x2022; University of Canterbury French department collaboration</p></div>
+<div class="gallery" style="margin:2rem 0;">
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1497366216548-37526070297c')"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1524178232363-1fb2b075b655')"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655&w=400&q=75&fit=crop" alt=""></div>
+  <div class="g-item" onclick="openLB('https://images.unsplash.com/photo-1558618666-fcd25c85cd64')"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64&w=400&q=75&fit=crop" alt=""></div>
+</div>
+<div class="ibox"><h5>&#x1F1EB;&#x1F1F7; Bilingual Class Structure</h5><p>50&#x2013;60% of teaching in French. Progressive immersion model. Open to all NZ families &#x2014; no prior French knowledge required for New Entrants.</p></div>
+<div style="margin:1.5rem 0;">
+<div class="lp-row"><span class="lp-lbl">French</span><div class="lp-bar"><div class="lp-f fr" style="width:55%"></div></div><span class="lp-pct">55%</span></div>
+<div class="lp-row"><span class="lp-lbl">English</span><div class="lp-bar"><div class="lp-f en" style="width:45%"></div></div><span class="lp-pct">45%</span></div>
+</div>
+<h2>Enrolment Process</h2>
+<div class="esteps">
+<div class="estep rv"><div class="enum">1</div><div><h5>Register Your Interest</h5><p>Email <a href="mailto:francaisachch@gmail.com">francaisachch@gmail.com</a>. Children can start at any time of year &#x2014; no zone, no season restriction.</p></div></div>
+<div class="estep rv"><div class="enum">2</div><div><h5>Language Evaluation</h5><p>The school contacts you to schedule a language evaluation.</p></div></div>
+<div class="estep rv"><div class="enum">3</div><div><h5>Confirmation</h5><p>Haeata scores applications against priority points and confirms acceptance.</p></div></div>
+<div class="estep rv"><div class="enum">4</div><div><h5>Frenz Membership</h5><p>Complete the <a href="https://www.frenzschool.org.nz/membership" target="_blank">Frenz membership form</a> once accepted.</p></div></div>
+</div>
+</div>
+<div class="sidebar">
+  <div class="scard rv">
+    <h4>&#x1F4DE; School Contact</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Principal</strong><p>Peggy Burrows</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><strong>Email</strong><a href="mailto:office@haeata.school.nz">office@haeata.school.nz</a></div></div>
+    <div class="crow"><span class="ci">&#x1F4DE;</span><div><strong>Phone</strong><a href="tel:039300110">03 930 0110</a></div></div>
+    <div class="crow"><span class="ci">&#x1F310;</span><div><strong>Website</strong><a href="https://www.haeata.school.nz" target="_blank">www.haeata.school.nz</a></div></div>
+  </div>
+  <div class="scard rv" data-d="1">
+    <h4>&#x1F91D; Frenz Representative</h4>
+    <div class="crow"><span class="ci">&#x1F464;</span><div><strong>Representative</strong><p>Marine</p></div></div>
+    <div class="crow"><span class="ci">&#x1F4E7;</span><div><a href="mailto:contact@frenzschool.org">contact@frenzschool.org</a></div></div>
+    <p style="font-size:.77rem;color:var(--muted);margin:.8rem 0 1.2rem;">Available in French or English</p>
+    <div class="btn-coral" style="display:block;text-align:center;" onclick="go('contact')">Get in Touch &#x2192;</div>
+  </div>
+  <div class="scard rv" data-d="2">
+    <h4>&#x1F4CD; Location</h4>
+    <div style="border-radius:12px;overflow:hidden;height:170px;background:var(--mint);display:flex;align-items:center;justify-content:center;">
+      <div style="text-align:center;color:var(--teal);"><div style="font-size:2.5rem;">&#x1F4CD;</div><p style="font-size:.85rem;margin-top:.5rem;font-weight:600;">Aranui, Christchurch</p></div>
+    </div>
+  </div>
+</div>
+</div></div></div>
+
+<!-- SCHOOLS LIST PAGE -->
+<div id="pg-schools" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('home')">&#x2190; Home <span>/ Partner Schools</span></div>
+    <h1>Partner Schools</h1>
+    <p class="sub">Six bilingual French-English classes across Auckland, Wellington, and Christchurch. Click any school to see full details and the enrolment process.</p>
+  </div>
+</div>
+<section>
+  <div class="si">
+    <div class="slbl rv">Auckland</div><h2 class="stitle rv" data-d="1" style="margin-bottom:2.5rem;">Auckland Schools</h2>
+    <div class="sch-grid" style="margin-bottom:5rem;">
+      <div class="sch-card rv" data-d="1" onclick="go('etoile')"><div class="sch-photo"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Primary &#x2022; NE&#x2013;Y6 &#x2022; Est. 2012</div><div class="sch-city">North Shore</div></div><div class="sch-body"><div class="sch-unit">&#x1F31F; L&#x2019;&#xC9;toile du Nord</div><h3>Birkdale North School</h3><p>~200 students on Auckland&#x2019;s North Shore. No school zone. Green fields, playground, and pool. 60% French / 40% English.</p></div><div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:60%"></div></div> 60%</div><div class="sch-arrow">&#x2192;</div></div></div>
+      <div class="sch-card rv" data-d="2" onclick="go('archipel')"><div class="sch-photo"><img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Primary &#x2022; NE&#x2013;Y6 &#x2022; Est. 1994</div><div class="sch-city">Ponsonby</div></div><div class="sch-body"><div class="sch-unit">&#x1F3DD; L&#x2019;Archipel</div><h3>Richmond Road School</h3><p>~400 students near downtown Auckland. NZ&#x2019;s oldest French bilingual unit. School zone applies. Rich multicultural environment.</p></div><div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:60%"></div></div> 60%</div><div class="sch-arrow">&#x2192;</div></div></div>
+      <div class="sch-card rv" data-d="3" onclick="go('kowhai')"><div class="sch-photo"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Intermediate &#x2022; Y7&#x2013;Y8 &#x2022; Est. 2021</div><div class="sch-city">Kingsland</div></div><div class="sch-body"><div class="sch-unit">&#x1F33F; La Grande Envol&#xE9;e</div><h3>Kowhai Intermediate</h3><p>500+ students near Auckland CBD. LabelFranc&#xC9;ducation certified. 3 days French / 2 days English. Heated pool, large green spaces.</p></div><div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:60%"></div></div> 60%</div><div class="sch-arrow">&#x2192;</div></div></div>
+    </div>
+    <div class="slbl rv">Wellington</div><h2 class="stitle rv" data-d="1" style="margin-bottom:2.5rem;">Wellington</h2>
+    <div class="sch-grid" style="grid-template-columns:repeat(2,1fr);margin-bottom:5rem;">
+      <div class="sch-card rv" data-d="1" onclick="go('ruru')"><div class="sch-photo"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Primary &#x2022; NE&#x2013;Y6 &#x2022; Est. 2019</div><div class="sch-city">Brooklyn</div></div><div class="sch-body"><div class="sch-unit">&#x1F989; Ruru La Chouette</div><h3>Tawatawa Ridgway School</h3><p>~240 students in Southern Brooklyn, minutes from Wellington CBD. 400m sealed bike track, adventure areas, gardens.</p></div><div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:65%"></div></div> 65%</div><div class="sch-arrow">&#x2192;</div></div></div>
+      <div class="sch-card rv" data-d="2" style="background:var(--sand);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:3rem;cursor:default;">
+        <div style="text-align:center;"><div style="font-size:3rem;margin-bottom:1rem;">&#x1F33F;</div><h3 style="margin-bottom:1rem;font-size:1.2rem;">Growing in Wellington</h3><p style="color:var(--muted);font-size:.88rem;line-height:1.7;">Wellington&#x2019;s French bilingual community is growing. Contact Frenz to stay informed about future school openings.</p><div class="btn-teal" style="margin-top:1.5rem;display:inline-block" onclick="go('contact')">Get Notified</div></div>
+      </div>
+    </div>
+    <div class="slbl rv">Christchurch</div><h2 class="stitle rv" data-d="1" style="margin-bottom:2.5rem;">Christchurch</h2>
+    <div class="sch-grid" style="grid-template-columns:repeat(2,1fr);">
+      <div class="sch-card rv" data-d="1" onclick="go('decouverte')"><div class="sch-photo"><img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Primary &#x2022; NE&#x2013;Y6 &#x2022; Est. 2017</div><div class="sch-city">Ilam</div></div><div class="sch-body"><div class="sch-unit">&#x1F52D; La D&#xE9;couverte</div><h3>Tuia Burnside Primary School</h3><p>~300 students near the University of Canterbury. 2/3 French / 1/3 English. International students welcome.</p></div><div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:67%"></div></div> 67%</div><div class="sch-arrow">&#x2192;</div></div></div>
+      <div class="sch-card rv" data-d="2" onclick="go('aurore')"><div class="sch-photo"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=75&fit=crop" alt=""><div class="sch-ov"></div><div class="sch-tag">Area School &#x2022; NE&#x2013;Y8 &#x2022; Opened 2025</div><div class="sch-city">Aranui</div></div><div class="sch-body"><div class="sch-unit">&#x1F305; L&#x2019;Aurore</div><h3>Haeata Community Campus</h3><p>Brand-new state-of-the-art facilities. Free school lunches. Art Studio, Makers Studio. Open to all Christchurch families.</p></div><div class="sch-foot"><div class="sch-lang">&#x1F1EB;&#x1F1F7; <div class="lb"><div class="lf" style="width:55%"></div></div> 55%</div><div class="sch-arrow">&#x2192;</div></div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- BILINGUAL PAGE -->
+<div id="pg-bilingual" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1588072432836-e10032774350?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('home')">&#x2190; Home <span>/ Bilingual Program</span></div>
+    <h1>French-English Bilingual Education</h1>
+    <p class="sub">Understanding how bilingual programmes work in NZ&#x2019;s public school system and the remarkable benefits for your child.</p>
+    <div class="mh-tags"><span class="mh-tag">&#x1F393; Ages 5&#x2013;13</span><span class="mh-tag">&#x1F3EB; Public State Schools</span><span class="mh-tag">&#x1F4B0; Free Tuition</span><span class="mh-tag">&#x1F1F3;&#x1F1FF; NZ Curriculum</span></div>
+  </div>
+</div>
+<section>
+  <div class="si">
+    <div class="prog-split">
+      <div class="rv-l">
+        <div class="slbl">Program Overview</div>
+        <h2 class="stitle">What Is Bilingual Education in NZ?</h2>
+        <p style="color:var(--muted);margin-bottom:1.2rem;line-height:1.75;">In New Zealand, bilingual programmes are classes embedded within public primary and intermediate schools where the national curriculum is taught in two languages &#x2014; French and English. These are not private French schools &#x2014; they are state schools receiving full Ministry of Education funding, meaning tuition is <strong>completely free</strong>.</p>
+        <p style="color:var(--muted);margin-bottom:2rem;line-height:1.75;">The proportion of French to English instruction varies by school and year level, typically ranging from 50&#x2013;100% French in the early years, balancing toward an equal split as children grow. The goal is full fluency in both languages by Year 6 or Year 8.</p>
+        <div class="btn-coral" onclick="go('schools')" style="display:inline-flex;">Explore Partner Schools &#x2192;</div>
+      </div>
+      <div class="rv-r" data-d="2">
+        <div class="prog-img"><img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=900&q=80&fit=crop" alt="Bilingual classroom"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="bg-sand">
+  <div class="si">
+    <div class="tc rv" style="margin-bottom:3rem;">
+      <div class="slbl" style="justify-content:center;">Benefits</div>
+      <h2 class="stitle">Why Choose Bilingual Education?</h2>
+    </div>
+    <div class="ben-grid">
+      <div class="ben-tile rv" data-d="1"><div class="ben-ic">&#x1F9E0;</div><div><h5>Cognitive Benefits</h5><p>Research shows bilingual children develop stronger executive function, problem-solving skills, and mental flexibility.</p></div></div>
+      <div class="ben-tile rv" data-d="2"><div class="ben-ic">&#x1F30D;</div><div><h5>Cultural Awareness</h5><p>Children gain access to French and Francophone cultures, literature, and perspectives from an early age.</p></div></div>
+      <div class="ben-tile rv" data-d="3"><div class="ben-ic">&#x1F393;</div><div><h5>Academic Achievement</h5><p>Bilingual students often perform above grade-level expectations across all academic subjects, not just languages.</p></div></div>
+      <div class="ben-tile rv" data-d="4"><div class="ben-ic">&#x1F4BC;</div><div><h5>Career Opportunities</h5><p>French &#x2014; official language of 29 countries &#x2014; opens extraordinary doors globally in business, diplomacy, and academia.</p></div></div>
+      <div class="ben-tile rv" data-d="5"><div class="ben-ic">&#x2764;&#xFE0F;</div><div><h5>Heritage Maintenance</h5><p>For Francophone families, bilingual education preserves heritage language and connection to family abroad.</p></div></div>
+      <div class="ben-tile rv" data-d="6"><div class="ben-ic">&#x1F91D;</div><div><h5>Community Connection</h5><p>Join a warm, multicultural community of families, teachers, and volunteers united by love of the French language.</p></div></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="si"><div style="max-width:780px;">
+    <div class="slbl">FAQ</div>
+    <h2 class="stitle rv" style="margin-bottom:2rem;">Frequently Asked Questions</h2>
+    <div class="faq-item rv" data-d="1"><div class="faq-q" onclick="toggleFaq(this)">Do I need to speak French to enrol my child? <div class="faq-plus">+</div></div><div class="faq-a"><div class="faq-ai">No! Children starting at New Entrant (age 5) do not need any prior French knowledge. The immersive bilingual classroom environment is designed to make language acquisition natural and effortless for young children.</div></div></div>
+    <div class="faq-item rv" data-d="2"><div class="faq-q" onclick="toggleFaq(this)">Is bilingual education really free? <div class="faq-plus">+</div></div><div class="faq-a"><div class="faq-ai">Yes! All Frenz partner schools are state-funded. Tuition is free for NZ citizens, permanent residents, and eligible work visa holders. A voluntary Frenz membership donation is encouraged but not compulsory.</div></div></div>
+    <div class="faq-item rv" data-d="3"><div class="faq-q" onclick="toggleFaq(this)">What is a language evaluation? <div class="faq-plus">+</div></div><div class="faq-a"><div class="faq-ai">Schools may conduct a friendly, informal evaluation to assess children&#x2019;s current French and English levels. This helps place children appropriately. A Frenz representative will guide you through this &#x2014; it&#x2019;s not a test to pass or fail!</div></div></div>
+    <div class="faq-item rv" data-d="4"><div class="faq-q" onclick="toggleFaq(this)">Can my child join mid-year? <div class="faq-plus">+</div></div><div class="faq-a"><div class="faq-ai">This depends on the school and available spaces. Some schools accommodate mid-year enrolments; others follow a strict start-of-year process. Contact us and we&#x2019;ll advise you on the current situation at your preferred school.</div></div></div>
+    <div class="faq-item rv" data-d="5"><div class="faq-q" onclick="toggleFaq(this)">Are there bilingual options for high school? <div class="faq-plus">+</div></div><div class="faq-a"><div class="faq-ai">Currently Frenz partners with schools up to Year 8. Various NZ secondary schools offer French language programmes. L&#x2019;Aurore at Haeata also has potential to extend further. Our team can point you in the right direction.</div></div></div>
+  </div></div>
+</section>
+<div class="cta-wrap"><div class="cta-box rv-s"><div><h2>Ready to Explore a School?</h2><p>Browse our partner schools to find the right bilingual class for your child.</p></div><div class="cta-btns"><div class="btn-white" onclick="go('schools')">View Partner Schools</div></div></div></div>
+</div>
+
+<!-- ENROLMENT PAGE -->
+<div id="pg-enrolment" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('home')">&#x2190; Home <span>/ Enrolment &amp; Costs</span></div>
+    <h1>Enrolment &amp; Costs</h1>
+    <p class="sub">Everything you need to know about joining a French-English bilingual class in New Zealand &#x2014; timelines, costs, and tips.</p>
+  </div>
+</div>
+<section>
+  <div class="si">
+    <div class="tc rv" style="margin-bottom:3.5rem;"><div class="slbl" style="justify-content:center;">General Process</div><h2 class="stitle">How to Enrol Your Child</h2></div>
+    <div class="steps-row">
+      <div class="step-c rv" data-d="1"><div class="step-ic">1</div><h5>Choose a School</h5><p>Browse partner schools and find the best fit for your family&#x2019;s location and needs.</p></div>
+      <div class="step-c rv" data-d="2"><div class="step-ic">2</div><h5>Submit Enrolment</h5><p>Complete the school&#x2019;s enrolment form online. Deadlines typically August&#x2013;September.</p></div>
+      <div class="step-c rv" data-d="3"><div class="step-ic">3</div><h5>Language Evaluation</h5><p>Attend an informal language assessment. Frenz guides you through every step.</p></div>
+      <div class="step-c rv" data-d="4"><div class="step-ic">4</div><h5>Join Frenz</h5><p>Complete your Frenz membership to access full support, community, and resources.</p></div>
+    </div>
+  </div>
+</section>
+<section class="bg-sand">
+  <div class="si">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+      <div class="rv-l">
+        <div class="slbl">Costs</div>
+        <h2 class="stitle">Is Bilingual Education Really Free?</h2>
+        <p style="color:var(--muted);margin-bottom:1.2rem;line-height:1.75;">Yes! All Frenz partner schools are state-funded public schools. Tuition is <strong>completely free</strong> for New Zealand citizens, permanent residents, and eligible work visa holders.</p>
+        <p style="color:var(--muted);line-height:1.75;">International fee-paying students (on visitor or student visas) may pay school fees &#x2014; contact individual schools for details. Frenz also encourages all families to become Frenz members and make a voluntary donation to support our work.</p>
+      </div>
+      <div class="rv-r" data-d="1">
+        <table class="cost-tbl">
+          <thead><tr><th>Item</th><th>Cost</th></tr></thead>
+          <tbody>
+            <tr><td>School Tuition (NZ residents)</td><td class="free-tag">Free</td></tr>
+            <tr><td>Frenz Membership Donation</td><td class="free-tag">Voluntary</td></tr>
+            <tr><td>Language Evaluation</td><td class="free-tag">Free</td></tr>
+            <tr><td>Frenz Guidance &amp; Support</td><td class="free-tag">Free</td></tr>
+            <tr><td>School Stationery &amp; Uniforms</td><td>Varies by school</td></tr>
+            <tr><td>School Camps &amp; Excursions</td><td>Varies</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="si">
+    <div class="slbl rv">NZ School Year</div>
+    <h2 class="stitle rv" data-d="1" style="margin-bottom:2.5rem;">New Zealand School Calendar</h2>
+    <div class="cal-grid">
+      <div class="cal-card rv" data-d="1"><div class="cal-top"><h5>Term 1</h5><p style="font-size:.78rem;opacity:.8;margin-top:.3rem;">Late Jan &#x2013; Mid April</p></div><div class="cal-bot"><p>The new school year begins. New Entrant children who turn 5 can start anytime. Summer terms with pool activities.</p></div></div>
+      <div class="cal-card rv" data-d="2"><div class="cal-top"><h5>Term 2</h5><p style="font-size:.78rem;opacity:.8;margin-top:.3rem;">Late April &#x2013; Late June</p></div><div class="cal-bot"><p>Autumn/early winter in NZ. Key learning terms. Typically when mid-year enrolments are assessed.</p></div></div>
+      <div class="cal-card rv" data-d="3"><div class="cal-top"><h5>Term 3</h5><p style="font-size:.78rem;opacity:.8;margin-top:.3rem;">Late July &#x2013; Late Sept</p></div><div class="cal-bot"><p>Spring arrives. School camps, sports events. Enrolment applications for the following year open in August.</p></div></div>
+      <div class="cal-card rv" data-d="4"><div class="cal-top"><h5>Term 4</h5><p style="font-size:.78rem;opacity:.8;margin-top:.3rem;">Mid Oct &#x2013; Mid Dec</p></div><div class="cal-bot"><p>End-of-year celebrations, swimming season. Confirmations for the following year sent in November.</p></div></div>
+    </div>
+    <div class="ibox" style="margin-top:2rem;"><h5>&#x1F5D3;&#xFE0F; Key Enrolment Dates</h5><p>Most schools require applications by <strong>August&#x2013;September</strong> for the following year. Language evaluations typically in <strong>October</strong>. Confirmations by <strong>November</strong>. Contact Frenz early!</p></div>
+  </div>
+</section>
+<div class="cta-wrap"><div class="cta-box rv-s"><div><h2>Ready to Apply?</h2><p>Browse our partner schools to find the right bilingual class and start the enrolment process.</p></div><div class="cta-btns"><div class="btn-white" onclick="go('schools')">View Schools</div><div class="btn-wo" onclick="go('contact')">Ask Frenz</div></div></div></div>
+</div>
+
+<!-- GET INVOLVED PAGE -->
+<div id="pg-involve" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('home')">&#x2190; Home <span>/ Get Involved</span></div>
+    <h1>Get Involved with Frenz</h1>
+    <p class="sub">Join our vibrant community and help promote French-English bilingual education across New Zealand. There&#x2019;s a place for everyone.</p>
+  </div>
+</div>
+<section>
+  <div class="si">
+    <div class="tc rv" style="margin-bottom:3.5rem;"><div class="slbl" style="justify-content:center;">Ways to Contribute</div><h2 class="stitle">How You Can Help</h2></div>
+    <div class="inv-grid">
+      <div class="inv-card rv" data-d="1"><div class="inv-photo"><img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=600&q=75&fit=crop" alt="Volunteer"></div><div class="inv-body"><span class="inv-ic">&#x1F64B;</span><h3>Volunteer</h3><p>Volunteers are the backbone of Frenz. From a few hours a month to regular involvement &#x2014; there are meaningful ways to contribute, from family support to event organisation.</p></div><div class="inv-foot"><a class="inv-link" href="mailto:contact@frenzschool.org">Express interest &#x2192; contact@frenzschool.org</a></div></div>
+      <div class="inv-card rv" data-d="2"><div class="inv-photo"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=75&fit=crop" alt="Teaching"></div><div class="inv-body"><span class="inv-ic">&#x1F4D6;</span><h3>Teaching &amp; Assistance</h3><p>Qualified or trainee French-speaking teachers and aides can play a vital role supporting bilingual classes. Frenz connects trained educators with our partner schools.</p></div><div class="inv-foot"><a class="inv-link" href="mailto:contact@frenzschool.org">Enquire about teaching roles &#x2192;</a></div></div>
+      <div class="inv-card rv" data-d="3"><div class="inv-photo"><img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=75&fit=crop" alt="Internship"></div><div class="inv-body"><span class="inv-ic">&#x1F393;</span><h3>Internships (Stages)</h3><p>Frenz offers internship placements for education students from France and Francophone countries wanting to experience NZ&#x2019;s bilingual school system first-hand.</p></div><div class="inv-foot"><a class="inv-link" href="mailto:contact@frenzschool.org">Internship enquiries &#x2192;</a></div></div>
+      <div class="inv-card rv" data-d="4"><div class="inv-photo"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=75&fit=crop" alt="Partnership"></div><div class="inv-body"><span class="inv-ic">&#x1F91D;</span><h3>Partnerships</h3><p>We welcome partnerships with organisations sharing our values &#x2014; French cultural institutions, education bodies, businesses, and language organisations to strengthen bilingual education in NZ.</p></div><div class="inv-foot"><a class="inv-link" href="mailto:contact@frenzschool.org">Explore partnerships &#x2192;</a></div></div>
+    </div>
+  </div>
+</section>
+<div class="cta-wrap"><div class="cta-box rv-s"><div><h2>Join the Frenz Community</h2><p>Whether a few hours a month or a dedicated volunteer role, there&#x2019;s a place for you in Frenz.</p></div><div class="cta-btns"><div class="btn-white" onclick="go('contact')">Get in Touch</div></div></div></div>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="pg-about" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('home')">&#x2190; Home <span>/ About Us</span></div>
+    <h1>About Frenz</h1>
+    <p class="sub">Our story, our mission, and the dedicated volunteers making French bilingual education accessible across New Zealand.</p>
+  </div>
+</div>
+<section>
+  <div class="si">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+      <div class="rv-l">
+        <div class="slbl">Our Mission</div>
+        <h2 class="stitle">Why We Do What We Do</h2>
+        <p style="color:var(--muted);margin-bottom:1.2rem;line-height:1.75;">Frenz (French-English New Zealand) was founded on a simple but powerful belief: every child in New Zealand should have access to high-quality bilingual French-English education in their local public school.</p>
+        <p style="color:var(--muted);margin-bottom:2rem;line-height:1.75;">We are a volunteer-led non-profit that bridges the gap between Francophone and Anglophone families and the NZ school system. We guide families, support teachers, advocate for bilingual programmes, and build community around French language and culture in Aotearoa.</p>
+        <div class="btn-coral" style="display:inline-flex;" onclick="go('involve')">Get Involved &#x2192;</div>
+      </div>
+      <div class="rv-r" data-d="2">
+        <div class="prog-img"><img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=900&q=80&fit=crop" alt="Team"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="bg-sand">
+  <div class="si">
+    <div class="slbl rv">Our History</div>
+    <h2 class="stitle rv" data-d="1" style="margin-bottom:3rem;">30+ Years of Bilingual Education</h2>
+    <div class="tl">
+      <div class="tl-item rv"><div class="tl-dot"></div><div class="tl-yr">1994</div><h4>The Beginning &#x2014; L&#x2019;Archipel</h4><p>The first French-English bilingual class in a NZ public school opens at Richmond Road School &#x2014; the birth of Frenz.</p></div>
+      <div class="tl-item rv" data-d="1"><div class="tl-dot"></div><div class="tl-yr">2012</div><h4>North Shore Joins</h4><p>L&#x2019;&#xC9;toile du Nord established at Birkdale North School, bringing bilingual education to Auckland&#x2019;s North Shore.</p></div>
+      <div class="tl-item rv" data-d="2"><div class="tl-dot"></div><div class="tl-yr">2017</div><h4>Frenz Reaches Christchurch</h4><p>La D&#xE9;couverte at Tuia Burnside Primary School opens &#x2014; Frenz&#x2019;s first Christchurch partner school.</p></div>
+      <div class="tl-item rv" data-d="3"><div class="tl-dot"></div><div class="tl-yr">2019</div><h4>Wellington Arrives</h4><p>Ruru La Chouette at Tawatawa Ridgway School opens &#x2014; Frenz&#x2019;s first Wellington partner school.</p></div>
+      <div class="tl-item rv" data-d="4"><div class="tl-dot"></div><div class="tl-yr">2021</div><h4>Intermediate Level Achieved</h4><p>La Grande Envol&#xE9;e launches at Kowhai Intermediate &#x2014; providing bilingual continuity through Years 7&#x2013;8.</p></div>
+      <div class="tl-item rv" data-d="5"><div class="tl-dot"></div><div class="tl-yr">2025</div><h4>A New Dawn &#x2014; L&#x2019;Aurore</h4><p>Frenz&#x2019;s sixth partner school opens at Haeata Community Campus. State-of-the-art facilities, NE to Year 8.</p></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="si">
+    <div class="tc rv" style="margin-bottom:3rem;"><div class="slbl" style="justify-content:center;">Our Team</div><h2 class="stitle">The People Behind Frenz</h2><p class="ssub" style="margin:1rem auto 0;">Frenz is powered by passionate volunteers and school representatives who give their time to make bilingual education accessible to all families.</p></div>
+    <div class="team-grid">
+      <div class="tm-card rv" data-d="1"><div class="tm-av">E</div><h5>Emilie Diop</h5><p class="tm-role">Frenz Representative</p><p class="tm-sch">&#x1F31F; L&#x2019;&#xC9;toile du Nord, Auckland</p></div>
+      <div class="tm-card rv" data-d="2"><div class="tm-av">F</div><h5>Florence Hine</h5><p class="tm-role">Frenz Representative</p><p class="tm-sch">&#x1F3DD; L&#x2019;Archipel, Auckland</p></div>
+      <div class="tm-card rv" data-d="3"><div class="tm-av">M</div><h5>Mathieu Ramoger</h5><p class="tm-role">Frenz Representative</p><p class="tm-sch">&#x1F33F; La Grande Envol&#xE9;e, Auckland</p></div>
+      <div class="tm-card rv" data-d="4"><div class="tm-av">E</div><h5>Estelle Valent</h5><p class="tm-role">Frenz Representative</p><p class="tm-sch">&#x1F989; Ruru La Chouette, Wellington</p></div>
+      <div class="tm-card rv" data-d="5"><div class="tm-av">S</div><h5>Stephanie Bouhala</h5><p class="tm-role">Frenz Representative</p><p class="tm-sch">&#x1F52D; La D&#xE9;couverte, Christchurch</p></div>
+      <div class="tm-card rv" data-d="6"><div class="tm-av">M</div><h5>Marine</h5><p class="tm-role">Frenz Representative</p><p class="tm-sch">&#x1F305; L&#x2019;Aurore, Christchurch</p></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- CONTACT PAGE -->
+<div id="pg-contact" class="page">
+<div class="mh">
+  <div class="mh-bg" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=75&fit=crop')"></div>
+  <div class="mh-ov"></div>
+  <div class="mh-cnt">
+    <div class="mh-bc" onclick="go('home')">&#x2190; Home <span>/ Contact</span></div>
+    <h1>Get in Touch</h1>
+    <p class="sub">Questions about bilingual education or enrolment? Our team responds in French or English &#x2014; usually within 2&#x2013;3 business days.</p>
+  </div>
+</div>
+<section>
+  <div class="si">
+    <div style="display:grid;grid-template-columns:1fr 400px;gap:5rem;">
+      <div class="rv-l">
+        <div class="slbl">Send a Message</div>
+        <h2 class="stitle">Contact Frenz</h2>
+        <div class="cf-grid" style="margin-top:2rem;">
+          <div><label class="cf-lbl">First Name</label><input class="cf-inp" placeholder="Marie"></div>
+          <div><label class="cf-lbl">Last Name</label><input class="cf-inp" placeholder="Dupont"></div>
+          <div><label class="cf-lbl">Email</label><input class="cf-inp" type="email" placeholder="marie@example.com"></div>
+          <div><label class="cf-lbl">Phone (optional)</label><input class="cf-inp" placeholder="+64 21 123 4567"></div>
+          <div class="cf-full"><label class="cf-lbl">Your Region</label><select class="cf-inp"><option>Select your region...</option><option>Auckland &#x2013; North Shore</option><option>Auckland &#x2013; Central</option><option>Wellington</option><option>Christchurch</option><option>Other</option></select></div>
+          <div class="cf-full"><label class="cf-lbl">Subject</label><select class="cf-inp"><option>I&#x2019;d like to enrol my child</option><option>I want to volunteer</option><option>Internship enquiry</option><option>Partnership</option><option>General question</option></select></div>
+          <div class="cf-full"><label class="cf-lbl">Message</label><textarea class="cf-inp" placeholder="Tell us about your situation and how we can help..."></textarea></div>
+        </div>
+        <div class="btn-coral" style="display:inline-flex;margin-top:1.5rem;">Send Message &#x2192;</div>
+        <p style="font-size:.8rem;color:var(--muted);margin-top:.8rem;">We reply in French or English. Response within 2&#x2013;3 business days.</p>
+      </div>
+      <div class="rv-r" data-d="2">
+        <div class="scard" style="margin-bottom:1.5rem;">
+          <h4>&#x1F4AC; Direct Contact</h4>
+          <div class="crow"><span class="ci">&#x1F4E7;</span><div><strong>General Enquiries</strong><a href="mailto:contact@frenzschool.org">contact@frenzschool.org</a><p style="font-size:.76rem;color:var(--muted);margin-top:2px;">French or English welcome</p></div></div>
+          <div class="crow"><span class="ci">&#x1F310;</span><div><strong>Website</strong><a href="https://www.frenzschool.org.nz" target="_blank">frenzschool.org.nz</a></div></div>
+          <div class="crow"><span class="ci">&#x1F4D8;</span><div><strong>Facebook</strong><a href="https://www.facebook.com/FrenzSchool" target="_blank">FrenzSchool</a></div></div>
+        </div>
+        <div class="acc">
+          <div class="acc-item" id="ac1"><div class="acc-h" onclick="toggleAcc('ac1')"><span>&#x1F31F; L&#x2019;&#xC9;toile du Nord</span><span class="acc-i">+</span></div><div class="acc-b"><div class="acc-bi">Rep: Emilie Diop<br>Principal: Jan McDonald<br>&#x1F4DE; <a href="tel:094838674">09 483 8674</a><br>&#x1F4E7; <a href="mailto:office@birkdalenorth.school.nz">office@birkdalenorth.school.nz</a></div></div></div>
+          <div class="acc-item" id="ac2"><div class="acc-h" onclick="toggleAcc('ac2')"><span>&#x1F3DD; L&#x2019;Archipel</span><span class="acc-i">+</span></div><div class="acc-b"><div class="acc-bi">Rep: Florence Hine<br>Principal: Jacqui Tutavake<br>&#x1F4DE; <a href="tel:093761091">09 376 1091</a><br>&#x1F4E7; <a href="mailto:office@richmondroad.school.nz">office@richmondroad.school.nz</a></div></div></div>
+          <div class="acc-item" id="ac3"><div class="acc-h" onclick="toggleAcc('ac3')"><span>&#x1F33F; La Grande Envol&#xE9;e</span><span class="acc-i">+</span></div><div class="acc-b"><div class="acc-bi">Rep: Mathieu Ramoger<br>&#x1F4DE; <a href="tel:098467534">09 846 7534</a><br>&#x1F4E7; <a href="mailto:info@kowhai.school.nz">info@kowhai.school.nz</a></div></div></div>
+          <div class="acc-item" id="ac4"><div class="acc-h" onclick="toggleAcc('ac4')"><span>&#x1F989; Ruru La Chouette</span><span class="acc-i">+</span></div><div class="acc-b"><div class="acc-bi">Rep: Estelle Valent<br>Principal: Sarah Patterson<br>&#x1F4DE; <a href="tel:049398771">04 939 8771</a><br>&#x1F4E7; <a href="mailto:office@ridgway.school.nz">office@ridgway.school.nz</a></div></div></div>
+          <div class="acc-item" id="ac5"><div class="acc-h" onclick="toggleAcc('ac5')"><span>&#x1F52D; La D&#xE9;couverte</span><span class="acc-i">+</span></div><div class="acc-b"><div class="acc-bi">Rep: Stephanie Bouhala<br>Principal: Justin Perriam<br>&#x1F4DE; <a href="tel:033519407">03 351 9407</a><br>&#x1F4E7; <a href="mailto:office@burnsideprimary.school.nz">office@burnsideprimary.school.nz</a></div></div></div>
+          <div class="acc-item" id="ac6"><div class="acc-h" onclick="toggleAcc('ac6')"><span>&#x1F305; L&#x2019;Aurore</span><span class="acc-i">+</span></div><div class="acc-b"><div class="acc-bi">Rep: Marine<br>Principal: Peggy Burrows<br>&#x1F4DE; <a href="tel:039300110">03 930 0110</a><br>&#x1F4E7; <a href="mailto:francaisachch@gmail.com">francaisachch@gmail.com</a></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.2rem;">
+          <div class="logo-mark">Fr</div>
+          <span style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;">Frenz</span>
+        </div>
+        <p>Frenz is a non-profit association promoting French-English bilingual education in New Zealand&#x2019;s public schools since 1994. We help families find, understand, and access bilingual classes across Auckland, Wellington, and Christchurch &#x2014; in French or English.</p>
+        <p style="margin-top:1rem;font-size:.8rem;"><a href="mailto:contact@frenzschool.org" style="color:rgba(255,255,255,.45);">contact@frenzschool.org</a></p>
+      </div>
+      <div class="ft-col">
+        <h5>Partner Schools</h5>
+        <ul>
+          <li><a onclick="go('etoile')">&#x1F31F; L&#x2019;&#xC9;toile du Nord</a></li>
+          <li><a onclick="go('archipel')">&#x1F3DD; L&#x2019;Archipel</a></li>
+          <li><a onclick="go('kowhai')">&#x1F33F; La Grande Envol&#xE9;e</a></li>
+          <li><a onclick="go('ruru')">&#x1F989; Ruru La Chouette</a></li>
+          <li><a onclick="go('decouverte')">&#x1F52D; La D&#xE9;couverte</a></li>
+          <li><a onclick="go('aurore')">&#x1F305; L&#x2019;Aurore</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Information</h5>
+        <ul>
+          <li><a onclick="go('bilingual')">Bilingual Programme</a></li>
+          <li><a onclick="go('enrolment')">Enrolment Process</a></li>
+          <li><a onclick="go('enrolment')">Costs &amp; Membership</a></li>
+          <li><a onclick="go('involve')">Volunteer</a></li>
+          <li><a onclick="go('involve')">Internships</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Organisation</h5>
+        <ul>
+          <li><a onclick="go('about')">About Us</a></li>
+          <li><a onclick="go('about')">Our History</a></li>
+          <li><a onclick="go('about')">Our Team</a></li>
+          <li><a onclick="go('contact')">Contact Us</a></li>
+          <li><a href="https://www.frenzschool.org.nz/membership" target="_blank">Membership Form</a></li>
+          <li><a href="https://www.facebook.com/FrenzSchool" target="_blank">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p>&#xA9; 2025 Frenz School Inc. All rights reserved.</p>
+      <div class="pt-tags"><span class="pt">&#x1F3C5; LabelFranc&#xC9;ducation</span><span class="pt">&#x1F4DA; Bayard Monde</span><span class="pt">&#x1F5E3;&#xFE0F; FLE.fr</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cDot = document.getElementById('cDot');
+const cRing = document.getElementById('cRing');
+const cursorEl = document.getElementById('cursor');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function animC(){
+  rx+=(mx-rx)*.15;ry+=(my-ry)*.15;
+  cDot.style.left=mx+'px';cDot.style.top=my+'px';
+  cRing.style.left=rx+'px';cRing.style.top=ry+'px';
+  requestAnimationFrame(animC);
+})();
+document.querySelectorAll('a,button,[onclick],input,textarea,select,.sch-card,.srv-card,.inv-card,.nav-cta,.t-arr,.btn-coral,.btn-teal,.btn-ghost,.btn-white,.btn-wo').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cRing.classList.add('hover'));
+  el.addEventListener('mouseleave',()=>cRing.classList.remove('hover'));
+});
+document.addEventListener('mouseleave',()=>{cursorEl.style.opacity='0';});
+document.addEventListener('mouseenter',()=>{cursorEl.style.opacity='1';});
+
+// PARTICLES
+(function(){
+  const c=document.getElementById('particles');
+  if(!c)return;
+  for(let i=0;i<22;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const s=Math.random()*80+20;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*20}s;opacity:${Math.random()*0.07};`;
+    c.appendChild(p);
+  }
+})();
+
+// NAV SCROLL
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>60){nav.classList.add('scrolled');nav.classList.remove('dark');}
+  else{nav.classList.remove('scrolled');if(document.querySelector('.page.active').id==='pg-home')nav.classList.add('dark');}
+},{passive:true});
+
+// PAGE ROUTING
+function go(id){
+  document.querySelectorAll('.page').forEach(p=>{p.classList.remove('active');});
+  const page=document.getElementById('pg-'+id);
+  if(!page)return;
+  page.classList.add('active','page-enter');
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(()=>page.classList.remove('page-enter'),500);
+  if(id==='home'){nav.classList.add('dark');}else{nav.classList.remove('dark');}
+  if(window.scrollY>60)nav.classList.add('scrolled');
+  setTimeout(setupObservers,80);
+  setTimeout(animLangBars,350);
+  setTimeout(animCounters,250);
+}
+
+// INTERSECTION OBSERVER FOR REVEALS
+const ioOpts={threshold:.1,rootMargin:'0px 0px -40px 0px'};
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      e.target.querySelectorAll('.lf,.lp-f').forEach(b=>b.classList.add('an'));
+    }
+  });
+},ioOpts);
+function setupObservers(){
+  const pg=document.querySelector('.page.active');
+  if(!pg)return;
+  pg.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s').forEach(el=>{
+    el.classList.remove('in');
+    io.observe(el);
+  });
+}
+setTimeout(setupObservers,200);
+
+// COUNTER ANIMATION
+function animCounter(el){
+  const target=parseInt(el.dataset.count);
+  const dur=target>100?1800:1000;
+  const start=Date.now();
+  (function upd(){
+    const p=Math.min((Date.now()-start)/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    el.textContent=Math.round(target*ease);
+    if(p<1)requestAnimationFrame(upd);
+  })();
+}
+function animCounters(){
+  const pg=document.querySelector('.page.active');
+  if(!pg)return;
+  pg.querySelectorAll('[data-count]').forEach(el=>animCounter(el));
+}
+setTimeout(animCounters,400);
+
+// LANG BAR ANIMATION
+function animLangBars(){
+  document.querySelectorAll('.page.active .lf,.page.active .lp-f').forEach(b=>{
+    setTimeout(()=>b.classList.add('an'),200);
+  });
+}
+setTimeout(animLangBars,350);
+
+// TESTIMONIALS
+let tIdx=0,tTotal=4;
+function initTesti(){
+  const dots=document.getElementById('testiDots');
+  if(!dots)return;
+  dots.innerHTML='';
+  for(let i=0;i<tTotal;i++){
+    const d=document.createElement('div');
+    d.className='testi-dot'+(i===0?' on':'');
+    d.onclick=()=>goTesti(i);
+    dots.appendChild(d);
+  }
+}
+function goTesti(idx){
+  tIdx=(idx+tTotal)%tTotal;
+  const t=document.getElementById('testiTrack');
+  if(t)t.style.transform=`translateX(-${tIdx*100}%)`;
+  document.querySelectorAll('.testi-dot').forEach((d,i)=>d.classList.toggle('on',i===tIdx));
+}
+function slideTesti(d){goTesti(tIdx+d);}
+initTesti();
+setInterval(()=>slideTesti(1),6000);
+
+// FAQ
+function toggleFaq(el){
+  const item=el.closest('.faq-item');
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+
+// ACCORDION
+function toggleAcc(id){
+  const item=document.getElementById(id);
+  item.classList.toggle('open');
+}
+
+// LIGHTBOX
+function openLB(src){
+  const url=src.includes('?')?src:src+'?w=1200&q=85';
+  document.getElementById('lbImg').src=url;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLB();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+</script>
+</body>
+</html>

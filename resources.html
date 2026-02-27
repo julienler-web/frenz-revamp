@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Kiwi School System | Frenz School</title>
+    <meta name="description"
+        content="Learn how the New Zealand school system works — terms, year levels, a typical school day, and how to place your child when moving to NZ." />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+</head>
+
+<body>
+
+    <!-- ═══ NAVBAR ═══ -->
+    <nav class="navbar transparent" id="navbar">
+        <a href="index.html" class="nav-logo">
+            <div class="logo-icon">🎓</div>frenz
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="programmes.html">Programmes</a></li>
+            <li><a href="enrolment.html">Schools</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="resources.html" class="active">Resources</a></li>
+            <li><a href="contact.html" class="nav-cta">Enrol Now</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileClose">✕</button>
+        <a href="index.html">Home</a>
+        <a href="programmes.html">Programmes</a>
+        <a href="enrolment.html">Schools &amp; Enrolment</a>
+        <a href="about.html">About Us</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Enrol Now</a>
+    </div>
+
+    <!-- ═══ PAGE HERO ═══ -->
+    <div class="page-hero">
+        <div class="container">
+            <span class="section-label">New Arrival Guide</span>
+            <h1>The Kiwi School System</h1>
+            <p>Everything you need to know about New Zealand's education system — terms, year levels, and what to
+                expect.</p>
+        </div>
+    </div>
+
+    <!-- ═══ CONTENT ═══ -->
+    <section class="section">
+        <div class="container">
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:60px;align-items:start;">
+                <div>
+
+                    <!-- School Year -->
+                    <div style="margin-bottom:60px;">
+                        <span class="section-label">The School Year</span>
+                        <h2 class="section-title" style="font-size:2rem;">A Typical School Year</h2>
+                        <p style="color:var(--gray-4);margin-bottom:28px;">In New Zealand, the school year runs from
+                            <strong>February to December</strong> and is organised into four 10-week terms. Each term is
+                            separated by a 2-week holiday break.</p>
+                        <div class="terms-grid">
+                            <div class="term-card fade-in-up">
+                                <div class="term-num">Term 1</div>
+                                <div class="term-name">Summer Term</div>
+                                <div class="term-dates">Late January – early April</div>
+                            </div>
+                            <div class="term-card fade-in-up">
+                                <div class="term-num">Term 2</div>
+                                <div class="term-name">Autumn Term</div>
+                                <div class="term-dates">Mid-April – early July</div>
+                            </div>
+                            <div class="term-card fade-in-up">
+                                <div class="term-num">Term 3</div>
+                                <div class="term-name">Winter Term</div>
+                                <div class="term-dates">Late July – late September</div>
+                            </div>
+                            <div class="term-card fade-in-up">
+                                <div class="term-num">Term 4</div>
+                                <div class="term-name">Spring Term</div>
+                                <div class="term-dates">Mid-October – mid-December</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- School Structure -->
+                    <div style="margin-bottom:60px;">
+                        <span class="section-label">Year Levels</span>
+                        <h2 class="section-title" style="font-size:2rem;">School Structure</h2>
+                        <p style="color:var(--gray-4);margin-bottom:28px;">New Zealand has 13 school years, split into
+                            three stages. Frenz supports bilingual programmes in <strong>Primary</strong> and
+                            <strong>Intermediate</strong> only — currently there are no bilingual options for college
+                            (high school).</p>
+                        <div class="school-structure-visual fade-in-up">
+                            <div class="ss-row">
+                                <div class="ss-years">Year 0–6</div>
+                                <div>
+                                    <div style="font-size:0.8rem;font-weight:600;color:var(--navy);margin-bottom:6px;">
+                                        Primary School — Ages 5–11</div>
+                                    <div class="ss-bar primary"></div>
+                                    <div style="font-size:0.75rem;color:var(--blue);margin-top:4px;">✅ Frenz bilingual
+                                        programmes available</div>
+                                </div>
+                                <div class="ss-label">Primary</div>
+                            </div>
+                            <div class="ss-row">
+                                <div class="ss-years">Year 7–8</div>
+                                <div>
+                                    <div style="font-size:0.8rem;font-weight:600;color:var(--navy);margin-bottom:6px;">
+                                        Intermediate School — Ages 11–13</div>
+                                    <div class="ss-bar intermediate"></div>
+                                    <div style="font-size:0.75rem;color:var(--amber);margin-top:4px;">✅ Frenz bilingual
+                                        programmes available</div>
+                                </div>
+                                <div class="ss-label">Intermediate</div>
+                            </div>
+                            <div class="ss-row">
+                                <div class="ss-years">Year 9–13</div>
+                                <div>
+                                    <div style="font-size:0.8rem;font-weight:600;color:var(--navy);margin-bottom:6px;">
+                                        College / High School — Ages 13–18</div>
+                                    <div class="ss-bar college"></div>
+                                    <div class="ss-note">No bilingual option available yet</div>
+                                </div>
+                                <div class="ss-label">College</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Year Placement -->
+                    <div style="margin-bottom:60px;">
+                        <span class="section-label">Placement</span>
+                        <h2 class="section-title" style="font-size:2rem;">What Year Will My Child Be In?</h2>
+                        <p style="color:var(--gray-4);margin-bottom:16px;">If your children are new to New Zealand and
+                            have already had some schooling, they will automatically be placed in the same school year
+                            as other children of the same age.</p>
+                        <p style="color:var(--gray-4);margin-bottom:16px;">Year placement is based on age and birth
+                            date. For example, a 10-year-old born in February would be placed in <strong>Year
+                                6</strong>.</p>
+
+                        <div style="background:var(--mint);border-radius:var(--radius);padding:24px;margin-top:20px;">
+                            <h4 style="color:var(--navy);margin-bottom:10px;">🎂 Starting Age</h4>
+                            <p style="font-size:0.9rem;color:var(--gray-4);">Children in New Zealand start school when
+                                they turn <strong>5 years old</strong>. They can begin on their exact fifth birthday —
+                                at any point in the school year. Before age 5, children attend kindergarten or daycare.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Typical Day -->
+                    <div>
+                        <span class="section-label">Daily Life</span>
+                        <h2 class="section-title" style="font-size:2rem;">A Typical School Day</h2>
+                        <p style="color:var(--gray-4);margin-bottom:24px;">School in New Zealand runs Monday to Friday,
+                            and students stay on-site for lunch.</p>
+                        <div style="display:flex;flex-direction:column;gap:12px;">
+                            <div
+                                style="display:flex;gap:20px;align-items:center;background:var(--gray-1);border-radius:var(--radius-sm);padding:14px 20px;">
+                                <div style="font-size:1.3rem;width:40px;text-align:center;">🌅</div>
+                                <div><strong style="color:var(--navy);">9:00 am</strong> — School starts</div>
+                            </div>
+                            <div
+                                style="display:flex;gap:20px;align-items:center;background:var(--gray-1);border-radius:var(--radius-sm);padding:14px 20px;">
+                                <div style="font-size:1.3rem;width:40px;text-align:center;">🍎</div>
+                                <div><strong style="color:var(--navy);">~10:00 am</strong> — Fruit snack in the
+                                    classroom</div>
+                            </div>
+                            <div
+                                style="display:flex;gap:20px;align-items:center;background:var(--gray-1);border-radius:var(--radius-sm);padding:14px 20px;">
+                                <div style="font-size:1.3rem;width:40px;text-align:center;">🛝</div>
+                                <div><strong style="color:var(--navy);">11:00 – 11:30 am</strong> — Morning tea (recess)
+                                </div>
+                            </div>
+                            <div
+                                style="display:flex;gap:20px;align-items:center;background:var(--gray-1);border-radius:var(--radius-sm);padding:14px 20px;">
+                                <div style="font-size:1.3rem;width:40px;text-align:center;">🥪</div>
+                                <div><strong style="color:var(--navy);">1:00 – 1:40 pm</strong> — Lunch break</div>
+                            </div>
+                            <div
+                                style="display:flex;gap:20px;align-items:center;background:var(--gray-1);border-radius:var(--radius-sm);padding:14px 20px;">
+                                <div style="font-size:1.3rem;width:40px;text-align:center;">🏠</div>
+                                <div><strong style="color:var(--navy);">3:00 pm</strong> — School finishes, parents pick
+                                    up</div>
+                            </div>
+                            <div
+                                style="display:flex;gap:20px;align-items:center;background:var(--gray-1);border-radius:var(--radius-sm);padding:14px 20px;">
+                                <div style="font-size:1.3rem;width:40px;text-align:center;">🌇</div>
+                                <div><strong style="color:var(--navy);">3:00 – 6:00 pm</strong> — After-school care
+                                    (most schools)</div>
+                            </div>
+                        </div>
+                        <div class="info-block" style="margin-top:28px;">
+                            <h4>🥗 No Cafeteria!</h4>
+                            <p>There are no cafeterias in NZ primary schools. Children must bring their own snacks and
+                                lunchbox. This is a common point of surprise for families arriving from France!</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar -->
+                <div style="position:sticky;top:100px;">
+                    <div
+                        style="background:var(--navy);border-radius:var(--radius);padding:32px;color:var(--white);margin-bottom:20px;">
+                        <h3
+                            style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:16px;color:var(--amber);">
+                            Quick Reference</h3>
+                        <div style="display:flex;flex-direction:column;gap:12px;font-size:0.88rem;">
+                            <div
+                                style="display:flex;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.1);">
+                                <span style="opacity:0.7;">School year</span>
+                                <span style="font-weight:600;">Feb – Dec</span>
+                            </div>
+                            <div
+                                style="display:flex;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.1);">
+                                <span style="opacity:0.7;">Number of terms</span>
+                                <span style="font-weight:600;">4 × 10 weeks</span>
+                            </div>
+                            <div
+                                style="display:flex;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.1);">
+                                <span style="opacity:0.7;">Start age</span>
+                                <span style="font-weight:600;">5 years old</span>
+                            </div>
+                            <div
+                                style="display:flex;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.1);">
+                                <span style="opacity:0.7;">School hours</span>
+                                <span style="font-weight:600;">9 am – 3 pm</span>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;gap:12px;">
+                                <span style="opacity:0.7;">Languages</span>
+                                <span style="font-weight:600;color:var(--amber);">French + English</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://www.newzealandnow.govt.nz/living-in-nz/education/school-system" target="_blank"
+                        class="btn btn-secondary" style="width:100%;justify-content:center;margin-bottom:12px;">NZ
+                        Immigration Guide ↗</a>
+                    <a href="enrolment.html" class="btn btn-primary" style="width:100%;justify-content:center;">Find a
+                        School</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <div class="logo-icon">🎓</div> frenz
+                    </div>
+                    <p class="footer-desc">Supporting French-English bilingual education in New Zealand since 1994.</p>
+                    <div class="footer-socials">
+                        <div class="social-btn">📘</div>
+                        <div class="social-btn">📸</div>
+                        <div class="social-btn">🐦</div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Programmes</h4>
+                    <ul>
+                        <li><a href="programmes.html">Ages 0–5</a></li>
+                        <li><a href="programmes.html">Ages 5–11</a></li>
+                        <li><a href="programmes.html">Ages 11–13</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Schools</h4>
+                    <ul>
+                        <li><a href="enrolment.html">All Schools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Frenz</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Frenz School Inc. All rights reserved.</p>
+                <p>Made with ❤️ for bilingual families in Aotearoa New Zealand</p>
+            </div>
+        </div>
+    </footer>
+    <script src="app.js"></script>
+</body>
+
+</html>

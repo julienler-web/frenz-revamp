@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haeata Campus - Christchurch | Frenz School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-warm: #F5F1E8;
+            --bg-cream: #FAF8F3;
+            --text-dark: #1A1A2E;
+            --text-muted: #5A5A6E;
+            --accent-gold: #D4A574;
+            --accent-navy: #2D2D44;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(245,241,232,0.95), transparent);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(245,241,232,0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            padding: 1rem 4rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 4rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent-navy);
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+            cursor: pointer;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+            animation: float 2s ease-in-out infinite;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 4rem;
+            position: relative;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: block;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Overview Section */
+        .overview {
+            background: var(--bg-cream);
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .overview-text {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+
+        .overview-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .overview-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .highlight-box h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .overview-image {
+            position: relative;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .overview-image.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .overview-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: -2rem;
+            left: 2rem;
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-warm);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Gallery / Slideshow Section */
+        .gallery-section {
+            background: var(--bg-warm);
+            padding: 6rem 0;
+            overflow: hidden;
+        }
+
+        .gallery-header {
+            text-align: center;
+            padding: 0 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 4rem;
+        }
+
+        .slideshow-wrapper {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+            cursor: grab;
+        }
+
+        .slideshow-wrapper:active {
+            cursor: grabbing;
+        }
+
+        .slide {
+            min-width: 60%;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            opacity: 0.5;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: var(--white);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .slide.active .slide-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .slide-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-content p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .slideshow-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .slide-btn {
+            background: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .slide-btn:hover {
+            background: var(--accent-gold);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .slide-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            opacity: 1;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* Enrolment Section */
+        .enrolment {
+            background: var(--accent-navy);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enrolment::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212,165,116,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .enrolment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .enrolment-info h2 {
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .enrolment-info > p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s ease;
+        }
+
+        .step.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .step-content p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .enrolment-contact {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            height: fit-content;
+        }
+
+        .contact-card h3 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-detail:last-of-type {
+            border-bottom: none;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .contact-value {
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .email-link {
+            color: var(--accent-gold);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-gold);
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            color: var(--white);
+            border-bottom-color: var(--white);
+        }
+
+        .enrol-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background: var(--accent-gold);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .enrol-btn:hover {
+            background: transparent;
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        /* International Students */
+        .international {
+            background: var(--bg-cream);
+            text-align: center;
+            padding: 4rem;
+        }
+
+        .international-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.8s ease;
+        }
+
+        .international-box.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .international-box h3 {
+            margin-bottom: 1rem;
+        }
+
+        .international-box p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .copyright {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .overview-grid,
+            .enrolment-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .slide {
+                min-width: 80%;
+            }
+
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .slide {
+                min-width: 100%;
+            }
+
+            .enrolment-grid {
+                gap: 3rem;
+            }
+        }
+
+        /* Parallax effect */
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg-cream) 100%);
+            z-index: -1;
+            transform: translateY(0);
+            will-change: transform;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">FRENZ School</a>
+        <ul class="nav-links">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#enrolment">Enrolment</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="parallax-bg"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle">Christchurch Campus</span>
+            <h1>Haeata <em>Community</em> Campus</h1>
+            <p class="hero-description">
+                The French-English unit at Haeata Community Campus is called L'Aurore. 
+                Frenz helped establish L'Aurore and the first class opened in 2025.
+            </p>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('overview').scrollIntoView({behavior: 'smooth'})">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="overview">
+        <div class="section-header">
+            <span class="section-tag">School Overview</span>
+            <h2>A unique learning environment in the heart of Christchurch</h2>
+        </div>
+
+        <div class="overview-grid">
+            <div class="overview-text">
+                <p>
+                    Haeata Community Campus is a publicly funded school in Christchurch's Aranui suburb, 
+                    just 10 minutes from downtown and a few minutes from New Brighton.
+                </p>
+                
+                <div class="highlight-box">
+                    <h4>Area School Advantage</h4>
+                    <p>Haeata is an area school, catering from new entrants to Year 12. The bilingual programme welcomes students from New Entrants to Year 8.</p>
+                </div>
+
+                <p>
+                    Haeata offers free school hot lunches to all students, eaten together in the cafeteria 
+                    during lunch break—similar to the French "cantine" tradition. Children may also bring 
+                    lunch from home if preferred.
+                </p>
+
+                <p>
+                    Built for 1200 students but currently home to around 650, Haeata provides ample space 
+                    to learn and grow in state-of-the-art new buildings.
+                </p>
+            </div>
+
+            <div class="overview-image">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop" alt="Haeata Campus Learning Environment">
+                <div class="image-caption">Modern learning spaces at Haeata</div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎭</div>
+                <h4>Arts & Culture</h4>
+                <p>Performing arts including music, drama, and dance are offered and funded by the school. A large auditorium hosts productions and cultural events.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚽</div>
+                <h4>Sports & Recreation</h4>
+                <p>Expansive grass playing fields, playground spaces for each age group, and a gymnasium ensure plenty of physical activity opportunities.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h4>Creative Studios</h4>
+                <p>Art Studio and Makers Studio (woodwork, etc.) available for teachers to book with their classes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌿</div>
+                <h4>Te Ao Māori</h4>
+                <p>All classes participate weekly in Kapa Haka sessions. The school operates under Te Ao Māori principles.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h4>Bilingual Structure</h4>
+                <p>NZ curriculum taught in French (50-60%) and English (40-50%) by bilingual teachers, developed by FRENZ volunteers.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h4>Experience</h4>
+                <p>Benefits from 30 years of FRENZ national experience and Christchurch French community networking since 2017.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery / Slideshow Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="gallery-header">
+            <span class="section-tag">Campus Life</span>
+            <h2>Explore our facilities</h2>
+        </div>
+
+        <div class="slideshow-container">
+            <div class="slideshow-wrapper" id="slideshowWrapper">
+                <div class="slide active">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=500&fit=crop" alt="Modern Classroom">
+                    <div class="slide-content">
+                        <h4>Modern Classrooms</h4>
+                        <p>State-of-the-art learning environments designed for bilingual education</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&h=500&fit=crop" alt="School Library">
+                    <div class="slide-content">
+                        <h4>Library Resources</h4>
+                        <p>Extensive French and English literature collections</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1564429238984-b3cd3a5ba0b4?w=800&h=500&fit=crop" alt="Sports Facilities">
+                    <div class="slide-content">
+                        <h4>Sports Fields</h4>
+                        <p>Expansive grounds for physical education and recreation</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=500&fit=crop" alt="Art Studio">
+                    <div class="slide-content">
+                        <h4>Art & Maker Studios</h4>
+                        <p>Creative spaces for hands-on learning and expression</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&h=500&fit=crop" alt="Cafeteria">
+                    <div class="slide-content">
+                        <h4>Shared Dining</h4>
+                        <p>Community cafeteria serving hot lunches daily</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slideshow-controls">
+                <button class="slide-btn" onclick="moveSlide(-1)">←</button>
+                <div class="slide-dots">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
+                    <span class="dot" onclick="goToSlide(3)"></span>
+                    <span class="dot" onclick="goToSlide(4)"></span>
+                </div>
+                <button class="slide-btn" onclick="moveSlide(1)">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrolment Section -->
+    <section id="enrolment" class="enrolment">
+        <div class="enrolment-grid">
+            <div class="enrolment-info">
+                <span class="section-tag" style="color: var(--accent-gold);">Enrolment Process</span>
+                <h2>Begin your journey</h2>
+                <p>
+                    Enrollments are open for citizens, permanent residents, and work visa holders. 
+                    Children from all over Christchurch can enrol at L'Aurore and start at any time 
+                    of the year—the special programme is not zoned.
+                </p>
+
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Express Interest</h4>
+                            <p>Contact us at francaisachch@gmail.com to advise your interest in enrolling your child.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Language Evaluation</h4>
+                            <p>The school will contact you to schedule a language evaluation for your children.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Receive Confirmation</h4>
+                            <p>Haeata will score your children's application against priority points and confirm acceptance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="enrolment-contact" id="contact">
+                <div class="contact-card">
+                    <h3>Contact Haeata</h3>
+                    
+                    <div class="contact-detail">
+                        <span class="contact-label">School Principal</span>
+                        <div class="contact-value">Peggy Burrows</div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <span class="contact-label">Frenz Representatives</span>
+                        <div class="contact-value">Marine & Team</div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <span class="contact-label">Email</span>
+                        <div class="contact-value">
+                            <a href="mailto:francaisachch@gmail.com" class="email-link">francaisachch@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <span class="contact-label">Location</span>
+                        <div class="contact-value">Aranui, Christchurch<br>10 min from downtown</div>
+                    </div>
+
+                    <a href="mailto:francaisachch@gmail.com" class="enrol-btn">Start Enrolment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- International Students -->
+    <section class="international">
+        <div class="international-box">
+            <h3>International Students Welcome</h3>
+            <p>
+                Haeata accepts international students. While the new process is being established, 
+                please contact us for pre-enrolment information and assistance with your application.
+            </p>
+            <a href="mailto:francaisachch@gmail.com" class="email-link">Contact for International Enrolment →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">FRENZ School</div>
+            <p class="footer-tagline">French-English Bilingual Education in New Zealand</p>
+            <div class="footer-links">
+                <a href="#overview">About</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#enrolment">Enrol</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="copyright">© 2025 FRENZ School Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Stagger animation for steps
+                    if (entry.target.classList.contains('step')) {
+                        const steps = document.querySelectorAll('.step');
+                        steps.forEach((step, index) => {
+                            setTimeout(() => {
+                                step.classList.add('visible');
+                            }, index * 200);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.section-header, .overview-text, .overview-image, .feature-card, .step, .international-box').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const wrapper = document.getElementById('slideshowWrapper');
+        let autoPlayInterval;
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Center the active slide
+            const slideWidth = slides[0].offsetWidth + 32; // including gap
+            const offset = (wrapper.parentElement.offsetWidth - slideWidth) / 2;
+            const translate = -currentSlide * slideWidth + offset;
+            wrapper.style.transform = `translateX(${translate}px)`;
+        }
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            updateSlide();
+            resetAutoPlay();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+            resetAutoPlay();
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => moveSlide(1), 5000);
+        }
+
+        // Touch/drag support for slideshow
+        let isDragging = false;
+        let startX;
+        let scrollLeft;
+
+        wrapper.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX - wrapper.offsetLeft;
+            scrollLeft = wrapper.scrollLeft;
+        });
+
+        wrapper.addEventListener('mouseleave', () => isDragging = false);
+        wrapper.addEventListener('mouseup', () => {
+            isDragging = false;
+            // Snap to nearest slide
+            const slideWidth = slides[0].offsetWidth + 32;
+            currentSlide = Math.round(Math.abs(parseInt(wrapper.style.transform.split('(')[1]) / slideWidth));
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+            updateSlide();
+        });
+
+        wrapper.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - wrapper.offsetLeft;
+            const walk = (x - startX) * 2;
+            wrapper.style.transform = `translateX(${scrollLeft + walk}px)`;
+        });
+
+        // Initialize slideshow
+        updateSlide();
+        resetAutoPlay();
+
+        // Parallax effect for hero background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.parallax-bg');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
