@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRENZ School - Bilingual Education New Zealand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* FRENZ Brand Colors */
+            --frenz-teal: #3A9B8F;
+            --frenz-teal-dark: #2C7A7B;
+            --frenz-teal-light: #E6FFFA;
+            --frenz-cream: #F7FAFA;
+            --accent-gold: #D69E2E;
+            --accent-coral: #ED8936;
+            --text-dark: #1A202C;
+            --text-medium: #4A5568;
+            --text-light: #718096;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* ============================================
+           SECTION TRANSITION EFFECTS
+           ============================================ */
+        section {
+            padding: 5.1rem 1.7rem; /* 6rem → 5.1rem (15% less) */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--frenz-teal-light), transparent);
+            margin: 0;
+        }
+
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 68px; /* 80px → 68px */
+        }
+
+        .wave-divider .shape-fill {
+            fill: var(--white);
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid var(--frenz-teal-light);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0.85rem 1.7rem; /* 1rem → 0.85rem, 2rem → 1.7rem */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.64rem; /* 0.75rem → 0.64rem */
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 42.5px; /* 50px → 42.5px */
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.275rem; /* 1.5rem → 1.275rem */
+            font-weight: 700;
+            color: var(--frenz-teal-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.125rem; /* 2.5rem → 2.125rem */
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.81rem; /* 0.95rem → 0.81rem */
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3.4px; /* -4px → -3.4px */
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--frenz-teal);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--frenz-teal-dark);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            margin-top: 68px; /* 80px → 68px */
+            min-height: 76.5vh; /* 90vh → 76.5vh */
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--frenz-cream) 0%, var(--frenz-teal-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -42.5%; /* -50% → -42.5% */
+            right: -17%; /* -20% → -17% */
+            width: 680px; /* 800px → 680px */
+            height: 680px;
+            background: radial-gradient(circle, rgba(58, 155, 143, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -25.5%; /* -30% → -25.5% */
+            left: -8.5%; /* -10% → -8.5% */
+            width: 510px; /* 600px → 510px */
+            height: 510px;
+            background: radial-gradient(circle, rgba(214, 158, 46, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3.4rem 1.7rem; /* 4rem → 3.4rem */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.4rem; /* 4rem → 3.4rem */
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 0.425rem 0.85rem; /* 0.5rem → 0.425rem */
+            background: rgba(58, 155, 143, 0.15);
+            color: var(--frenz-teal-dark);
+            font-weight: 600;
+            font-size: 0.74rem; /* 0.875rem → 0.74rem */
+            letter-spacing: 0.05em;
+            border-radius: 50px;
+            margin-bottom: 1.275rem; /* 1.5rem → 1.275rem */
+            text-transform: uppercase;
+            border: 1px solid rgba(58, 155, 143, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.4rem; /* 4rem → 3.4rem */
+            color: var(--frenz-teal-dark);
+            margin-bottom: 1.275rem; /* 1.5rem → 1.275rem */
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--frenz-teal);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 1.06rem; /* 1.25rem → 1.06rem */
+            color: var(--text-medium);
+            margin-bottom: 1.7rem; /* 2rem → 1.7rem */
+            line-height: 1.8;
+            max-width: 90%;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 0.85rem; /* 1rem → 0.85rem */
+        }
+
+        .btn {
+            padding: 0.85rem 2.125rem; /* 1rem → 0.85rem, 2.5rem → 2.125rem */
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            border: 2px solid transparent;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--frenz-teal);
+            color: white;
+            box-shadow: 0 4px 15px rgba(58, 155, 143, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--frenz-teal-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(58, 155, 143, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--frenz-teal-dark);
+            border-color: var(--frenz-teal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--frenz-teal);
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 17px; /* 20px → 17px */
+            box-shadow: 0 21.25px 42.5px -10.2px rgba(58, 155, 143, 0.2);
+            transition: var(--transition);
+            border: 3.4px solid white; /* 4px → 3.4px */
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .floating-badge {
+            position: absolute;
+            bottom: 1.7rem; /* 2rem → 1.7rem */
+            left: -1.7rem; /* -2rem → -1.7rem */
+            background: white;
+            padding: 1.275rem; /* 1.5rem → 1.275rem */
+            border-radius: 13.6px; /* 16px → 13.6px */
+            box-shadow: 0 8.5px 34px rgba(58, 155, 143, 0.15);
+            animation: float 3s ease-in-out infinite;
+            border: 1.7px solid var(--frenz-teal-light); /* 2px → 1.7px */
+        }
+
+        .floating-badge .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.125rem; /* 2.5rem → 2.125rem */
+            color: var(--frenz-teal);
+            font-weight: 700;
+        }
+
+        .floating-badge .text {
+            font-size: 0.74rem; /* 0.875rem → 0.74rem */
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* ============================================
+           SECTION STYLES
+           ============================================ */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 595px; /* 700px → 595px */
+            margin: 0 auto 3.4rem; /* 4rem → 3.4rem */
+        }
+
+        .section-label {
+            color: var(--frenz-teal);
+            font-weight: 600;
+            font-size: 0.74rem; /* 0.875rem → 0.74rem */
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.85rem; /* 1rem → 0.85rem */
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.55rem; /* 3rem → 2.55rem */
+            color: var(--frenz-teal-dark);
+            margin-bottom: 1.275rem; /* 1.5rem → 1.275rem */
+        }
+
+        .section-subtitle {
+            color: var(--text-medium);
+            font-size: 0.96rem; /* 1.125rem → 0.96rem */
+        }
+
+        /* ============================================
+           WHO WE ARE
+           ============================================ */
+        .who-we-are {
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.7rem; /* 2rem → 1.7rem */
+        }
+
+        .feature-card {
+            padding: 2.125rem; /* 2.5rem → 2.125rem */
+            background: var(--frenz-cream);
+            border-radius: 17px; /* 20px → 17px */
+            transition: var(--transition);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3.4px; /* 4px → 3.4px */
+            background: var(--frenz-teal);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4.25px); /* -5px → -4.25px */
+            box-shadow: 0 17px 34px rgba(58, 155, 143, 0.1);
+            border-color: var(--frenz-teal-light);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 51px; /* 60px → 51px */
+            height: 51px;
+            background: var(--frenz-teal);
+            border-radius: 13.6px; /* 16px → 13.6px */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.275rem; /* 1.5rem → 1.275rem */
+            color: white;
+            font-size: 1.275rem; /* 1.5rem → 1.275rem */
+            box-shadow: 0 3.4px 10.2px rgba(58, 155, 143, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.275rem; /* 1.5rem → 1.275rem */
+            color: var(--frenz-teal-dark);
+            margin-bottom: 0.85rem; /* 1rem → 0.85rem */
+        }
+
+        .feature-card p {
+            color: var(--text-medium);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+     BENEFITS SECTION - UPDATED STYLES
+     ============================================ */
+.benefits {
+    background: var(--frenz-teal-dark);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Image with Blur Effect */
+.benefits-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80') center/cover no-repeat;
+    filter: blur(8px);
+    transform: scale(1.1);
+    z-index: 0;
+}
+
+/* Dark Overlay for Text Readability */
+.benefits-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(44, 122, 123, 0.92) 0%, rgba(26, 54, 93, 0.88) 60%);
+    z-index: 0;
+}
+
+/* Pattern Overlay (optional decorative element) */
+.benefits::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
+    opacity: 0.5;
+    z-index: 2;
+}
+
+.benefits .section-title {
+    color: white;
+}
+
+.benefits .section-label {
+    color: var(--accent-gold);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.55rem;
+    position: relative;
+    z-index: 3;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 1.275rem;
+    padding: 1.7rem;
+    background: rgba(255,255,255,0.08);
+    border-radius: 13.6px;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.benefit-item:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateX(8.5px);
+    border-color: rgba(214, 158, 46, 0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Modern Icon Styles */
+.benefit-icon {
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #F6AD55 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(214, 158, 46, 0.4);
+    transition: var(--transition);
+}
+
+.benefit-item:hover .benefit-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(214, 158, 46, 0.6);
+}
+
+.benefit-icon i {
+    font-size: 1.4rem;
+    color: white;
+}
+
+.benefit-content h3 {
+    font-size: 1.275rem;
+    margin-bottom: 0.425rem;
+    color: white;
+    font-weight: 600;
+}
+
+.benefit-content p {
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+        /* ============================================
+           PROGRAMS SECTION
+           ============================================ */
+        .programs {
+            background: var(--frenz-cream);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.7rem; /* 2rem → 1.7rem */
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 20.4px; /* 24px → 20.4px */
+            overflow: hidden;
+            box-shadow: 0 3.4px 5.1px rgba(58, 155, 143, 0.05);
+            transition: var(--transition);
+            border: 1px solid var(--frenz-teal-light);
+        }
+
+        .program-card:hover {
+            transform: translateY(-8.5px); /* -10px → -8.5px */
+            box-shadow: 0 25.5px 51px rgba(58, 155, 143, 0.15);
+            border-color: var(--frenz-teal);
+        }
+
+        .program-image {
+            height: 204px; /* 240px → 204px */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .program-card:hover .program-image img {
+            transform: scale(1.1);
+        }
+
+        .program-age {
+            position: absolute;
+            top: 0.85rem; /* 1rem → 0.85rem */
+            right: 0.85rem;
+            background: var(--frenz-teal);
+            color: white;
+            padding: 0.425rem 0.85rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.74rem;
+            box-shadow: 0 3.4px 10.2px rgba(0,0,0,0.1);
+        }
+
+        .program-content {
+            padding: 1.7rem; /* 2rem → 1.7rem */
+        }
+
+        .program-content h3 {
+            font-size: 1.275rem; /* 1.5rem → 1.275rem */
+            color: var(--frenz-teal-dark);
+            margin-bottom: 0.85rem;
+        }
+
+        .program-content p {
+            color: var(--text-medium);
+            margin-bottom: 1.275rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .program-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.425rem;
+            color: var(--frenz-teal);
+            font-weight: 600;
+            font-size: 0.77rem;
+        }
+
+        /* ============================================
+           TESTIMONIALS - WITH PHOTOS
+           ============================================ */
+        .testimonials {
+            background: white;
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 170px; /* 200px → 170px */
+            background: linear-gradient(180deg, var(--frenz-teal-light) 0%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.7rem; /* 2rem → 1.7rem */
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            padding: 2.125rem; /* 2.5rem → 2.125rem */
+            background: var(--frenz-cream);
+            border-radius: 17px; /* 20px → 17px */
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid var(--frenz-teal-light);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 8.5px 25.5px rgba(58, 155, 143, 0.15);
+            transform: translateY(-6.8px); /* -8px → -6.8px */
+            border-color: var(--frenz-teal);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 5.1rem; /* 6rem → 5.1rem */
+            color: var(--frenz-teal);
+            opacity: 0.15;
+            position: absolute;
+            top: -8.5px;
+            left: 17px; /* 20px → 17px */
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 0.96rem; /* 1.125rem → 0.96rem */
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1.275rem; /* 1.5rem → 1.275rem */
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.06rem; /* 1.25rem → 1.06rem */
+            padding-top: 1.275rem;
+            border-top: 1px solid var(--frenz-teal-light);
+        }
+
+        .author-avatar {
+            width: 59.5px; /* 70px → 59.5px */
+            height: 59.5px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2.55px solid var(--frenz-teal);
+            box-shadow: 0 3.4px 12.75px rgba(58, 155, 143, 0.2);
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .testimonial-card:hover .author-avatar img {
+            transform: scale(1.1);
+        }
+
+        .author-info h4 {
+            color: var(--frenz-teal-dark);
+            font-size: 0.94rem; /* 1.1rem → 0.94rem */
+            margin-bottom: 0.21rem;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.77rem; /* 0.9rem → 0.77rem */
+        }
+
+        .author-rating {
+            display: flex;
+            gap: 2.55px;
+            margin-top: 0.425rem;
+        }
+
+        .author-rating i {
+            color: var(--accent-gold);
+            font-size: 0.72rem;
+        }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta {
+            background: linear-gradient(135deg, var(--frenz-teal) 0%, var(--frenz-teal-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 5.1rem 1.7rem; /* 6rem → 5.1rem */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -42.5%;
+            left: -42.5%;
+            width: 170%;
+            height: 170%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 595px; /* 700px → 595px */
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.55rem; /* 3rem → 2.55rem */
+            margin-bottom: 1.275rem;
+        }
+
+        .cta p {
+            font-size: 1.06rem; /* 1.25rem → 1.06rem */
+            opacity: 0.95;
+            margin-bottom: 1.7rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--frenz-teal-dark);
+            box-shadow: 0 3.4px 12.75px rgba(0,0,0,0.1);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-1.7px);
+            box-shadow: 0 5.1px 17px rgba(0,0,0,0.2);
+            background: var(--frenz-teal-light);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background: #1A202C;
+            color: white;
+            padding: 3.4rem 1.7rem 1.7rem; /* 4rem → 3.4rem */
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3.4rem; /* 4rem → 3.4rem */
+            margin-bottom: 2.55rem; /* 3rem → 2.55rem */
+        }
+
+        .footer-brand img {
+            height: 51px; /* 60px → 51px */
+            margin-bottom: 0.85rem;
+            background: white;
+            padding: 0.425rem;
+            border-radius: 6.8px;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 1.275rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 1.275rem;
+            font-size: 0.94rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.64rem; /* 0.75rem → 0.64rem */
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--frenz-teal);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.7rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.77rem;
+        }
+
+        /* ============================================
+           SCROLL ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25.5px); /* 30px → 25.5px */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8.5px); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-42.5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(42.5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(34px); /* 40px → 34px */
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-42.5px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(42.5px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+        .delay-500 { transition-delay: 0.5s; }
+        .delay-600 { transition-delay: 0.6s; }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2.55rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.55rem;
+            }
+            
+            .features-grid,
+            .programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .benefits-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.125rem;
+            }
+            
+            .features-grid,
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.7rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="https://static.wixstatic.com/media/0fd733_d2a2bd392a1e44df90bc8f7e1c0b878c~mv2.png" alt="FRENZ Logo">
+                <span class="logo-text">FRENZ School</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-label">Since 1994</span>
+                <h1>Supporting <span>French-English</span> Education in New Zealand</h1>
+                <p class="hero-subtitle">Frenz is a not-for-profit organization helping public schools across New Zealand open and operate quality French-English bilingual programs. The bilingual units are fully integrated within each school, with students participating in all aspects of school life.</p>
+                <div class="hero-cta">
+                    <a href="#programs" class="btn btn-primary">Explore Programs</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://static.wixstatic.com/media/03686e_6e809920ff5441a7bcfe7709fdd64cde~mv2.jpg" alt="Children playing at FRENZ School">
+                <div class="floating-badge">
+                    <div class="number">30+</div>
+                    <div class="text">Years of Excellence</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Are -->
+    <section class="who-we-are" id="about">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-label">Who We Are</span>
+                <h2 class="section-title">Empowering Bilingual Education</h2>
+                <p class="section-subtitle">Bilingual education offers children the opportunity to become proficient in all academic subjects in both languages.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card scroll-reveal delay-100">
+                    <div class="feature-icon">📚</div>
+                    <h3>Support</h3>
+                    <p>Our volunteers are parents of children in the bilingual programmes. They support your children by helping in the library, fundraising and finding stagiaires to come help teachers in the classroom.</p>
+                </div>
+                
+                <div class="feature-card scroll-reveal delay-200">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Partnership</h3>
+                    <p>We provide schools with all the French-language learning resources, a French library onsite, financial support, and enrollment process support.</p>
+                </div>
+                
+                <div class="feature-card scroll-reveal delay-300">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Seal of Quality</h3>
+                    <p>We help schools apply and maintain the LabelFrancÉducation, a seal of quality awarded by the French Ministry of Education that validates the French-language skills of children.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <!-- ============================================
+     BENEFITS SECTION - UPDATED
+     ============================================ -->
+<section class="benefits" id="benefits">
+    <!-- Background Image Overlay -->
+    <div class="benefits-bg-image"></div>
+    <div class="benefits-overlay"></div>
+    
+    <div class="wave-divider" style="top: -68px;">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill" fill="#2C7A7B"></path>
+        </svg>
+    </div>
+    <div class="container">
+        <div class="section-header scroll-reveal">
+            <span class="section-label">Why Choose Us</span>
+            <h2 class="section-title">The Benefits of Bilingual Education</h2>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-item scroll-reveal-left delay-100">
+                <div class="benefit-icon">
+                    <i class="fas fa-bridge-water"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Smooth Transition</h3>
+                    <p>Bilingual education provides children who do not speak English a smooth transition to your new life in New Zealand. It is easier and quicker for them to make friends because there are no language barriers.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item scroll-reveal-right delay-200">
+                <div class="benefit-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Native Proficiency</h3>
+                    <p>With bilingual education, your children will have native speaker proficiency in all academic subjects in both French and English. It's more than just maintaining a minority language.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item scroll-reveal-left delay-300">
+                <div class="benefit-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Academic Advantage</h3>
+                    <p>Studies in language development show that young children with exposure to more than one language at an early age are at a distinct advantage throughout life.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item scroll-reveal-right delay-400">
+                <div class="benefit-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Lifelong Learning</h3>
+                    <p>The more that children can take advantage of new concepts, the more in tune their brains will be to all learning throughout life. Some studies show that the brain ages more slowly in bilingual adults.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item scroll-reveal-left delay-500">
+                <div class="benefit-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Empathy & Social Skills</h3>
+                    <p>Bilingual children have demonstrated a head start in tests of perspective-taking and theory of mind - both fundamental emotional and social skills.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item scroll-reveal-right delay-600">
+                <div class="benefit-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Community</h3>
+                    <p>FRENZ is a great community of families who have chosen to immigrate to NZ. We have a lot in common, and families have met some of their best friends in the FRENZ community.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Programs -->
+    <section class="programs" id="programs">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-label">Our Programs</span>
+                <h2 class="section-title">French Programmes Across New Zealand</h2>
+                <p class="section-subtitle">From early childhood through intermediate, we offer comprehensive bilingual education pathways.</p>
+            </div>
+            
+            <div class="programs-grid">
+                <div class="program-card scroll-reveal delay-100">
+                    <div class="program-image">
+                        <img src="https://static.wixstatic.com/media/03686e_827127e2acf141168fcf16124e130043~mv2.jpg" alt="Early childhood education">
+                        <span class="program-age">0-5 Years</span>
+                    </div>
+                    <div class="program-content">
+                        <h3>Les Petits Lascars</h3>
+                        <p>Weekly French playgroup in Auckland. These playgroups provide parents and children a place to play, learn and socialise in a 100% French environment.</p>
+                        <div class="program-meta">📍 Auckland</div>
+                    </div>
+                </div>
+                
+                <div class="program-card scroll-reveal delay-200">
+                    <div class="program-image">
+                        <img src="https://static.wixstatic.com/media/03686e_d118ac39b7484d87aadc802680fcbb39~mv2.jpg" alt="Primary school children">
+                        <span class="program-age">5-11 Years</span>
+                    </div>
+                    <div class="program-content">
+                        <h3>Primary Bilingual Units</h3>
+                        <p>Frenz supports the bilingual programmes of 5 public primary schools across New Zealand. Each school provides children with 18 hr/week of education in French for 6 years.</p>
+                        <div class="program-meta">📍 Auckland, Wellington, Christchurch</div>
+                    </div>
+                </div>
+                
+                <div class="program-card scroll-reveal delay-300">
+                    <div class="program-image">
+                        <img src="https://static.wixstatic.com/media/0fd733_7a6cc6073c9d46ba81cb3cdaec4ec6f7~mv2.jpg" alt="Intermediate school">
+                        <span class="program-age">11-13 Years</span>
+                    </div>
+                    <div class="program-content">
+                        <h3>Intermediate Programmes</h3>
+                        <p>French-English bilingual programme is offered in Kowhai Intermediate School in Auckland Central and Haeata Community Campus in Christchurch for Years 7 & 8.</p>
+                        <div class="program-meta">📍 Auckland & Christchurch</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials - WITH PHOTOS -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Families Say</h2>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card scroll-reveal-left delay-100">
+                    <p class="testimonial-text">We still see the benefits of our children's bilingual education with FRENZ now that they are at intermediate and highschool. Their literacy level is much higher than expected and their teachers have mentioned this is likely due to the bilingual background.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Elodie">
+                        </div>
+                        <div class="author-info">
+                            <h4>Elodie</h4>
+                            <p>Former parent at La Découverte</p>
+                            <div class="author-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card scroll-reveal-right delay-200">
+                    <p class="testimonial-text">Of course it's about the benefits for the children, but FRENZ is also a great community of families who have chosen to immigrate to NZ. So at baseline, we have a lot in common, and we have met some of our best friends in the FRENZ community!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" alt="Agathe">
+                        </div>
+                        <div class="author-info">
+                            <h4>Agathe</h4>
+                            <p>FRENZ Parent</p>
+                            <div class="author-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card scroll-reveal-left delay-300">
+                    <p class="testimonial-text">The multilevel aspect of the FRENZ class is challenging in some aspects, but it's also really enriching when you see the mentorship and the mana some older children develop in the eyes of the younger learners.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face" alt="Marie">
+                        </div>
+                        <div class="author-info">
+                            <h4>Marie</h4>
+                            <p>Parent at L'Archipel</p>
+                            <div class="author-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card scroll-reveal-right delay-400">
+                    <p class="testimonial-text">It's hard brain gym switching languages all the time, therefore it must be good for you!! The teachers are passionate and always find time for parents and children after school hours.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1554151228-14d9def656ec?w=150&h=150&fit=crop&crop=face" alt="Sophie">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sophie</h4>
+                            <p>Parent at L'Étoile du Nord</p>
+                            <div class="author-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="cta-content scroll-reveal-scale">
+            <h2>Give Your Child the World</h2>
+            <p>Join our community of families dedicated to bilingual education and multicultural understanding. Open up their world today!</p>
+            <a href="mailto:contact@frenzschool.org.nz" class="btn btn-white">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="https://static.wixstatic.com/media/0fd733_d2a2bd392a1e44df90bc8f7e1c0b878c~mv2.png" alt="FRENZ Logo">
+                    <p>Frenz is a not-for-profit organization helping public schools across New Zealand open and operate quality French-English bilingual programs since 1994.</p>
+                    <p>Follow our activity via our Facebook page!</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#">LabelFrancÉducation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Our Schools</h4>
+                    <ul>
+                        <li><a href="#">L'Archipel (Auckland)</a></li>
+                        <li><a href="#">L'Étoile du Nord</a></li>
+                        <li><a href="#">La Découverte (Christchurch)</a></li>
+                        <li><a href="#">L'Aurore (Christchurch)</a></li>
+                        <li><a href="#">Kowhai Intermediate</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:contact@frenzschool.org.nz">contact@frenzschool.org.nz</a></li>
+                        <li><a href="https://www.facebook.com/FrenzSchool" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.frenzschool.org.nz">www.frenzschool.org.nz</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 FRENZ School Inc. All rights reserved.</p>
+                <p>Making bilingual education a reality in NZ since 1994</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for star icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        // Enhanced Scroll Reveal Animation with staggered effects
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -85px 0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect with color change
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 85) {
+                nav.style.boxShadow = '0 4px 20px rgba(58, 155, 143, 0.15)';
+                nav.style.background = 'rgba(255, 255, 255, 0.99)';
+            } else {
+                nav.style.boxShadow = 'none';
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+            }
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.scrollY;
+            if (scrolled < 680) {
+                hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to floating badge on hover
+        const floatingBadge = document.querySelector('.floating-badge');
+        floatingBadge.addEventListener('mouseenter', () => {
+            floatingBadge.style.animationPlayState = 'paused';
+        });
+        floatingBadge.addEventListener('mouseleave', () => {
+            floatingBadge.style.animationPlayState = 'running';
+        });
+    </script>
+</body>
+</html>
