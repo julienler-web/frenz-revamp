@@ -1,0 +1,1940 @@
+{
+  "name": "Frenz School",
+  "slug": "frenz-school",
+  "version": "1.0.0",
+  "description": "French-English Bilingual Education design set with organic shapes, warm terracotta palette, and elegant typography",
+  "author": "Frenz School Design Team",
+  "requires_oxygen": "6.0.0",
+  "global_settings": {
+    "colors": {
+      "primary": "#C65D3B",
+      "primary_light": "#E07A5F",
+      "primary_dark": "#A84A2C",
+      "secondary": "#8A9A5B",
+      "secondary_light": "#A3B574",
+      "secondary_dark": "#6E7D48",
+      "cream": "#FDF8F3",
+      "sand": "#F5EDE4",
+      "charcoal": "#2C2C2C",
+      "charcoal_light": "#4A4A4A",
+      "white": "#FFFFFF",
+      "text_primary": "#2C2C2C",
+      "text_secondary": "#6B6B6B",
+      "text_muted": "#9A9A9A",
+      "border": "rgba(198, 93, 59, 0.1)",
+      "border_light": "rgba(198, 93, 59, 0.05)",
+      "overlay": "rgba(198, 93, 59, 0.2)",
+      "gradient_primary": "linear-gradient(135deg, #C65D3B 0%, #E07A5F 100%)",
+      "gradient_hero": "linear-gradient(135deg, #FDF8F3 0%, #F5EDE4 50%, #FDF8F3 100%)"
+    },
+    "typography": {
+      "font_primary": {
+        "family": "Playfair Display",
+        "weights": [
+          400,
+          500,
+          600,
+          700
+        ],
+        "styles": [
+          "normal",
+          "italic"
+        ],
+        "fallback": "serif"
+      },
+      "font_secondary": {
+        "family": "Inter",
+        "weights": [
+          300,
+          400,
+          500,
+          600
+        ],
+        "fallback": "sans-serif"
+      },
+      "font_body": "Inter",
+      "font_headings": "Playfair Display",
+      "base_size": "16px",
+      "line_height": 1.6,
+      "letter_spacing": "-0.01em"
+    },
+    "spacing": {
+      "section_padding_y": "96px",
+      "section_padding_x": "24px",
+      "container_max_width": "1280px",
+      "container_padding": "24px",
+      "grid_gap": "32px",
+      "card_padding": "32px",
+      "card_radius": "24px",
+      "button_radius": "9999px",
+      "button_padding": "16px 32px",
+      "element_gap": "16px"
+    },
+    "effects": {
+      "transition_default": "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+      "transition_fast": "all 0.3s ease",
+      "shadow_card": "0 10px 30px rgba(0,0,0,0.05)",
+      "shadow_card_hover": "0 20px 40px rgba(198, 93, 59, 0.1)",
+      "shadow_button": "0 10px 30px rgba(198, 93, 59, 0.3)",
+      "blur_backdrop": "blur(10px)"
+    },
+    "breakpoints": {
+      "desktop": "1280px",
+      "tablet_landscape": "1199px",
+      "tablet_portrait": "1023px",
+      "phone_landscape": "767px",
+      "phone_portrait": "479px"
+    }
+  },
+  "variables": {
+    "color_variables": [
+      {
+        "name": "terracotta",
+        "value": "#C65D3B",
+        "type": "color"
+      },
+      {
+        "name": "terracotta-light",
+        "value": "#E07A5F",
+        "type": "color"
+      },
+      {
+        "name": "terracotta-dark",
+        "value": "#A84A2C",
+        "type": "color"
+      },
+      {
+        "name": "sage",
+        "value": "#8A9A5B",
+        "type": "color"
+      },
+      {
+        "name": "sage-light",
+        "value": "#A3B574",
+        "type": "color"
+      },
+      {
+        "name": "cream",
+        "value": "#FDF8F3",
+        "type": "color"
+      },
+      {
+        "name": "sand",
+        "value": "#F5EDE4",
+        "type": "color"
+      },
+      {
+        "name": "charcoal",
+        "value": "#2C2C2C",
+        "type": "color"
+      },
+      {
+        "name": "charcoal-light",
+        "value": "#4A4A4A",
+        "type": "color"
+      },
+      {
+        "name": "white",
+        "value": "#FFFFFF",
+        "type": "color"
+      }
+    ],
+    "spacing_variables": [
+      {
+        "name": "section-py",
+        "value": "96px",
+        "type": "unit"
+      },
+      {
+        "name": "section-px",
+        "value": "24px",
+        "type": "unit"
+      },
+      {
+        "name": "container-max",
+        "value": "1280px",
+        "type": "unit"
+      },
+      {
+        "name": "container-padding",
+        "value": "24px",
+        "type": "unit"
+      },
+      {
+        "name": "grid-gap",
+        "value": "32px",
+        "type": "unit"
+      },
+      {
+        "name": "card-padding",
+        "value": "32px",
+        "type": "unit"
+      },
+      {
+        "name": "card-radius",
+        "value": "24px",
+        "type": "unit"
+      },
+      {
+        "name": "btn-radius",
+        "value": "9999px",
+        "type": "unit"
+      },
+      {
+        "name": "btn-padding",
+        "value": "16px 32px",
+        "type": "unit"
+      }
+    ],
+    "typography_variables": [
+      {
+        "name": "font-serif",
+        "value": "'Playfair Display', serif",
+        "type": "font"
+      },
+      {
+        "name": "font-sans",
+        "value": "'Inter', sans-serif",
+        "type": "font"
+      },
+      {
+        "name": "text-base",
+        "value": "16px",
+        "type": "unit"
+      },
+      {
+        "name": "text-lg",
+        "value": "18px",
+        "type": "unit"
+      },
+      {
+        "name": "text-xl",
+        "value": "20px",
+        "type": "unit"
+      },
+      {
+        "name": "text-2xl",
+        "value": "24px",
+        "type": "unit"
+      },
+      {
+        "name": "text-3xl",
+        "value": "30px",
+        "type": "unit"
+      },
+      {
+        "name": "text-4xl",
+        "value": "36px",
+        "type": "unit"
+      },
+      {
+        "name": "text-5xl",
+        "value": "48px",
+        "type": "unit"
+      },
+      {
+        "name": "text-6xl",
+        "value": "60px",
+        "type": "unit"
+      },
+      {
+        "name": "text-7xl",
+        "value": "72px",
+        "type": "unit"
+      }
+    ]
+  },
+  "selectors": [
+    {
+      "name": "h1",
+      "selector": "h1",
+      "styles": {
+        "font-family": "var(--font-serif)",
+        "font-size": "var(--text-5xl)",
+        "font-weight": "700",
+        "line-height": "1.1",
+        "color": "var(--charcoal)",
+        "letter-spacing": "-0.02em"
+      }
+    },
+    {
+      "name": "h2",
+      "selector": "h2",
+      "styles": {
+        "font-family": "var(--font-serif)",
+        "font-size": "var(--text-4xl)",
+        "font-weight": "700",
+        "line-height": "1.2",
+        "color": "var(--charcoal)",
+        "letter-spacing": "-0.01em"
+      }
+    },
+    {
+      "name": "h3",
+      "selector": "h3",
+      "styles": {
+        "font-family": "var(--font-serif)",
+        "font-size": "var(--text-3xl)",
+        "font-weight": "600",
+        "line-height": "1.3",
+        "color": "var(--charcoal)"
+      }
+    },
+    {
+      "name": "body",
+      "selector": "body",
+      "styles": {
+        "font-family": "var(--font-sans)",
+        "font-size": "var(--text-base)",
+        "line-height": "1.6",
+        "color": "var(--charcoal)",
+        "background-color": "var(--cream)"
+      }
+    },
+    {
+      "name": "section-tag",
+      "selector": ".section-tag",
+      "styles": {
+        "color": "var(--terracotta)",
+        "font-weight": "500",
+        "letter-spacing": "0.2em",
+        "text-transform": "uppercase",
+        "font-size": "0.875rem"
+      }
+    },
+    {
+      "name": "btn-organic",
+      "selector": ".btn-organic",
+      "styles": {
+        "background": "var(--terracotta)",
+        "color": "white",
+        "padding": "var(--btn-padding)",
+        "border-radius": "var(--btn-radius)",
+        "font-weight": "500",
+        "transition": "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+        "position": "relative",
+        "overflow": "hidden"
+      },
+      "hover": {
+        "background": "var(--terracotta-light)",
+        "transform": "translateY(-2px)",
+        "box-shadow": "0 10px 30px rgba(198, 93, 59, 0.3)"
+      }
+    },
+    {
+      "name": "btn-outline-organic",
+      "selector": ".btn-outline-organic",
+      "styles": {
+        "border": "2px solid var(--terracotta)",
+        "color": "var(--terracotta)",
+        "padding": "var(--btn-padding)",
+        "border-radius": "var(--btn-radius)",
+        "font-weight": "500",
+        "transition": "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+      },
+      "hover": {
+        "background": "var(--terracotta)",
+        "color": "white",
+        "transform": "translateY(-2px)"
+      }
+    },
+    {
+      "name": "organic-card",
+      "selector": ".organic-card",
+      "styles": {
+        "background": "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(253,248,243,0.9) 100%)",
+        "backdrop-filter": "blur(10px)",
+        "border": "1px solid rgba(198, 93, 59, 0.1)",
+        "border-radius": "var(--card-radius)",
+        "padding": "var(--card-padding)",
+        "transition": "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+      },
+      "hover": {
+        "transform": "translateY(-8px)",
+        "box-shadow": "0 20px 40px rgba(198, 93, 59, 0.1)"
+      }
+    },
+    {
+      "name": "age-card",
+      "selector": ".age-card",
+      "styles": {
+        "background": "white",
+        "border-radius": "2rem",
+        "overflow": "hidden",
+        "box-shadow": "0 10px 30px rgba(0,0,0,0.05)",
+        "transition": "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+      },
+      "hover": {
+        "transform": "translateY(-10px)",
+        "box-shadow": "0 30px 60px rgba(198, 93, 59, 0.15)"
+      }
+    },
+    {
+      "name": "benefit-icon",
+      "selector": ".benefit-icon",
+      "styles": {
+        "width": "64px",
+        "height": "64px",
+        "background": "linear-gradient(135deg, rgba(198, 93, 59, 0.1) 0%, rgba(138, 154, 91, 0.1) 100%)",
+        "border-radius": "20px",
+        "display": "flex",
+        "align-items": "center",
+        "justify-content": "center",
+        "color": "var(--terracotta)",
+        "transition": "all 0.3s ease"
+      }
+    },
+    {
+      "name": "stats-number",
+      "selector": ".stats-number",
+      "styles": {
+        "font-family": "var(--font-serif)",
+        "font-size": "4rem",
+        "font-weight": "700",
+        "color": "var(--terracotta)",
+        "line-height": "1"
+      }
+    },
+    {
+      "name": "blob-shape",
+      "selector": ".blob-shape",
+      "styles": {
+        "border-radius": "60% 40% 30% 70% / 60% 30% 70% 40%",
+        "animation": "morph 8s ease-in-out infinite"
+      }
+    },
+    {
+      "name": "float-animation",
+      "selector": ".float-animation",
+      "styles": {
+        "animation": "float 6s ease-in-out infinite"
+      }
+    }
+  ],
+  "keyframes": [
+    {
+      "name": "morph",
+      "frames": {
+        "0%": {
+          "border-radius": "60% 40% 30% 70% / 60% 30% 70% 40%"
+        },
+        "50%": {
+          "border-radius": "30% 60% 70% 40% / 50% 60% 30% 60%"
+        },
+        "100%": {
+          "border-radius": "60% 40% 30% 70% / 60% 30% 70% 40%"
+        }
+      }
+    },
+    {
+      "name": "float",
+      "frames": {
+        "0%, 100%": {
+          "transform": "translateY(0px)"
+        },
+        "50%": {
+          "transform": "translateY(-20px)"
+        }
+      }
+    },
+    {
+      "name": "bounce",
+      "frames": {
+        "0%, 20%, 50%, 80%, 100%": {
+          "transform": "translateY(0)"
+        },
+        "40%": {
+          "transform": "translateY(-10px)"
+        },
+        "60%": {
+          "transform": "translateY(-5px)"
+        }
+      }
+    }
+  ],
+  "pages": [
+    {
+      "id": "home",
+      "title": "Home",
+      "slug": "home",
+      "template": "default",
+      "sections": [
+        "hero",
+        "about",
+        "benefits",
+        "programmes",
+        "locations",
+        "cta"
+      ],
+      "meta": {
+        "description": "Frenz School - French-English Bilingual Education in New Zealand since 1994",
+        "is_homepage": true
+      }
+    },
+    {
+      "id": "about",
+      "title": "About Us",
+      "slug": "about",
+      "template": "default",
+      "sections": [
+        "page-header",
+        "about-content",
+        "team",
+        "history"
+      ],
+      "meta": {
+        "description": "Learn about Frenz School's mission and history supporting bilingual education since 1994"
+      }
+    },
+    {
+      "id": "programmes",
+      "title": "Our Programmes",
+      "slug": "programmes",
+      "template": "default",
+      "sections": [
+        "page-header",
+        "programmes-overview",
+        "playgroup",
+        "primary",
+        "intermediate"
+      ],
+      "meta": {
+        "description": "Explore our French-English bilingual programmes from playgroup to intermediate"
+      }
+    },
+    {
+      "id": "locations",
+      "title": "Locations",
+      "slug": "locations",
+      "template": "default",
+      "sections": [
+        "page-header",
+        "locations-map",
+        "school-list",
+        "contact-info"
+      ],
+      "meta": {
+        "description": "Find a Frenz School bilingual programme near you in Auckland, Wellington, or Christchurch"
+      }
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "slug": "contact",
+      "template": "default",
+      "sections": [
+        "page-header",
+        "contact-form",
+        "contact-info",
+        "faq"
+      ],
+      "meta": {
+        "description": "Get in touch with Frenz School for enrolment enquiries and information"
+      }
+    }
+  ],
+  "templates": [
+    {
+      "id": "default",
+      "name": "Default Template",
+      "type": "page",
+      "structure": {
+        "header": "main-header",
+        "footer": "main-footer",
+        "inner_content": true
+      }
+    },
+    {
+      "id": "full-width",
+      "name": "Full Width Template",
+      "type": "page",
+      "structure": {
+        "header": "main-header",
+        "footer": "main-footer",
+        "inner_content": true,
+        "full_width": true
+      }
+    },
+    {
+      "id": "blog-archive",
+      "name": "Blog Archive",
+      "type": "archive",
+      "applies_to": "post",
+      "structure": {
+        "header": "main-header",
+        "footer": "main-footer",
+        "content": "blog-archive-content"
+      }
+    },
+    {
+      "id": "blog-single",
+      "name": "Blog Single",
+      "type": "single",
+      "applies_to": "post",
+      "structure": {
+        "header": "main-header",
+        "footer": "main-footer",
+        "content": "blog-single-content"
+      }
+    }
+  ],
+  "headers": [
+    {
+      "id": "main-header",
+      "name": "Main Header",
+      "structure": {
+        "type": "nav",
+        "classes": [
+          "fixed",
+          "w-full",
+          "z-40",
+          "transition-all",
+          "duration-500"
+        ],
+        "style": {
+          "background": "transparent",
+          "padding": "16px 0"
+        },
+        "scroll_behavior": {
+          "trigger": "100px",
+          "add_classes": [
+            "bg-white/90",
+            "backdrop-blur-md",
+            "shadow-sm"
+          ]
+        },
+        "content": {
+          "logo": {
+            "text": "Frenz School",
+            "font": "var(--font-serif)",
+            "size": "24px",
+            "weight": "700",
+            "color": "var(--terracotta)",
+            "tracking": "tight"
+          },
+          "navigation": {
+            "items": [
+              {
+                "label": "About",
+                "url": "#about",
+                "style": "text-sm font-medium"
+              },
+              {
+                "label": "Why Bilingual",
+                "url": "#benefits",
+                "style": "text-sm font-medium"
+              },
+              {
+                "label": "Programmes",
+                "url": "#programmes",
+                "style": "text-sm font-medium"
+              },
+              {
+                "label": "Locations",
+                "url": "#locations",
+                "style": "text-sm font-medium"
+              },
+              {
+                "label": "Contact",
+                "url": "#contact",
+                "style": "text-sm font-medium"
+              }
+            ],
+            "style": {
+              "color": "#374151",
+              "hover_color": "var(--terracotta)",
+              "gap": "32px"
+            }
+          },
+          "cta_button": {
+            "text": "Enroll Now",
+            "style": "btn-organic",
+            "padding": "8px 24px",
+            "radius": "9999px"
+          }
+        }
+      }
+    }
+  ],
+  "footers": [
+    {
+      "id": "main-footer",
+      "name": "Main Footer",
+      "structure": {
+        "type": "footer",
+        "classes": [
+          "bg-charcoal",
+          "text-white",
+          "py-16"
+        ],
+        "style": {
+          "background": "var(--charcoal)",
+          "color": "white"
+        },
+        "content": {
+          "columns": 4,
+          "layout": "grid md:grid-cols-4 gap-12",
+          "widgets": [
+            {
+              "type": "brand",
+              "title": "Frenz School",
+              "title_style": {
+                "font": "var(--font-serif)",
+                "size": "24px",
+                "weight": "700",
+                "color": "var(--terracotta-light)"
+              },
+              "description": "Supporting French-English bilingual education in New Zealand since 1994. A not-for-profit organization dedicated to empowering children through language."
+            },
+            {
+              "type": "menu",
+              "title": "Programmes",
+              "title_style": {
+                "color": "var(--terracotta-light)",
+                "weight": "700"
+              },
+              "items": [
+                "Playgroup (0-5)",
+                "Primary (5-11)",
+                "Intermediate (11-13)",
+                "Enrolment Info"
+              ]
+            },
+            {
+              "type": "menu",
+              "title": "Locations",
+              "title_style": {
+                "color": "var(--terracotta-light)",
+                "weight": "700"
+              },
+              "items": [
+                "Auckland",
+                "Wellington",
+                "Christchurch",
+                "All Schools"
+              ]
+            },
+            {
+              "type": "social",
+              "title": "Connect",
+              "title_style": {
+                "color": "var(--terracotta-light)",
+                "weight": "700"
+              },
+              "socials": [
+                "facebook",
+                "instagram"
+              ],
+              "email": "info@frenzschool.org.nz"
+            }
+          ],
+          "bottom_bar": {
+            "layout": "flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/10",
+            "copyright": "© 2025 Frenz School Inc. All rights reserved.",
+            "links": [
+              "Privacy Policy",
+              "Terms of Service"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "sections": [
+    {
+      "id": "hero",
+      "name": "Hero Section",
+      "category": "hero",
+      "structure": {
+        "type": "section",
+        "classes": [
+          "relative",
+          "min-h-screen",
+          "flex",
+          "items-center",
+          "justify-center",
+          "overflow-hidden"
+        ],
+        "style": {
+          "background": "linear-gradient(135deg, #FDF8F3 0%, #F5EDE4 50%, #FDF8F3 100%)"
+        },
+        "content": {
+          "background_elements": [
+            {
+              "type": "div",
+              "classes": [
+                "absolute",
+                "top-20",
+                "left-10",
+                "w-72",
+                "h-72",
+                "bg-terracotta",
+                "opacity-5",
+                "rounded-full",
+                "blur-3xl",
+                "float-animation"
+              ]
+            },
+            {
+              "type": "div",
+              "classes": [
+                "absolute",
+                "bottom-20",
+                "right-10",
+                "w-96",
+                "h-96",
+                "bg-sage",
+                "opacity-5",
+                "rounded-full",
+                "blur-3xl",
+                "float-animation"
+              ],
+              "style": {
+                "animation-delay": "2s"
+              }
+            }
+          ],
+          "grid": {
+            "layout": "grid md:grid-cols-2 gap-16 items-center pt-20",
+            "max_width": "1280px",
+            "padding": "0 24px"
+          },
+          "left_column": {
+            "alignment": "text-center md:text-left",
+            "elements": [
+              {
+                "type": "text",
+                "tag": "p",
+                "content": "Since 1994",
+                "classes": [
+                  "section-tag",
+                  "mb-4"
+                ]
+              },
+              {
+                "type": "heading",
+                "tag": "h1",
+                "content": [
+                  {
+                    "text": "Supporting",
+                    "classes": [
+                      "block",
+                      "overflow-hidden"
+                    ]
+                  },
+                  {
+                    "text": "French-English",
+                    "classes": [
+                      "text-terracotta"
+                    ]
+                  },
+                  {
+                    "text": "education",
+                    "classes": [
+                      "italic",
+                      "font-medium"
+                    ]
+                  }
+                ],
+                "size": "text-5xl md:text-6xl lg:text-7xl",
+                "weight": "700",
+                "line_height": "1.1"
+              },
+              {
+                "type": "text",
+                "tag": "p",
+                "content": "Empowering children across New Zealand through quality bilingual education. We help public schools open and operate integrated French-English programmes.",
+                "style": {
+                  "font-size": "18px",
+                  "color": "#6B6B6B",
+                  "max-width": "512px",
+                  "line-height": "1.75"
+                }
+              },
+              {
+                "type": "button_group",
+                "layout": "flex flex-col sm:flex-row gap-4",
+                "buttons": [
+                  {
+                    "text": "Explore Programmes",
+                    "style": "btn-organic",
+                    "icon": "arrow-right"
+                  },
+                  {
+                    "text": "Learn About Us",
+                    "style": "btn-outline-organic"
+                  }
+                ]
+              },
+              {
+                "type": "stats",
+                "layout": "flex items-center justify-center md:justify-start gap-8 pt-8 border-t border-terracotta/10",
+                "items": [
+                  {
+                    "number": "30+",
+                    "label": "Years Experience"
+                  },
+                  {
+                    "number": "5",
+                    "label": "Schools Supported"
+                  },
+                  {
+                    "number": "1000+",
+                    "label": "Students"
+                  }
+                ]
+              }
+            ]
+          },
+          "right_column": {
+            "type": "image_container",
+            "classes": [
+              "relative"
+            ],
+            "image": {
+              "shape": "blob-shape",
+              "aspect_ratio": "1/1",
+              "max_width": "512px",
+              "shadow": "shadow-2xl",
+              "overlay": "linear-gradient(to top, rgba(198,93,59,0.2), transparent)"
+            },
+            "floating_card": {
+              "position": "absolute -bottom-6 -left-6",
+              "classes": [
+                "bg-white",
+                "p-6",
+                "rounded-2xl",
+                "shadow-xl",
+                "float-animation",
+                "hidden",
+                "md:block"
+              ],
+              "content": {
+                "icon": "globe",
+                "icon_bg": "var(--sage)",
+                "title": "Not-for-Profit",
+                "subtitle": "Supporting public education"
+              }
+            }
+          },
+          "scroll_indicator": {
+            "position": "absolute bottom-10 left-1/2 transform -translate-x-1/2",
+            "classes": [
+              "scroll-indicator"
+            ],
+            "icon": "chevron-down",
+            "color": "var(--terracotta)"
+          }
+        }
+      }
+    },
+    {
+      "id": "about",
+      "name": "About Section",
+      "category": "content",
+      "structure": {
+        "type": "section",
+        "id": "about",
+        "classes": [
+          "py-24",
+          "relative",
+          "bg-cream"
+        ],
+        "content": {
+          "grid": {
+            "layout": "grid md:grid-cols-2 gap-16 items-center",
+            "max_width": "1280px",
+            "padding": "0 24px"
+          },
+          "left_column": {
+            "order": "order-2 md:order-1",
+            "type": "image_grid",
+            "layout": "grid grid-cols-2 gap-4",
+            "images": [
+              {
+                "position": "col-1 mt-8",
+                "items": [
+                  {
+                    "height": "192px",
+                    "radius": "16px",
+                    "shadow": "shadow-lg"
+                  },
+                  {
+                    "height": "256px",
+                    "radius": "16px",
+                    "shadow": "shadow-lg",
+                    "bg": "var(--terracotta)/10",
+                    "content": {
+                      "number": "1994",
+                      "label": "Founded"
+                    }
+                  }
+                ]
+              },
+              {
+                "position": "col-2",
+                "items": [
+                  {
+                    "height": "256px",
+                    "radius": "16px",
+                    "shadow": "shadow-lg"
+                  },
+                  {
+                    "height": "192px",
+                    "radius": "16px",
+                    "shadow": "shadow-lg"
+                  }
+                ]
+              }
+            ]
+          },
+          "right_column": {
+            "order": "order-1 md:order-2",
+            "elements": [
+              {
+                "type": "text",
+                "tag": "span",
+                "content": "Who We Are",
+                "classes": [
+                  "section-tag"
+                ]
+              },
+              {
+                "type": "heading",
+                "tag": "h2",
+                "content": [
+                  {
+                    "text": "Not-for-Profit",
+                    "break": true
+                  },
+                  {
+                    "text": "Bilingual Education",
+                    "classes": [
+                      "text-terracotta",
+                      "italic"
+                    ]
+                  }
+                ],
+                "size": "text-4xl md:text-5xl",
+                "weight": "700",
+                "line_height": "1.2"
+              },
+              {
+                "type": "rich_text",
+                "content": [
+                  "Frenz is a <strong>not-for-profit organization</strong> helping public schools across New Zealand open and operate quality French-English bilingual programs.",
+                  "The bilingual units are fully integrated within each school, with students participating in all aspects of school life. This unique approach ensures that children don't just learn a language—they live it.",
+                  "Bilingual education offers children the opportunity to become proficient in all academic subjects in both languages, giving them a unique advantage in our interconnected world."
+                ],
+                "style": {
+                  "font-size": "18px",
+                  "color": "#6B6B6B",
+                  "line-height": "1.75"
+                }
+              },
+              {
+                "type": "button",
+                "text": "Our Story",
+                "style": "btn-organic",
+                "icon": "arrow-right"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "benefits",
+      "name": "Benefits Grid",
+      "category": "features",
+      "structure": {
+        "type": "section",
+        "id": "benefits",
+        "classes": [
+          "py-24",
+          "bg-sand",
+          "relative",
+          "overflow-hidden"
+        ],
+        "content": {
+          "header": {
+            "alignment": "text-center",
+            "max_width": "672px",
+            "margin": "0 auto 64px",
+            "elements": [
+              {
+                "type": "text",
+                "tag": "span",
+                "content": "Why Choose Us",
+                "classes": [
+                  "section-tag"
+                ]
+              },
+              {
+                "type": "heading",
+                "tag": "h2",
+                "content": "Why Bilingual Education?",
+                "size": "text-4xl md:text-5xl",
+                "weight": "700",
+                "margin": "16px 0 24px"
+              },
+              {
+                "type": "text",
+                "tag": "p",
+                "content": "Research shows that bilingual children develop stronger cognitive abilities, better problem-solving skills, and enhanced cultural awareness.",
+                "style": {
+                  "font-size": "18px",
+                  "color": "#6B6B6B"
+                }
+              }
+            ]
+          },
+          "grid": {
+            "layout": "grid md:grid-cols-2 lg:grid-cols-3 gap-8",
+            "max_width": "1280px",
+            "padding": "0 24px"
+          },
+          "cards": [
+            {
+              "classes": [
+                "organic-card"
+              ],
+              "icon": "home",
+              "title": "Smooth Transition",
+              "description": "Bilingual education provides children who do not speak English a smooth transition to your new life in New Zealand. It is easier and quicker for them to make friends because there are no language barriers."
+            },
+            {
+              "classes": [
+                "organic-card"
+              ],
+              "icon": "language",
+              "title": "Native Proficiency",
+              "description": "With bilingual education, your children will have native speaker proficiency in all academic subjects in both French and English—not just maintaining a minority language."
+            },
+            {
+              "classes": [
+                "organic-card"
+              ],
+              "icon": "lightbulb",
+              "title": "Academic Advantage",
+              "description": "Studies in language development show that young children with exposure to more than one language at an early age are at a distinct advantage throughout life."
+            },
+            {
+              "classes": [
+                "organic-card"
+              ],
+              "icon": "clock",
+              "title": "Lifelong Learning",
+              "description": "The more that children can take advantage of new concepts, the more in tune their brains will be to all learning throughout life. Bilingual brains age more slowly and employment rates are higher."
+            },
+            {
+              "classes": [
+                "organic-card"
+              ],
+              "icon": "heart",
+              "title": "Empathy & EQ",
+              "description": "Bilingual children follow social cues to determine which language to use. They demonstrate a head start in perspective-taking and theory of mind—fundamental social and emotional skills."
+            },
+            {
+              "type": "cta_card",
+              "classes": [
+                "bg-terracotta",
+                "rounded-3xl",
+                "p-8",
+                "text-white",
+                "flex",
+                "flex-col",
+                "justify-center",
+                "items-center",
+                "text-center"
+              ],
+              "icon": "book",
+              "icon_style": {
+                "bg": "rgba(255,255,255,0.2)",
+                "size": "64px"
+              },
+              "title": "Want to Learn More?",
+              "description": "Read the research behind bilingual education and its lifelong benefits.",
+              "button": {
+                "text": "Read Research →",
+                "style": "bg-white text-terracotta px-6 py-3 rounded-full font-medium hover:bg-gray-100"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "programmes",
+      "name": "Programmes Cards",
+      "category": "features",
+      "structure": {
+        "type": "section",
+        "id": "programmes",
+        "classes": [
+          "py-24",
+          "relative",
+          "bg-cream"
+        ],
+        "content": {
+          "header": {
+            "alignment": "text-center",
+            "max_width": "672px",
+            "margin": "0 auto 64px",
+            "elements": [
+              {
+                "type": "text",
+                "tag": "span",
+                "content": "Our Programmes",
+                "classes": [
+                  "section-tag"
+                ]
+              },
+              {
+                "type": "heading",
+                "tag": "h2",
+                "content": "French Programmes Across New Zealand",
+                "size": "text-4xl md:text-5xl",
+                "weight": "700",
+                "margin": "16px 0 24px"
+              },
+              {
+                "type": "text",
+                "tag": "p",
+                "content": "From playgroup to intermediate, we offer age-appropriate bilingual education that grows with your child.",
+                "style": {
+                  "font-size": "18px",
+                  "color": "#6B6B6B"
+                }
+              }
+            ]
+          },
+          "grid": {
+            "layout": "grid md:grid-cols-3 gap-8",
+            "max_width": "1280px",
+            "padding": "0 24px"
+          },
+          "cards": [
+            {
+              "classes": [
+                "age-card"
+              ],
+              "image": {
+                "height": "256px",
+                "overlay": "none"
+              },
+              "badge": {
+                "text": "0-5 Years",
+                "style": "bg-sage text-white px-4 py-1 rounded-full text-sm font-medium",
+                "position": "absolute top-4 right-4"
+              },
+              "content": {
+                "title": "Les Petits Lascars",
+                "subtitle": "Weekly French Playgroup",
+                "subtitle_style": "text-terracotta font-medium mb-4",
+                "description": "Available in Auckland, these playgroups provide parents and children a place to play, learn and socialise in a <strong>100% French environment</strong>.",
+                "location": {
+                  "icon": "location",
+                  "text": "Auckland",
+                  "style": "flex items-center gap-2 text-sm text-gray-500"
+                }
+              }
+            },
+            {
+              "classes": [
+                "age-card"
+              ],
+              "image": {
+                "height": "256px",
+                "overlay": "none"
+              },
+              "badge": {
+                "text": "5-11 Years",
+                "style": "bg-terracotta text-white px-4 py-1 rounded-full text-sm font-medium",
+                "position": "absolute top-4 right-4"
+              },
+              "content": {
+                "title": "Primary Schools",
+                "subtitle": "5 Schools Across NZ",
+                "subtitle_style": "text-terracotta font-medium mb-4",
+                "description": "Frenz supports bilingual programmes at 5 public primary schools. Each provides children with <strong>18 hours/week of education in French</strong> for 6 years.",
+                "location": {
+                  "icon": "location",
+                  "text": "Auckland, Wellington, Christchurch",
+                  "style": "flex items-center gap-2 text-sm text-gray-500"
+                }
+              }
+            },
+            {
+              "classes": [
+                "age-card"
+              ],
+              "image": {
+                "height": "256px",
+                "overlay": "none"
+              },
+              "badge": {
+                "text": "11-13 Years",
+                "style": "bg-charcoal text-white px-4 py-1 rounded-full text-sm font-medium",
+                "position": "absolute top-4 right-4"
+              },
+              "content": {
+                "title": "Intermediate",
+                "subtitle": "Continuing the Journey",
+                "subtitle_style": "text-terracotta font-medium mb-4",
+                "description": "French-English bilingual programmes offered at <strong>Kowhai Intermediate School</strong> in Auckland Central and <strong>Haeata Community Campus</strong> in Christchurch.",
+                "location": {
+                  "icon": "location",
+                  "text": "Auckland & Christchurch",
+                  "style": "flex items-center gap-2 text-sm text-gray-500"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "locations",
+      "name": "Locations Section",
+      "category": "content",
+      "structure": {
+        "type": "section",
+        "id": "locations",
+        "classes": [
+          "py-24",
+          "bg-charcoal",
+          "text-white",
+          "relative",
+          "overflow-hidden"
+        ],
+        "content": {
+          "grid": {
+            "layout": "grid md:grid-cols-2 gap-16 items-center",
+            "max_width": "1280px",
+            "padding": "0 24px"
+          },
+          "left_column": {
+            "elements": [
+              {
+                "type": "text",
+                "tag": "span",
+                "content": "Our Locations",
+                "style": "text-terracotta-light font-medium tracking-widest uppercase text-sm"
+              },
+              {
+                "type": "heading",
+                "tag": "h2",
+                "content": "Find a School Near You",
+                "size": "text-4xl md:text-5xl",
+                "weight": "700",
+                "margin": "16px 0 24px"
+              },
+              {
+                "type": "text",
+                "tag": "p",
+                "content": "Frenz supports bilingual programmes across New Zealand, from Auckland to Christchurch. Each school is fully integrated into the public education system.",
+                "style": {
+                  "font-size": "18px",
+                  "color": "rgba(255,255,255,0.7)",
+                  "margin-bottom": "32px"
+                }
+              },
+              {
+                "type": "location_list",
+                "items": [
+                  {
+                    "code": "AK",
+                    "code_bg": "var(--terracotta)",
+                    "title": "Auckland",
+                    "description": "Multiple primary schools & Kowhai Intermediate",
+                    "extra": "+ Les Petits Lascars Playgroup",
+                    "extra_style": "text-terracotta-light text-sm mt-1"
+                  },
+                  {
+                    "code": "WL",
+                    "code_bg": "var(--sage)",
+                    "title": "Wellington",
+                    "description": "Primary school programmes available"
+                  },
+                  {
+                    "code": "CH",
+                    "code_bg": "var(--terracotta-light)",
+                    "title": "Christchurch",
+                    "description": "Haeata Community Campus (L'Aurore)",
+                    "extra": "Years 0-8, Opening 2025",
+                    "extra_style": "text-terracotta-light text-sm mt-1"
+                  }
+                ],
+                "item_style": "flex items-start gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group"
+              }
+            ]
+          },
+          "right_column": {
+            "type": "contact_card",
+            "wrapper": {
+              "classes": [
+                "relative"
+              ],
+              "decoration": "absolute inset-0 bg-terracotta rounded-3xl transform rotate-3 opacity-20"
+            },
+            "card": {
+              "classes": [
+                "relative",
+                "bg-sand",
+                "rounded-3xl",
+                "p-8",
+                "text-charcoal"
+              ],
+              "title": "School Enquiries",
+              "title_style": "text-2xl font-bold mb-6",
+              "description": "Interested in enrolling your child? Contact us to learn more about our programmes and availability.",
+              "description_style": "text-gray-600 mb-6",
+              "contact_items": [
+                {
+                  "icon": "email",
+                  "icon_color": "var(--terracotta)",
+                  "text": "info@frenzschool.org.nz"
+                },
+                {
+                  "icon": "globe",
+                  "icon_color": "var(--terracotta)",
+                  "text": "www.frenzschool.org.nz"
+                }
+              ],
+              "button": {
+                "text": "Contact Your Local School",
+                "style": "w-full bg-terracotta text-white py-4 rounded-xl font-semibold hover:bg-terracotta-light transition-colors"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "cta",
+      "name": "CTA Section",
+      "category": "cta",
+      "structure": {
+        "type": "section",
+        "classes": [
+          "py-24",
+          "relative",
+          "overflow-hidden"
+        ],
+        "style": {
+          "background": "linear-gradient(135deg, #C65D3B 0%, #E07A5F 100%)"
+        },
+        "content": {
+          "decoration": [
+            {
+              "type": "div",
+              "classes": [
+                "absolute",
+                "top-0",
+                "right-0",
+                "w-96",
+                "h-96",
+                "bg-white",
+                "opacity-10",
+                "rounded-full",
+                "transform",
+                "translate-x-1/2",
+                "-translate-y-1/2"
+              ]
+            },
+            {
+              "type": "div",
+              "classes": [
+                "absolute",
+                "bottom-0",
+                "left-0",
+                "w-64",
+                "h-64",
+                "bg-white",
+                "opacity-10",
+                "rounded-full",
+                "transform",
+                "-translate-x-1/2",
+                "translate-y-1/2"
+              ]
+            }
+          ],
+          "container": {
+            "max_width": "896px",
+            "padding": "0 24px",
+            "alignment": "text-center",
+            "margin": "0 auto",
+            "position": "relative z-10"
+          },
+          "elements": [
+            {
+              "type": "heading",
+              "tag": "h2",
+              "content": "Start Your Bilingual Journey Today",
+              "size": "text-4xl md:text-5xl",
+              "weight": "700",
+              "font": "var(--font-serif)",
+              "color": "white",
+              "margin": "0 0 24px"
+            },
+            {
+              "type": "text",
+              "tag": "p",
+              "content": "Give your child the gift of bilingualism. Join our community of families embracing French-English education across New Zealand.",
+              "style": {
+                "font-size": "20px",
+                "color": "rgba(255,255,255,0.9)",
+                "margin-bottom": "40px",
+                "max-width": "672px",
+                "margin": "0 auto 40px"
+              }
+            },
+            {
+              "type": "button_group",
+              "layout": "flex flex-col sm:flex-row gap-4 justify-center",
+              "buttons": [
+                {
+                  "text": "Enroll Now",
+                  "style": "bg-white text-terracotta px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all hover:scale-105 shadow-xl"
+                },
+                {
+                  "text": "Download Info Pack",
+                  "style": "border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "components": [
+    {
+      "id": "section-tag",
+      "name": "Section Tag",
+      "type": "text",
+      "structure": {
+        "tag": "span",
+        "classes": [
+          "section-tag"
+        ],
+        "style": {
+          "color": "var(--terracotta)",
+          "font-weight": "500",
+          "letter-spacing": "0.2em",
+          "text-transform": "uppercase",
+          "font-size": "0.875rem"
+        }
+      }
+    },
+    {
+      "id": "organic-card",
+      "name": "Organic Card",
+      "type": "container",
+      "structure": {
+        "tag": "div",
+        "classes": [
+          "organic-card"
+        ],
+        "style": {
+          "background": "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(253,248,243,0.9) 100%)",
+          "backdrop-filter": "blur(10px)",
+          "border": "1px solid rgba(198, 93, 59, 0.1)",
+          "border-radius": "var(--card-radius)",
+          "padding": "var(--card-padding)",
+          "transition": "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+        },
+        "hover": {
+          "transform": "translateY(-8px)",
+          "box-shadow": "0 20px 40px rgba(198, 93, 59, 0.1)"
+        },
+        "slots": {
+          "icon": {
+            "type": "div",
+            "classes": [
+              "benefit-icon"
+            ],
+            "style": {
+              "width": "64px",
+              "height": "64px",
+              "background": "linear-gradient(135deg, rgba(198, 93, 59, 0.1) 0%, rgba(138, 154, 91, 0.1) 100%)",
+              "border-radius": "20px",
+              "display": "flex",
+              "align-items": "center",
+              "justify-content": "center",
+              "color": "var(--terracotta)",
+              "margin-bottom": "24px"
+            }
+          },
+          "title": {
+            "type": "heading",
+            "tag": "h3",
+            "style": {
+              "font-size": "var(--text-xl)",
+              "font-weight": "700",
+              "color": "var(--charcoal)",
+              "margin-bottom": "12px"
+            }
+          },
+          "description": {
+            "type": "text",
+            "tag": "p",
+            "style": {
+              "color": "#6B6B6B",
+              "line-height": "1.75"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "age-card",
+      "name": "Age Card",
+      "type": "container",
+      "structure": {
+        "tag": "div",
+        "classes": [
+          "age-card"
+        ],
+        "style": {
+          "background": "white",
+          "border-radius": "2rem",
+          "overflow": "hidden",
+          "box-shadow": "0 10px 30px rgba(0,0,0,0.05)",
+          "transition": "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+        },
+        "hover": {
+          "transform": "translateY(-10px)",
+          "box-shadow": "0 30px 60px rgba(198, 93, 59, 0.15)"
+        },
+        "slots": {
+          "image": {
+            "type": "div",
+            "style": {
+              "position": "relative",
+              "height": "256px",
+              "overflow": "hidden"
+            },
+            "badge": {
+              "position": "absolute top-4 right-4",
+              "style": "px-4 py-1 rounded-full text-sm font-medium"
+            }
+          },
+          "content": {
+            "type": "div",
+            "style": {
+              "padding": "32px"
+            },
+            "slots": {
+              "title": {
+                "type": "heading",
+                "tag": "h3",
+                "style": {
+                  "font-size": "24px",
+                  "font-weight": "700",
+                  "margin-bottom": "12px"
+                }
+              },
+              "subtitle": {
+                "type": "text",
+                "style": {
+                  "color": "var(--terracotta)",
+                  "font-weight": "500",
+                  "margin-bottom": "16px"
+                }
+              },
+              "description": {
+                "type": "text",
+                "style": {
+                  "color": "#6B6B6B",
+                  "line-height": "1.75",
+                  "margin-bottom": "24px"
+                }
+              },
+              "location": {
+                "type": "div",
+                "style": {
+                  "display": "flex",
+                  "align-items": "center",
+                  "gap": "8px",
+                  "font-size": "14px",
+                  "color": "#6B6B6B"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "btn-organic",
+      "name": "Organic Button",
+      "type": "button",
+      "structure": {
+        "tag": "button",
+        "classes": [
+          "btn-organic"
+        ],
+        "style": {
+          "background": "var(--terracotta)",
+          "color": "white",
+          "padding": "var(--btn-padding)",
+          "border-radius": "var(--btn-radius)",
+          "font-weight": "500",
+          "transition": "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+          "position": "relative",
+          "overflow": "hidden"
+        },
+        "hover": {
+          "background": "var(--terracotta-light)",
+          "transform": "translateY(-2px)",
+          "box-shadow": "0 10px 30px rgba(198, 93, 59, 0.3)"
+        },
+        "icon_support": true
+      }
+    },
+    {
+      "id": "btn-outline-organic",
+      "name": "Outline Organic Button",
+      "type": "button",
+      "structure": {
+        "tag": "button",
+        "classes": [
+          "btn-outline-organic"
+        ],
+        "style": {
+          "border": "2px solid var(--terracotta)",
+          "color": "var(--terracotta)",
+          "padding": "var(--btn-padding)",
+          "border-radius": "var(--btn-radius)",
+          "font-weight": "500",
+          "transition": "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+        },
+        "hover": {
+          "background": "var(--terracotta)",
+          "color": "white",
+          "transform": "translateY(-2px)"
+        }
+      }
+    },
+    {
+      "id": "stats-counter",
+      "name": "Stats Counter",
+      "type": "container",
+      "structure": {
+        "tag": "div",
+        "style": {
+          "text-align": "center"
+        },
+        "slots": {
+          "number": {
+            "type": "text",
+            "classes": [
+              "stats-number"
+            ],
+            "style": {
+              "font-family": "var(--font-serif)",
+              "font-size": "4rem",
+              "font-weight": "700",
+              "color": "var(--terracotta)",
+              "line-height": "1"
+            }
+          },
+          "label": {
+            "type": "text",
+            "style": {
+              "font-size": "14px",
+              "color": "#6B6B6B",
+              "margin-top": "4px"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "location-item",
+      "name": "Location Item",
+      "type": "container",
+      "structure": {
+        "tag": "div",
+        "classes": [
+          "flex",
+          "items-start",
+          "gap-4",
+          "p-4",
+          "rounded-2xl",
+          "bg-white/5",
+          "hover:bg-white/10",
+          "transition-colors",
+          "cursor-pointer",
+          "group"
+        ],
+        "slots": {
+          "code_badge": {
+            "type": "div",
+            "style": {
+              "width": "48px",
+              "height": "48px",
+              "border-radius": "12px",
+              "display": "flex",
+              "align-items": "center",
+              "justify-content": "center",
+              "font-weight": "700",
+              "flex-shrink": "0"
+            },
+            "hover": {
+              "transform": "scale(1.1)"
+            }
+          },
+          "content": {
+            "type": "div",
+            "slots": {
+              "title": {
+                "type": "heading",
+                "tag": "h4",
+                "style": {
+                  "font-weight": "700",
+                  "font-size": "18px"
+                }
+              },
+              "description": {
+                "type": "text",
+                "style": {
+                  "font-size": "14px",
+                  "color": "rgba(255,255,255,0.6)"
+                }
+              },
+              "extra": {
+                "type": "text",
+                "style": {
+                  "font-size": "14px",
+                  "color": "var(--terracotta-light)",
+                  "margin-top": "4px"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "stylesheets": [
+    {
+      "name": "frenz-animations",
+      "content": "\n                @keyframes morph {\n                    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }\n                    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }\n                    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }\n                }\n\n                @keyframes float {\n                    0%, 100% { transform: translateY(0px); }\n                    50% { transform: translateY(-20px); }\n                }\n\n                @keyframes bounce {\n                    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }\n                    40% { transform: translateY(-10px); }\n                    60% { transform: translateY(-5px); }\n                }\n\n                .blob-shape {\n                    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;\n                    animation: morph 8s ease-in-out infinite;\n                }\n\n                .float-animation {\n                    animation: float 6s ease-in-out infinite;\n                }\n\n                .scroll-indicator {\n                    animation: bounce 2s infinite;\n                }\n\n                .reveal-on-scroll {\n                    opacity: 0;\n                    transform: translateY(30px);\n                    transition: opacity 0.8s ease, transform 0.8s ease;\n                }\n\n                .reveal-on-scroll.visible {\n                    opacity: 1;\n                    transform: translateY(0);\n                }\n\n                .grain-overlay {\n                    position: fixed;\n                    top: 0;\n                    left: 0;\n                    width: 100%;\n                    height: 100%;\n                    pointer-events: none;\n                    z-index: 50;\n                    opacity: 0.03;\n                    background-image: url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\");\n                }\n            "
+    },
+    {
+      "name": "frenz-utilities",
+      "content": "\n                .text-terracotta { color: var(--terracotta); }\n                .text-terracotta-light { color: var(--terracotta-light); }\n                .bg-terracotta { background-color: var(--terracotta); }\n                .bg-terracotta-light { background-color: var(--terracotta-light); }\n                .text-sage { color: var(--sage); }\n                .bg-sage { background-color: var(--sage); }\n                .text-cream { color: var(--cream); }\n                .bg-cream { background-color: var(--cream); }\n                .text-sand { color: var(--sand); }\n                .bg-sand { background-color: var(--sand); }\n                .text-charcoal { color: var(--charcoal); }\n                .bg-charcoal { background-color: var(--charcoal); }\n\n                .font-serif { font-family: var(--font-serif); }\n                .font-sans { font-family: var(--font-sans); }\n            "
+    }
+  ],
+  "assets": {
+    "fonts": [
+      {
+        "name": "Playfair Display",
+        "source": "google",
+        "weights": [
+          400,
+          500,
+          600,
+          700
+        ],
+        "styles": [
+          "normal",
+          "italic"
+        ]
+      },
+      {
+        "name": "Inter",
+        "source": "google",
+        "weights": [
+          300,
+          400,
+          500,
+          600
+        ],
+        "styles": [
+          "normal"
+        ]
+      }
+    ],
+    "images": [
+      {
+        "id": "hero-image",
+        "description": "Children learning together - blob shape mask",
+        "placeholder": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=800&fit=crop"
+      },
+      {
+        "id": "about-classroom",
+        "description": "Classroom scene",
+        "placeholder": "https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&h=400&fit=crop"
+      },
+      {
+        "id": "about-students",
+        "description": "Students learning",
+        "placeholder": "https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&h=600&fit=crop"
+      },
+      {
+        "id": "about-learning",
+        "description": "Learning activity",
+        "placeholder": "https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=400&h=300&fit=crop"
+      },
+      {
+        "id": "playgroup",
+        "description": "Playgroup children",
+        "placeholder": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&h=400&fit=crop"
+      },
+      {
+        "id": "primary",
+        "description": "Primary school children",
+        "placeholder": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop"
+      },
+      {
+        "id": "intermediate",
+        "description": "Intermediate students",
+        "placeholder": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop"
+      }
+    ],
+    "icons": {
+      "set": "heroicons",
+      "icons": [
+        "arrow-right",
+        "chevron-down",
+        "home",
+        "language",
+        "lightbulb",
+        "clock",
+        "heart",
+        "book",
+        "globe",
+        "location-marker",
+        "email",
+        "menu",
+        "x"
+      ]
+    }
+  },
+  "settings": {
+    "design_library": {
+      "turn_into_design_set": true,
+      "enable_copy_from_frontend": true,
+      "relies_on_global_settings": true,
+      "relies_on_design_presets": true,
+      "password_protection": false
+    },
+    "performance": {
+      "disable_gutenberg_css": true,
+      "disable_emojis": true,
+      "disable_dashicons": true,
+      "disable_oembed": true,
+      "disable_rsd": true,
+      "hide_generator": true,
+      "disable_shortlinks": true
+    },
+    "post_types": [
+      "page",
+      "post"
+    ]
+  }
+}
